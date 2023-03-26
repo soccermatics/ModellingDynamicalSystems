@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Evolution of co-operation &mdash; Modelling Complex Systems  documentation</title>
+      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../_static/sg_gallery-rendered-html.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+        <script src="../_static/jquery.js"></script>
+        <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../_static/doctools.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="The Social Epidemic" href="../gallery/lesson1/plot_cts1D.html" />
+    <link rel="prev" title="Contents" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../index.html">
+            <img src="../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Evolutionary games</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Evolution of co-operation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson1/plot_cts1D.html">The Social Epidemic</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson1/plot_cts1D.html">The Social Epidemic</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson3/plot_discrete1D.html">El Farol</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Modelling Complex Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Evolution of co-operation</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/lesson1/introduction.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="evolution-of-co-operation">
+<span id="evocoop"></span><h1>Evolution of co-operation<a class="headerlink" href="#evolution-of-co-operation" title="Permalink to this heading"></a></h1>
+<p>Game theory is used both in biology and in economics to predict how
+individuals will act when faced with an interaction with another
+individual from which both of them may benefit (or lose out) from. In
+economics the aim is to find out the rational behaviour, in biology it
+is to find the behaviour selected by natural selection.</p>
+<p>Here we look at a competition between two behavioural strategies, one
+we call ’co-operate’ the other ’defect’. In general co-operators try
+to share resources and defectors try to take everything for
+themselves. We construct first a payoff table based on the
+interactions of c-operators (C) and defectors (D). We assume that when</p>
+<ul class="simple">
+<li><p>C meets C they both get payoff <span class="math notranslate nohighlight">\(1\)</span> (reward).</p></li>
+<li><p>D meets D they both get payoff <span class="math notranslate nohighlight">\(0\)</span> (punishment).</p></li>
+<li><p>C meets D then D gets payoff <span class="math notranslate nohighlight">\(T\)</span> (temptation), and C gets
+payoff <span class="math notranslate nohighlight">\(S\)</span> (sucker).</p></li>
+</ul>
+<p>In table form</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 51%" />
+<col style="width: 24%" />
+<col style="width: 24%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>individual/opponent</p></th>
+<th class="head"><p>C</p></th>
+<th class="head"><p>D</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(S\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>D</p></td>
+<td><p><span class="math notranslate nohighlight">\(T\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>gives the payoffs for the individuals playing the game. We will start
+by examining the following example, known as the Hawk-Dove game is</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 42%" />
+<col style="width: 29%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>individual/opponent</p></th>
+<th class="head"><p>Dove</p></th>
+<th class="head"><p>Hawk</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Dove</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(S=1/4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Hawk</p></td>
+<td><p><span class="math notranslate nohighlight">\(T=5/4\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>In a world full of Doves (and no Hawks) everyone gets a payoff of 1, while in a world of
+Hawks everyone gets zero. But… the best payoff is for Hawks living in a world full of Doves.</p>
+<p>Eveolutionary game theory considers how a population of people following these rules will
+evolve over time. We make the following assumptions:</p>
+<ul class="simple">
+<li><p>Population is infinite.</p></li>
+<li><p>Those with higher payoffs (fitness) increase in the population. (Darwin’ law of natural selection)</p></li>
+<li><p>Pairwise contests occur between two individuals.</p></li>
+</ul>
+<p>Let <span class="math notranslate nohighlight">\(x\)</span> be the proportion of the population who co-operate. Let
+the <strong>fitness</strong> of an individual be its expected payoff given that
+there are <span class="math notranslate nohighlight">\(x\)</span> co-operators in the population. We assume that the rate of
+reproduction of co-operators is proportional to their fitness minus average
+fitness of both co-operators and defectors.</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\frac{dx}{dt} = x (\mbox{fitness of C - average fitness}) \label{repeq}\]</div>
+</div></blockquote>
+<p>This is known as the <strong>replicator equation</strong>. The fitness of C is</p>
+<div class="math notranslate nohighlight">
+\[x.1+(1-x)\frac{1}{4}\]</div>
+<p>That is, if a co-operator chooses a person to play the game with at random
+then they will choose another co-operator with probability <span class="math notranslate nohighlight">\(x\)</span> and get payoff 1
+and they will choose a defector with probability <span class="math notranslate nohighlight">\(1-x\)</span> and get payoff <span class="math notranslate nohighlight">\(1/4\)</span>.</p>
+<p>Likewise, the fitness of D is</p>
+<div class="math notranslate nohighlight">
+\[xT+(1-x).0 = xT\]</div>
+<p>The average fitness is then</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[x(x+(1-x)S) + (1-x)xT\]</div>
+</div></blockquote>
+<p>i.e. the</p>
+<p>Thus</p>
+<div class="math notranslate nohighlight" id="equation-repeqf">
+<span class="eqno">(1)<a class="headerlink" href="#equation-repeqf" title="Permalink to this equation"></a></span>\[\begin{split}\begin{aligned}
+\frac{dx}{dt} = f(x) &amp; = &amp; x (x+(1-x)S - x(x+(1-x)(S+T))) \nonumber \\
+&amp; = &amp; x (1-x) (x+(1-x)S - Tx)
+\end{aligned}\end{split}\]</div>
+<p>is the replicator equation for this game.</p>
+<p>The steady states of equation <a class="reference external" href="#repeqf">[repeqf]</a> are <span class="math notranslate nohighlight">\(x_*=0\)</span>, <span class="math notranslate nohighlight">\(x_*=1\)</span>
+and the solution to</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[x_*+(1-x_*)S = Tx_*\]</div>
+</div></blockquote>
+<p>or</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[x_* = \frac{S}{S+T-1}\]</div>
+</div></blockquote>
+<p>In order for this steady state to lie between 0 and 1 we need either</p>
+<ul>
+<li><div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(T&gt;1\)</span> and <span class="math notranslate nohighlight">\(S&gt;0\)</span></div>
+</div>
+</li>
+<li><div class="line-block">
+<div class="line">or <span class="math notranslate nohighlight">\(T&lt;1\)</span> and <span class="math notranslate nohighlight">\(S&lt;0\)</span></div>
+</div>
+</li>
+</ul>
+<p>We can determine the stability of the three steady states by
+differentiating equation <a class="reference external" href="#repeqf">[repeqf]</a> with respect to
+<span class="math notranslate nohighlight">\(x\)</span> we get:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[f'(x) = x(1-x)(1-S-T) + (1-2x)(x+(1-x)S-Tx)\]</div>
+</div></blockquote>
+<p>Evaluating at the steady states we get</p>
+<div class="math notranslate nohighlight">
+\[f'(0) = S\]</div>
+<p>so the 0 steady state is stable if <span class="math notranslate nohighlight">\(S&lt;0\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[f'(1) = T - 1\]</div>
+<p>So the 1 steady state is stable if <span class="math notranslate nohighlight">\(T&lt;1\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+f'\left(\frac{S}{S+T-1}\right) &amp; = &amp; -S (1 - \frac{S}{S+T-1}) \\
+&amp; = &amp; \frac{S(T-1)}{1-S-T}
+\end{aligned}\end{split}\]</div>
+<p>Thus the co-existence steady state is stable if both <span class="math notranslate nohighlight">\(T&gt;1\)</span> and
+<span class="math notranslate nohighlight">\(S&gt;0\)</span>, but unstable if <span class="math notranslate nohighlight">\(T&lt;1\)</span> and <span class="math notranslate nohighlight">\(S&lt;0\)</span>.
+<a href="#id1"><span class="problematic" id="id2">|</span></a>Below we illustrate how the stability is determined in the <span class="math notranslate nohighlight">\(ST\)</span>
+plane.</p>
+<p>We now consider some examples.
+| Thus <span class="math notranslate nohighlight">\(S&gt;0\)</span> and <span class="math notranslate nohighlight">\(T&gt;1\)</span>, so the hawks and doves coexist at</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(1/2\)</span>. Note that this is not optimal for the population as a
+whole. The mean fitness in this situation is
+<span class="math notranslate nohighlight">\(1/2(1/2+1/2 \times 1/4)+5/4 \times
+1/2\times1/2=5/16+5/16=10/16\)</span>. If all played Dove the mean fitness
+would be <span class="math notranslate nohighlight">\(1\)</span>. This shows that natural selection acts to maximise
+individual fitness and not group fitness.</p>
+</div></blockquote>
+<div class="line-block">
+<div class="line">The prisoners dilemma is</div>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 28%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>individual/opponent</p></th>
+<th class="head"><p>Keep quiet</p></th>
+<th class="head"><p>Blame other</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Keep quiet</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(S=-1/4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Blame other</p></td>
+<td><p><span class="math notranslate nohighlight">\(T=5/4\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>Here <span class="math notranslate nohighlight">\(S&lt;0\)</span> and <span class="math notranslate nohighlight">\(T&gt;1\)</span> and the stbale strategy is to keep
+quiet. Here the situation is very bad for the population as a whole.
+The group could do best by all co-operating but by acting rationally
+or following natural selection all will defect.</p>
+<p>The stag hunt is</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 28%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>individual/opponent</p></th>
+<th class="head"><p>Group</p></th>
+<th class="head"><p>Self</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Group</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(S=-1/4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Self</p></td>
+<td><p><span class="math notranslate nohighlight">\(T=1/2\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>thus <span class="math notranslate nohighlight">\(S&lt;0\)</span> and <span class="math notranslate nohighlight">\(T&lt;1\)</span>, so all defect and all co-operate are
+both stable. The steady state</p>
+<div class="math notranslate nohighlight">
+\[\frac{S}{S+T-1} = \frac{1}{3}\]</div>
+<p>thus if <span class="math notranslate nohighlight">\(x(0)&gt;1/3\)</span> then all defect, if <span class="math notranslate nohighlight">\(x(0)&lt;2/3\)</span> then all
+co-operate. Stag hunts are hard to establish but when established are
+stable to defection.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../index.html" class="btn btn-neutral float-left" title="Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gallery/lesson1/plot_cts1D.html" class="btn btn-neutral float-right" title="The Social Epidemic" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, David Sumpter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

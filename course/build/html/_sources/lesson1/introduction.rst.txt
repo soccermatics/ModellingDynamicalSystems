@@ -1,0 +1,191 @@
+.. _evocoop:
+
+Evolution of co-operation
+=========================
+
+Game theory is used both in biology and in economics to predict how
+individuals will act when faced with an interaction with another
+individual from which both of them may benefit (or lose out) from. In
+economics the aim is to find out the rational behaviour, in biology it
+is to find the behaviour selected by natural selection.
+
+Here we look at a competition between two behavioural strategies, one
+we call ’co-operate’ the other ’defect’. In general co-operators try
+to share resources and defectors try to take everything for
+themselves. We construct first a payoff table based on the
+interactions of c-operators (C) and defectors (D). We assume that when
+
+-  C meets C they both get payoff :math:`1` (reward).
+
+-  D meets D they both get payoff :math:`0` (punishment).
+
+-  C meets D then D gets payoff :math:`T` (temptation), and C gets
+   payoff :math:`S` (sucker).
+
+In table form
+
+=================== ========= =========
+individual/opponent C         D
+=================== ========= =========
+C                   1         :math:`S`
+D                   :math:`T` 0
+=================== ========= =========
+
+gives the payoffs for the individuals playing the game. We will start 
+by examining the following example, known as the Hawk-Dove game is
+
+=================== ============= =============
+individual/opponent Dove          Hawk
+=================== ============= =============
+Dove                1             :math:`S=1/4`
+Hawk                :math:`T=5/4` 0
+=================== ============= =============
+
+In a world full of Doves (and no Hawks) everyone gets a payoff of 1, while in a world of 
+Hawks everyone gets zero. But... the best payoff is for Hawks living in a world full of Doves.
+
+Eveolutionary game theory considers how a population of people following these rules will 
+evolve over time. We make the following assumptions:
+
+-  Population is infinite.
+
+-  Those with higher payoffs (fitness) increase in the population. (Darwin’ law of natural selection)
+
+-  Pairwise contests occur between two individuals.
+
+Let :math:`x` be the proportion of the population who co-operate. Let
+the **fitness** of an individual be its expected payoff given that
+there are :math:`x` co-operators in the population. We assume that the rate of 
+reproduction of co-operators is proportional to their fitness minus average
+fitness of both co-operators and defectors.
+
+  .. math:: \frac{dx}{dt} = x (\mbox{fitness of C - average fitness}) \label{repeq}
+
+This is known as the **replicator equation**. The fitness of C is
+
+.. math:: 
+
+  x.1+(1-x)\frac{1}{4}
+
+That is, if a co-operator chooses a person to play the game with at random
+then they will choose another co-operator with probability :math:`x` and get payoff 1
+and they will choose a defector with probability :math:`1-x` and get payoff :math:`1/4`.
+
+
+
+
+Likewise, the fitness of D is
+
+.. math:: 
+    
+  xT+(1-x).0 = xT
+
+The average fitness is then
+
+  .. math:: 
+  
+    x(x+(1-x)S) + (1-x)xT
+
+i.e. the 
+
+Thus
+
+.. math::
+  :label: repeqf
+
+  \begin{aligned}
+  \frac{dx}{dt} = f(x) & = & x (x+(1-x)S - x(x+(1-x)(S+T))) \nonumber \\
+  & = & x (1-x) (x+(1-x)S - Tx)
+  \end{aligned}
+
+is the replicator equation for this game.
+
+
+The steady states of equation `[repeqf] <#repeqf>`__ are :math:`x_*=0`, :math:`x_*=1` 
+and the solution to
+
+  .. math:: x_*+(1-x_*)S = Tx_*
+
+or
+
+  .. math:: x_* = \frac{S}{S+T-1}
+
+In order for this steady state to lie between 0 and 1 we need either
+
+-  | :math:`T>1` and :math:`S>0`
+
+-  | or :math:`T<1` and :math:`S<0`
+
+We can determine the stability of the three steady states by
+differentiating equation `[repeqf] <#repeqf>`__ with respect to
+:math:`x` we get:
+
+  .. math:: f'(x) = x(1-x)(1-S-T) + (1-2x)(x+(1-x)S-Tx)
+
+Evaluating at the steady states we get
+
+.. math:: 
+  
+  f'(0) = S
+
+so the 0 steady state is stable if :math:`S<0`.
+
+.. math:: 
+
+  f'(1) = T - 1
+
+So the 1 steady state is stable if :math:`T<1`.
+
+.. math::
+
+  \begin{aligned}
+  f'\left(\frac{S}{S+T-1}\right) & = & -S (1 - \frac{S}{S+T-1}) \\ 
+  & = & \frac{S(T-1)}{1-S-T} 
+  \end{aligned}
+
+Thus the co-existence steady state is stable if both :math:`T>1` and
+:math:`S>0`, but unstable if :math:`T<1` and :math:`S<0`.
+|Below we illustrate how the stability is determined in the :math:`ST`
+plane.
+
+We now consider some examples. 
+| Thus :math:`S>0` and :math:`T>1`, so the hawks and doves coexist at
+  :math:`1/2`. Note that this is not optimal for the population as a
+  whole. The mean fitness in this situation is
+  :math:`1/2(1/2+1/2 \times 1/4)+5/4 \times
+  1/2\times1/2=5/16+5/16=10/16`. If all played Dove the mean fitness
+  would be :math:`1`. This shows that natural selection acts to maximise
+  individual fitness and not group fitness.
+| The prisoners dilemma is
+
+=================== ============= ==============
+individual/opponent Keep quiet    Blame other
+=================== ============= ==============
+Keep quiet          1             :math:`S=-1/4`
+Blame other         :math:`T=5/4` 0
+=================== ============= ==============
+
+Here :math:`S<0` and :math:`T>1` and the stbale strategy is to keep
+quiet. Here the situation is very bad for the population as a whole.
+The group could do best by all co-operating but by acting rationally
+or following natural selection all will defect.
+
+The stag hunt is
+
+=================== ============= ==============
+individual/opponent Group         Self
+=================== ============= ==============
+Group               1             :math:`S=-1/4`
+Self                :math:`T=1/2` 0
+=================== ============= ==============
+
+thus :math:`S<0` and :math:`T<1`, so all defect and all co-operate are
+both stable. The steady state
+
+.. math:: 
+
+  \frac{S}{S+T-1} = \frac{1}{3}
+
+thus if :math:`x(0)>1/3` then all defect, if :math:`x(0)<2/3` then all
+co-operate. Stag hunts are hard to establish but when established are
+stable to defection.

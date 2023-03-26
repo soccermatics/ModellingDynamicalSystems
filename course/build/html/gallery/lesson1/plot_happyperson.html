@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy individual &mdash; Modelling Complex Systems  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Evolutionary games</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plot_cts1D.html">The Social Epidemic</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="plot_cts1D.html">The Social Epidemic</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lesson3/plot_discrete1D.html">El Farol</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modelling Complex Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Happy individual</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/gallery/lesson1/plot_happyperson.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-lesson1-plot-happyperson-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="happy-individual">
+<span id="sphx-glr-gallery-lesson1-plot-happyperson-py"></span><h1>Happy individual<a class="headerlink" href="#happy-individual" title="Permalink to this heading"></a></h1>
+<p><strong>Imagine, after you have paid your bills, you have more than $200 per month to spend divided between three
+categories: (1) material items, (2) experiences and (3) time-saving services. How should you
+spend this money in order to be as happy as possible?</strong></p>
+<p>Here we try to answer this question using a questionnaire
+conducted by Whillans et al. (2017). We look in particular at 1067 people with varying incomes,
+but all with a budget of at least $200 to spend.  The study participants typically
+spent about $250 on (each of) material items and experiences, and about half as much on time-saving.</p>
+<p>All the participants were asked the question:</p>
+<p>Please imagine a ladder with steps numbered from zero at the bottom to ten at the top.
+Suppose we say that the top of the ladder represents the best possible life for you and the bottom of
+the ladder represents the worst possible life for you. On which step of the ladder would you say you
+personally feel you stand at this time?</p>
+<p>This is how the researchers measure happiness.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">pyreadstat</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<span class="kn">import</span> <span class="nn">statsmodels.formula.api</span> <span class="k">as</span> <span class="nn">smf</span>
+<span class="kn">import</span> <span class="nn">random</span>
+
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">12</span><span class="o">/</span><span class="mf">2.54</span>
+
+
+
+<span class="k">def</span> <span class="nf">Rescale</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">scale_spending</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">value</span><span class="o">&gt;=</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">Q</span> <span class="o">=</span> <span class="n">scale_spending</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">value</span><span class="p">)]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">Q</span> <span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="k">return</span> <span class="n">Q</span>
+
+<span class="n">df</span><span class="p">,</span> <span class="n">meta</span> <span class="o">=</span> <span class="n">pyreadstat</span><span class="o">.</span><span class="n">read_sav</span><span class="p">(</span><span class="s2">&quot;../data/Study7_QualtricsData.sav&quot;</span><span class="p">)</span>
+
+<span class="c1"># The data is coded for different spending levels.</span>
+<span class="c1"># This converts the spending levels in to dollars.</span>
+<span class="n">scale_spending</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">150</span><span class="p">,</span><span class="mi">1000</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1000</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="mi">1000</span><span class="p">])</span>
+<span class="n">scale_spending</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scale_spending</span><span class="p">,</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">])</span>
+<span class="n">scale_spending_labels</span> <span class="o">=</span> <span class="n">meta</span><span class="o">.</span><span class="n">value_labels</span><span class="p">[</span><span class="s1">&#39;labels7&#39;</span><span class="p">]</span>
+
+<span class="c1"># There are three different happiness measures in the data</span>
+<span class="c1"># using different measures gives only slightly different results.</span>
+
+<span class="n">happiness_measure</span><span class="o">=</span><span class="s1">&#39;SWL2&#39;</span>
+
+
+<span class="k">for</span> <span class="n">original_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;MATA&#39;</span><span class="p">,</span><span class="s1">&#39;Bills&#39;</span><span class="p">,</span><span class="s1">&#39;TSA&#39;</span><span class="p">,</span><span class="s1">&#39;EXPA&#39;</span><span class="p">]:</span>
+    <span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_&#39;</span> <span class="o">+</span> <span class="n">original_name</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">row</span><span class="p">:</span> <span class="n">Rescale</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="n">original_name</span><span class="p">],</span><span class="n">scale_spending</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Find people who spent more than 200 dollars in total</span>
+<span class="c1"># These are the people we will look at in this study.</span>
+<span class="n">morethan200</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_MATA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_TSA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_EXPA&#39;</span><span class="p">]</span> <span class="o">&gt;</span><span class="mi">200</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">morethan200</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average happiness score was </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The standard deviation in happiness score was </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;90 percent of people had a happiness score of </span><span class="si">%.2f</span><span class="s1"> or more.&#39;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">],</span><span class="mf">0.9</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;10 percent of people had a happiness score of </span><span class="si">%.2f</span><span class="s1"> or less.&#39;</span> <span class="o">%</span> <span class="n">np</span><span class="o">.</span><span class="n">quantile</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">],</span><span class="mf">0.1</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>The average happiness score was 7.15.
+The standard deviation in happiness score was 1.84.
+90 percent of people had a happiness score of 10.00 or more.
+10 percent of people had a happiness score of 5.00 or less.
+</pre></div>
+</div>
+<p>Think about the answer you would give to this question now….</p>
+<p>The participants gave a wide-range of answers, with an average of 7.15,
+but scores as low as 3 and as high as 10 were not untypical.</p>
+<div class="section" id="does-spending-money-on-saving-time-make-you-happy">
+<h2>Does spending money on saving time make you happy?<a class="headerlink" href="#does-spending-money-on-saving-time-make-you-happy" title="Permalink to this heading"></a></h2>
+<p><strong>First question: are people who spend money on saving time happier?</strong></p>
+<p>Let’s start by looking at the difference in average happiness</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">didspend</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TSA&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span>
+<span class="n">didntspend</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TSA&#39;</span><span class="p">]</span><span class="o">&lt;=</span><span class="mi">0</span>
+<span class="n">mean_did</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didspend</span><span class="p">])</span>
+<span class="n">mean_didnt</span><span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didntspend</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average happiness score for those who spent on time-saving was </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">mean_did</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average happiness score for those who did not spent on time-saving was </span><span class="si">%.2f</span><span class="s1">.&#39;</span> <span class="o">%</span> <span class="n">mean_didnt</span><span class="p">)</span>
+
+<span class="n">std_did</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didspend</span><span class="p">])</span>
+<span class="n">n_did</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didspend</span><span class="p">])</span>
+<span class="n">std_didnt</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didntspend</span><span class="p">])</span>
+<span class="n">n_didnt</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didntspend</span><span class="p">])</span>
+<span class="n">cohensd</span><span class="o">=</span><span class="p">(</span><span class="n">mean_did</span><span class="o">-</span><span class="n">mean_didnt</span><span class="p">)</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(((</span><span class="n">n_did</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">std_did</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">n_didnt</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">std_didnt</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">n_did</span><span class="o">+</span><span class="n">n_didnt</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The Cohens D for this difference is </span><span class="si">%.2f</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="n">cohensd</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>The average happiness score for those who spent on time-saving was 7.43.
+The average happiness score for those who did not spent on time-saving was 6.63.
+The Cohens D for this difference is 0.44
+</pre></div>
+</div>
+<p>Cohen’s D is a statistic for measuring effect size. How big an
+effect does spending on time saving have? LINK EXPLAIN</p>
+<p>The difference between the two groups can’t be attributed to chance, since over one
+thousand people were surveyed, but it is not a particularly large difference.
+But it is not particularly large.
+It is illustrated below in a histogram for those
+who did spend money on time saving (top) and those who did not.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">FormatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.32</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Average Happiness (0-10)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Proportion of people&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">11</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+
+
+<span class="n">fig</span><span class="p">,(</span><span class="n">ax1</span><span class="p">,</span><span class="n">ax2</span><span class="p">)</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax1</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didspend</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Spent on saving time&#39;</span><span class="p">,</span> <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">FormatFigure</span><span class="p">(</span><span class="n">ax1</span><span class="p">)</span>
+<span class="n">ax2</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didntspend</span><span class="p">],</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">10.5</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">edgecolor</span> <span class="o">=</span> <span class="s1">&#39;black&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Did not spend on saving time&#39;</span><span class="p">,</span>  <span class="n">density</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span><span class="n">align</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">)</span>
+<span class="n">FormatFigure</span><span class="p">(</span><span class="n">ax2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_happyperson_001.png" srcset="../../_images/sphx_glr_plot_happyperson_001.png" alt="plot happyperson" class = "sphx-glr-single-img"/><p>What is most striking is how little these two histograms differ,
+with those not spending money of time-saving shifted very slightly to the left. There are more
+tens in the did spend group, but otherwise they are not that different.</p>
+<p>In the code below we pick pairs of people at random - one from thosee
+who did spend on time-saving and one person who didn’t spend on time-saving. We then look at
+the proportion of times the one who did spend on time-saving is happier.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df_did</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didspend</span><span class="p">]</span>
+<span class="n">df_didnt</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">][</span><span class="n">didntspend</span><span class="p">]</span>
+<span class="n">rand_did</span><span class="o">=</span><span class="n">df_did</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">rand_didnt</span><span class="o">=</span><span class="n">df_didnt</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10000</span><span class="p">,</span><span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The person who did spend on time-saving is happiest </span><span class="si">%.2f</span><span class="s1"> percent of times.&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rand_did</span><span class="p">)</span><span class="o">&gt;</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">rand_didnt</span><span class="p">))</span><span class="o">*</span><span class="mi">100</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>The person who did spend on time-saving is happiest 53.81 percent of times.
+</pre></div>
+</div>
+<p>If you currently do not spend any of your budget on time-saving,
+then this value of around 55% gives an estimate of the probability you would be happier
+if you did. Likewise, if you currently do spend some of your budget on time-saving,
+then the probability you would be happier if you didn’t make the spend is 45%.</p>
+<p>Answer to first question: It makes sense to spend money
+on time-saving, but results are by no means guaranteed.</p>
+</div>
+<div class="section" id="what-to-spend-money-on">
+<h2>What to spend money on<a class="headerlink" href="#what-to-spend-money-on" title="Permalink to this heading"></a></h2>
+<p>How much happier can we expect to be per dollar spent on,
+respectively, material items, experiences and time-saving?</p>
+<p>To answer this question, we plot average happiness against the
+amount of money people spent.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">10</span><span class="o">/</span><span class="mf">2.54</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">original_name</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;MATA&#39;</span><span class="p">,</span><span class="s1">&#39;EXPA&#39;</span><span class="p">,</span><span class="s1">&#39;TSA&#39;</span><span class="p">,</span><span class="s1">&#39;Bills&#39;</span><span class="p">]):</span>
+
+    <span class="n">mean_happy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale_spending</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">std_happy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale_spending</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+    <span class="n">num_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale_spending</span><span class="p">))</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+
+    <span class="c1">#Measure happiness for each</span>
+    <span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">lb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">unique</span><span class="p">(</span><span class="n">scale_spending</span><span class="p">)):</span>
+        <span class="n">dfs</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_&#39;</span> <span class="o">+</span> <span class="n">original_name</span><span class="p">]</span><span class="o">==</span><span class="n">lb</span><span class="p">]</span>
+        <span class="n">num_value</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span><span class="o">&gt;</span><span class="mi">5</span><span class="p">:</span>
+            <span class="n">mean_happy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanmean</span><span class="p">(</span><span class="n">dfs</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">])</span>
+            <span class="n">std_happy</span><span class="p">[</span><span class="n">j</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">nanstd</span><span class="p">(</span><span class="n">dfs</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">))</span>
+
+    <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">ceil</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="n">np</span><span class="o">.</span><span class="n">remainder</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span>
+
+    <span class="c1">#Plot the graph.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale_spending</span><span class="p">,</span> <span class="n">mean_happy</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="p">(</span><span class="n">num_value</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">mean_happy</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;Material purchases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Average Happiness&#39;</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Spent per month&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;Experiences </span><span class="se">\n</span><span class="s1">and entertainment&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;Time saving </span><span class="se">\n</span><span class="s1">and eating out&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Average Happiness&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">i</span><span class="o">==</span><span class="mi">3</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="s1">&#39;Paying bills&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Spent per month&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1100</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">250</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;$0&#39;</span><span class="p">,</span><span class="s1">&#39;$250&#39;</span><span class="p">,</span><span class="s1">&#39;$500&#39;</span><span class="p">,</span><span class="s1">&#39;$750&#39;</span><span class="p">,</span><span class="s1">&#39;$1000+&#39;</span><span class="p">])</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_happyperson_002.png" srcset="../../_images/sphx_glr_plot_happyperson_002.png" alt="plot happyperson" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>[6.80952381        nan        nan 7.23333333 6.93913043 7.12264151
+ 6.69291339 7.         7.07086614 7.24390244 7.66666667 8.18604651
+ 8.47368421 7.9        8.35294118 8.53846154        nan        nan
+        nan        nan]
+[6.69565217        nan        nan 6.33333333 6.3442623  6.88095238
+ 7.41732283 6.94217687 7.26771654 7.43333333 7.48717949 8.03125
+ 8.25       8.33333333 8.125      8.95833333        nan        nan
+        nan        nan]
+[6.63172043 7.44444444 6.66       6.93589744 7.21505376 7.54929577
+ 7.30555556 7.56896552 7.27586207 8.13043478 8.45454545 7.73684211
+ 8.17391304 8.6875     8.61538462 8.36363636        nan        nan
+        nan        nan]
+[       nan 6.66666667 6.92857143 6.72727273 6.60869565 7.08450704
+ 6.97727273 6.82352941 7.28846154 7.01282051 7.10798122 7.04724409
+ 7.45985401 7.12962963 7.16981132 7.49180328        nan        nan
+        nan        nan]
+</pre></div>
+</div>
+<p>We see that those with the most money to
+spend are the happiest. Those with expenditure of $1000
+per month on each of material, experiences and time-saving have a happiness
+of around 8.5 on average. Paying bills does not make people happier.</p>
+<p>We would all love to have $1000 to
+spend on each of the three categories, but what is the best
+investment on a limited budget?</p>
+<p>Here it is important to notice that time-saving
+increases slightly earlier per dollar spent than the
+lines for material purchases or experiences. We can estimate how
+more rapid this increase is using linear
+regression, which measures the steepness of the increase for each factor.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">model_fit</span><span class="o">=</span><span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">happiness_measure</span> <span class="o">+</span> <span class="s1">&#39; ~  spent_on_MATA + spent_on_TSA + spent_on_EXPA + spent_on_Bills&#39;</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For every $100 spent per month on time saving, </span><span class="si">%.2f</span><span class="s1"> points of happiness gained&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">*</span><span class="n">model_fit</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;spent_on_TSA&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For every $100 spent per month on experiences, </span><span class="si">%.2f</span><span class="s1"> points of happiness gained&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">*</span><span class="n">model_fit</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;spent_on_EXPA&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;For every $100 spent per month on material purchases, </span><span class="si">%.2f</span><span class="s1"> points of happiness gained&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">*</span><span class="n">model_fit</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;spent_on_MATA&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results
+==============================================================================
+Dep. Variable:                   SWL2   R-squared:                       0.098
+Model:                            OLS   Adj. R-squared:                  0.094
+Method:                 Least Squares   F-statistic:                     28.73
+Date:                Sun, 26 Feb 2023   Prob (F-statistic):           1.08e-22
+Time:                        15:23:53   Log-Likelihood:                -2107.6
+No. Observations:                1067   AIC:                             4225.
+Df Residuals:                    1062   BIC:                             4250.
+Df Model:                           4
+Covariance Type:            nonrobust
+==================================================================================
+                     coef    std err          t      P&gt;|t|      [0.025      0.975]
+----------------------------------------------------------------------------------
+Intercept          6.4082      0.128     49.897      0.000       6.156       6.660
+spent_on_MATA      0.0007      0.000      2.840      0.005       0.000       0.001
+spent_on_TSA       0.0013      0.000      4.630      0.000       0.001       0.002
+spent_on_EXPA      0.0011      0.000      4.154      0.000       0.001       0.002
+spent_on_Bills  9.137e-05      0.000      0.482      0.630      -0.000       0.000
+==============================================================================
+Omnibus:                       33.304   Durbin-Watson:                   1.959
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               35.612
+Skew:                          -0.438   Prob(JB):                     1.85e-08
+Kurtosis:                       3.180   Cond. No.                     1.86e+03
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.86e+03. This might indicate that there are
+strong multicollinearity or other numerical problems.
+For every $100 spent per month on time saving, 0.13 points of happiness gained
+For every $100 spent per month on experiences, 0.11 points of happiness gained
+For every $100 spent per month on material purchases, 0.07 points of happiness gained
+</pre></div>
+</div>
+<p>This method tells us that for every $100 spent in different ways
+how much happiness is gained.
+So, increasing spending from $0 per month to around $500
+per month on saving time (if you have that money to spare)
+would make you almost 0.13*5 = 0.65 point (on a scale of 0 to 10) happier.</p>
+<p>In the book I write that “[Antony] finds that every $100 spent on time-saving
+leads to an average gain of 0.31 points on the happiness scale. So, increasing
+spending from $0 per month to around $300 per month on saving time provides almost
+one extra point of happiness. “</p>
+<p>This claim is based on a regression model that includes a non-linear term to capture the
+saturation at high levels of spending. I repeat the regression with squared terms as follows.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">original_name</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;MATA&#39;</span><span class="p">,</span><span class="s1">&#39;Bills&#39;</span><span class="p">,</span><span class="s1">&#39;TSA&#39;</span><span class="p">,</span><span class="s1">&#39;EXPA&#39;</span><span class="p">]:</span>
+    <span class="n">variable_of_interest</span><span class="o">=</span><span class="s1">&#39;spent_on_&#39;</span> <span class="o">+</span> <span class="n">original_name</span>
+    <span class="n">df</span><span class="p">[</span><span class="n">variable_of_interest</span> <span class="o">+</span> <span class="s1">&#39;_2&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">variable_of_interest</span><span class="p">]</span><span class="o">**</span><span class="mi">2</span>
+
+<span class="n">model_fit</span><span class="o">=</span><span class="n">smf</span><span class="o">.</span><span class="n">ols</span><span class="p">(</span><span class="n">formula</span><span class="o">=</span><span class="n">happiness_measure</span> <span class="o">+</span> <span class="s1">&#39; ~  spent_on_MATA + spent_on_TSA + spent_on_EXPA + spent_on_MATA_2 + spent_on_TSA_2 + spent_on_EXPA_2&#39;</span> <span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">model_fit</span><span class="o">.</span><span class="n">summary</span><span class="p">())</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>                            OLS Regression Results
+==============================================================================
+Dep. Variable:                   SWL2   R-squared:                       0.104
+Model:                            OLS   Adj. R-squared:                  0.099
+Method:                 Least Squares   F-statistic:                     20.45
+Date:                Sun, 26 Feb 2023   Prob (F-statistic):           9.73e-23
+Time:                        15:23:53   Log-Likelihood:                -2104.0
+No. Observations:                1067   AIC:                             4222.
+Df Residuals:                    1060   BIC:                             4257.
+Df Model:                           6
+Covariance Type:            nonrobust
+===================================================================================
+                      coef    std err          t      P&gt;|t|      [0.025      0.975]
+-----------------------------------------------------------------------------------
+Intercept           6.3403      0.158     40.160      0.000       6.031       6.650
+spent_on_MATA       0.0006      0.001      0.757      0.449      -0.001       0.002
+spent_on_TSA        0.0031      0.001      4.119      0.000       0.002       0.005
+spent_on_EXPA       0.0014      0.001      2.049      0.041    5.77e-05       0.003
+spent_on_MATA_2  3.042e-07   8.34e-07      0.365      0.715   -1.33e-06    1.94e-06
+spent_on_TSA_2  -2.319e-06    9.1e-07     -2.549      0.011    -4.1e-06   -5.34e-07
+spent_on_EXPA_2 -4.064e-07   7.71e-07     -0.527      0.598   -1.92e-06    1.11e-06
+==============================================================================
+Omnibus:                       35.731   Durbin-Watson:                   1.968
+Prob(Omnibus):                  0.000   Jarque-Bera (JB):               38.455
+Skew:                          -0.455   Prob(JB):                     4.46e-09
+Kurtosis:                       3.188   Cond. No.                     1.06e+06
+==============================================================================
+
+Notes:
+[1] Standard Errors assume that the covariance matrix of the errors is correctly specified.
+[2] The condition number is large, 1.06e+06. This might indicate that there are
+strong multicollinearity or other numerical problems.
+</pre></div>
+</div>
+<p>Notice that spending time on time saving
+This analysis is further supported by the following graph,
+which looks at how happiness depends on the proportion of
+money spent on saving time for people who spend more than $200
+per month on the three categories.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prop_TS&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_TSA&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_MATA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_TSA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_EXPA&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prop_EXP&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_EXPA&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_MATA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_TSA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_EXPA&#39;</span><span class="p">]</span> <span class="p">)</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prop_MATA&#39;</span><span class="p">]</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_MATA&#39;</span><span class="p">]</span><span class="o">/</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_MATA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_TSA&#39;</span><span class="p">]</span><span class="o">+</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;spent_on_EXPA&#39;</span><span class="p">]</span> <span class="p">)</span>
+
+
+
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">10</span><span class="o">/</span><span class="mf">2.54</span>
+
+<span class="n">scale_of_interest</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.71</span><span class="p">,</span><span class="mf">0.1</span><span class="p">),</span> <span class="mf">1.0</span><span class="p">)</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
+
+<span class="n">axs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Average Happiness (0-10)&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">j</span><span class="p">,</span><span class="n">variable_of_interest</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">([</span><span class="s1">&#39;Prop_TS&#39;</span><span class="p">,</span> <span class="s1">&#39;Prop_EXP&#39;</span><span class="p">,</span> <span class="s1">&#39;Prop_MATA&#39;</span><span class="p">]):</span>
+
+    <span class="n">ax</span><span class="o">=</span><span class="n">axs</span><span class="p">[</span><span class="n">j</span><span class="p">]</span>
+    <span class="n">mean_happy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale_of_interest</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">std_happy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale_of_interest</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">num_value</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scale_of_interest</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">lb</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scale_of_interest</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+        <span class="n">lbp1</span><span class="o">=</span><span class="n">scale_of_interest</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">dfs</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="n">variable_of_interest</span><span class="p">]</span><span class="o">&gt;=</span><span class="n">lb</span><span class="p">,</span><span class="n">df</span><span class="p">[</span><span class="n">variable_of_interest</span><span class="p">]</span><span class="o">&lt;</span><span class="n">lbp1</span><span class="p">)]</span>
+        <span class="n">mean_happy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dfs</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">])</span>
+        <span class="n">std_happy</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">dfs</span><span class="p">[</span><span class="n">happiness_measure</span><span class="p">])</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">))</span>
+        <span class="n">num_value</span><span class="p">[</span><span class="n">i</span><span class="p">]</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">dfs</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">scale_of_interest</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">mean_happy</span><span class="p">,</span><span class="n">s</span><span class="o">=</span><span class="n">num_value</span><span class="p">)</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.75</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span><span class="mi">9</span><span class="p">)</span>
+
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">0.8</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.2</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">([</span><span class="s1">&#39;0%&#39;</span><span class="p">,</span><span class="s1">&#39;20%&#39;</span><span class="p">,</span><span class="s1">&#39;40%&#39;</span><span class="p">,</span><span class="s1">&#39;60%&#39;</span>  <span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">2</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">8.3</span><span class="p">,</span><span class="s1">&#39;Material purchases&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">1</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">8.3</span><span class="p">,</span><span class="s1">&#39;Experiences </span><span class="se">\n</span><span class="s1">and entertainment&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Percentage spending&#39;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">j</span><span class="o">==</span><span class="mi">0</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">8.3</span><span class="p">,</span><span class="s1">&#39;Time saving </span><span class="se">\n</span><span class="s1">and eating out&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_happyperson_003.png" srcset="../../_images/sphx_glr_plot_happyperson_003.png" alt="plot happyperson" class = "sphx-glr-single-img"/><p>Happiness reaches a maximum at around 20% to 30% spending on time-saving
+and on experiences and entertainment. Using too much of your budget to
+buy material items leads to a decrease in happiness.</p>
+<p>Remeber that the size of the circles are the proportion of people in that category
+We can calulate</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average person spend </span><span class="si">%.2f</span><span class="s1"> percent of their budget on time saving&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prop_TS&#39;</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average person spend </span><span class="si">%.2f</span><span class="s1"> percent of their budget on experiences&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prop_EXP&#39;</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The average person spend </span><span class="si">%.2f</span><span class="s1"> percent of their budget on material purchases&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="mf">100.0</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;Prop_MATA&#39;</span><span class="p">])))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>The average person spend 17.11 percent of their budget on time saving
+The average person spend 39.77 percent of their budget on experiences
+The average person spend 43.12 percent of their budget on material purchases
+</pre></div>
+</div>
+<p>This uggests that most of us could benefit from increasing our
+spending on time saving.</p>
+<p><strong>Summary:</strong> If you currently spend very little on money on
+time-saving today then investing between $100 and $300
+can probably make you a fair bit happier. Spending on
+experiences is less effective, and spending on
+material purchases is not effective.</p>
+</div>
+<div class="section" id="causation">
+<h2>Causation<a class="headerlink" href="#causation" title="Permalink to this heading"></a></h2>
+<p>Fourth question: can we say that time-saving purchases
+cause us to become happier? And, if so, what should I buy!?!?</p>
+<p>The researchers responsible for this study conducted an experiment.
+They recruited people at a science fair, giving them $40 one week to
+make a time-saving purchase and $40 another week (either before or after)
+to make a material purchase. Below is a plot of what they bought on each
+occasion (material left, time-saving right) and the difference in
+happiness they reported each time.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">16</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">35</span><span class="o">/</span><span class="mf">2.54</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../data/happy_buy.csv&quot;</span><span class="p">,</span><span class="n">sep</span><span class="o">=</span><span class="s1">&#39;;&#39;</span><span class="p">)</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TP_BAL&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MAT_BAL&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TP_PA&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MAT_PA&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TP_NA&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MAT_NA&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;TP_TP&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MAT_TP&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;DIFF_PA&#39;</span><span class="p">]</span><span class="o">=</span>  <span class="n">df</span><span class="p">[</span><span class="s1">&#39;TP_PA&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;MAT_PA&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;DIFF_PA&#39;</span><span class="p">)</span>
+
+<span class="n">i</span><span class="o">=</span><span class="mi">0</span>
+<span class="k">for</span> <span class="n">di</span> <span class="ow">in</span> <span class="n">df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+
+    <span class="n">i</span><span class="o">=</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+    <span class="n">d</span><span class="o">=</span><span class="n">di</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">cl</span><span class="o">=</span><span class="s1">&#39;orange&#39;</span>
+
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;TP_PA&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MAT_PA&#39;</span><span class="p">]],[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">],</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;solid&#39;</span><span class="p">,</span> <span class="n">markersize</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="n">cl</span><span class="p">)</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;TP_PA&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MAT_PA&#39;</span><span class="p">]):</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;TP_PA&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MAT_PA&#39;</span><span class="p">]</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;TS_Purchase&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span> <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MAT_Item_1&#39;</span><span class="p">],</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;TP_PA&#39;</span><span class="p">]</span><span class="o">-</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;MAT_PA&#39;</span><span class="p">]</span><span class="o">-</span><span class="mf">0.1</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;MAT_Item_1&#39;</span><span class="p">],</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span> <span class="p">)</span>
+        <span class="n">ax</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mi">0</span><span class="o">+</span><span class="mf">0.1</span><span class="p">,</span><span class="n">i</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;TS_Purchase&#39;</span><span class="p">]</span> <span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span> <span class="p">)</span>
+
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">([</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span><span class="mi">100</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">61</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;left&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Happiness difference (scale 0-5)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DIFF_PA&#39;</span><span class="p">]</span><span class="o">&gt;</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;DIFF_PA&#39;</span><span class="p">]</span><span class="o">&lt;-</span><span class="mf">0.2</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_happyperson_004.png" srcset="../../_images/sphx_glr_plot_happyperson_004.png" alt="plot happyperson" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>14
+</pre></div>
+</div>
+<p>Answer to fourth question: Again, there are no guarantees that eating
+out or getting a babysitter will make you happy, but it worked for 26
+out of the 60 people participating in the study, with only 14 being
+happier with a material purchase.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  21.218 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson1-plot-happyperson-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/fcbf5b66d626c141ca6f5a1540b8de54/plot_happyperson.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_happyperson.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/5dff10d7d46beddc641f82cc0d50563d/plot_happyperson.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_happyperson.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, David Sumpter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

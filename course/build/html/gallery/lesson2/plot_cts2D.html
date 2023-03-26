@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rabbits and foxes &mdash; Modelling Complex Systems  documentation</title>
+      <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-binder.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-dataframe.css" type="text/css" />
+      <link rel="stylesheet" href="../../_static/sg_gallery-rendered-html.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="../../index.html">
+            <img src="../../_static/logo.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Evolutionary games</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lesson1/plot_cts1D.html">The Social Epidemic</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lesson1/plot_cts1D.html">The Social Epidemic</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lesson3/plot_discrete1D.html">El Farol</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Modelling Complex Systems</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Rabbits and foxes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/gallery/lesson2/plot_cts2D.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="sphx-glr-download-link-note admonition note">
+<p class="admonition-title">Note</p>
+<p>Click <a class="reference internal" href="#sphx-glr-download-gallery-lesson2-plot-cts2d-py"><span class="std std-ref">here</span></a>
+to download the full example code</p>
+</div>
+<div class="sphx-glr-example-title section" id="rabbits-and-foxes">
+<span id="rabbitsandfoxes"></span><span id="sphx-glr-gallery-lesson2-plot-cts2d-py"></span><h1>Rabbits and foxes<a class="headerlink" href="#rabbits-and-foxes" title="Permalink to this heading"></a></h1>
+<p><strong>What we will learn:</strong> How to write differential equation models to show the rate of change of
+populatins of predators and prey. We will simulate the model using Python. Then we draw a phase plane
+for the model.</p>
+<p><strong>Watch this first:</strong> <a class="reference external" href="https://www.khanacademy.org/math/differential-equations">Differential equations</a></p>
+<div class="section" id="id1">
+<h2>Differential equations<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
+<p>In the book, I write Lotka’s equations in the form of chemical reactions,
+e.g.</p>
+<div class="math notranslate nohighlight">
+\[\mbox{F} +  \mbox{R} \rightarrow 2 \mbox{F}\]</div>
+<p>This means that an F and R together becomes two F’s. Parker expalins as follows,</p>
+<p>IMAGE FROM BOOK HERE</p>
+<p>While in Leipzig, A. J. Lotka learnt how chemical reactions can be used to
+specify the rate of change of populations, i.e. in terms of the derivates
+above, using an approach, known as the law of mass action.
+The idea is to think about the rate at which these chemical reactions take place.
+For the first reaction</p>
+<div class="math notranslate nohighlight">
+\[\mbox{R} \xrightarrow{a} 2 \mbox{R}\]</div>
+<p>We can think of <span class="math notranslate nohighlight">\(a\)</span> as being the rate of reproduction of the rabbits,
+how many baby rabbits an adult rabbit has per day. So, the rabbits grow
+according to</p>
+<div class="math notranslate nohighlight" id="equation-rabbitgrow">
+<span class="eqno">(1)<a class="headerlink" href="#equation-rabbitgrow" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = a R\]</div>
+<p>This equation denotes the rate of change of <span class="math notranslate nohighlight">\(R\)</span> over time.
+the top part of the fraction <span class="math notranslate nohighlight">\(dR\)</span> denotes the change in rabbits, <span class="math notranslate nohighlight">\(R\)</span>,
+and the bottom part, <span class="math notranslate nohighlight">\(dt\)</span>, denotes the change in time, <span class="math notranslate nohighlight">\(t\)</span>.</p>
+<p>This type of equation, known as a differential equation can appear a bit strange
+the first rime we encounter it. When we first meet differntiation in school
+we write, for example,</p>
+<div class="math notranslate nohighlight" id="equation-timeint">
+<span class="eqno">(2)<a class="headerlink" href="#equation-timeint" title="Permalink to this equation"></a></span>\[R(t) = \frac{1}{2} a t^2\]</div>
+<p>then take the derivative to get</p>
+<div class="math notranslate nohighlight" id="equation-timegrow">
+<span class="eqno">(3)<a class="headerlink" href="#equation-timegrow" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = a t\]</div>
+<p>This is also a differential equation. It says that the rate of change of <span class="math notranslate nohighlight">\(R\)</span> over time
+is proportional to time. The modelling difference between equation <a class="reference internal" href="#equation-timegrow">(3)</a> and
+<a class="reference internal" href="#equation-rabbitgrow">(1)</a> is that the former says that rabbits grow proportionally to time, while
+the latter says that rabbits grow proportionally to the number of rabbits. In the case that
+rabbits grow in proportion to time, then we say that <a class="reference internal" href="#equation-timeint">(2)</a> is the solution to
+equation <a class="reference internal" href="#equation-timegrow">(3)</a> since it tells us how many rabbits there
+will be at any point in time. I think this is where differential equations can be a bit
+confusing, because in school we are usually given <a class="reference internal" href="#equation-timeint">(2)</a> and asked to find <a class="reference internal" href="#equation-timegrow">(3)</a>.
+For most differential equations it is the other way round. We are given equation <a class="reference internal" href="#equation-rabbitgrow">(1)</a>
+and asked to find the the number of rabbits <span class="math notranslate nohighlight">\(R\)</span> as a function of time.</p>
+<p>We aren’t going to solve these equations yet. First we need to have the equations for foxes. In chemical
+reaction form these are,</p>
+<div class="math notranslate nohighlight">
+\[\mbox{F} +  \mbox{R} \xrightarrow{b}  2 \mbox{F}\]</div>
+<p>for foxes eating rabbits and</p>
+<div class="math notranslate nohighlight">
+\[\mbox{F}   \xrightarrow{d}  \mbox{D}\]</div>
+<p>for foxes dying. Converted to differential equations, the rate of change for rabbits becomes</p>
+<div class="math notranslate nohighlight" id="equation-rabbits">
+<span class="eqno">(4)<a class="headerlink" href="#equation-rabbits" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = \underbrace{a R}_{\mbox{R} \xrightarrow{a} 2 \mbox{R}} - \underbrace{b R F}_{\mbox{F} + \mbox{R} \xrightarrow{b} 2 \mbox{F}}\]</div>
+<p>Similarly, we can write the rate of change of foxes as</p>
+<div class="math notranslate nohighlight" id="equation-foxes">
+<span class="eqno">(5)<a class="headerlink" href="#equation-foxes" title="Permalink to this equation"></a></span>\[\frac{dF}{dt} =  \underbrace{c R F}_{\mbox{F} + \mbox{R} \xrightarrow{c} 2 \mbox{F}} - \underbrace{d R}_{\mbox{R} \xrightarrow{d} 2 \mbox{R}}\]</div>
+<p>Notice that we have a different rate parameter for the death of rabbits (<span class="math notranslate nohighlight">\(b\)</span>)
+than for the birth of foxes (<span class="math notranslate nohighlight">\(c\)</span>). This is because
+it takes more than one rabbit to feed a fox and we set the parameters so that <span class="math notranslate nohighlight">\(c&lt;b\)</span>.</p>
+<p>It may seem strange to treat rabbits and foxes as chemicals.
+As we all know, two rabbits are needed to produce baby rabbits and when a fox eats a rabbit,
+it doesn’t simply transform it directly in to a new fox, as the chemical equation suggests.
+Also, in the description above, the grass is not depleted: there is no chemical equation
+describing how grass is transformed to rabbit poop. But the point of a mathematical model
+like this is not to be entirely realistic. Rather, it tries to capture the essence of the problem.
+We want to imagine a big grassy meadow, where the more rabbits there are, the faster the rabbit
+population grows and the more foxes there are the faster the rabbits are eaten. We will try to
+understand this abstract problem first, before we make any claims about what happens to real
+rabbits and real foxes.</p>
+</div>
+<div class="section" id="simulating-the-model">
+<h2>Simulating the model<a class="headerlink" href="#simulating-the-model" title="Permalink to this heading"></a></h2>
+<p>In this section we use Python to run a numerical simulation of the model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the libraries we use</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">14</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">10</span><span class="o">/</span><span class="mf">2.54</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
+</pre></div>
+</div>
+<p>We start by defining the model. This code creates a function
+which we can use to simulate differential equations <a class="reference internal" href="#equation-rabbits">(4)</a> and <a class="reference internal" href="#equation-foxes">(5)</a>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Differential equation</span>
+<span class="k">def</span> <span class="nf">dXdt</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
+    <span class="c1"># Growth rate of fox and rabbit populations.</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="n">a</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>        <span class="o">-</span> <span class="n">b</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="p">,</span>      <span class="c1">#Rabbits X[0] is R</span>
+                      <span class="n">c</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="o">-</span> <span class="n">d</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]])</span>           <span class="c1">#Foxes X[1] is F</span>
+</pre></div>
+</div>
+<p>Next we define the parameter values. You can change these to see how
+changes to the paramaters leads to changes in the outcome of the model.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Parameter values</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mf">0.15</span>
+<span class="n">d</span> <span class="o">=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<p>Now we solve the equations numerically</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">)</span>               <span class="c1"># time</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>                     <span class="c1"># initially 10 rabbits and 2 foxes</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+<span class="n">R</span><span class="p">,</span> <span class="n">F</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Rabbits (R)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">F</span>  <span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Foxes (F)&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time: t&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">1</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">50</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">25</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_cts2D_001.png" srcset="../../_images/sphx_glr_plot_cts2D_001.png" alt="plot cts2D" class = "sphx-glr-single-img"/><p>First the rabbit populations grow, because there are only two foxes.
+But this leads to an increase in foxes. Once the population of foxes is sufficiently
+large, they then start reducing rabbit populations and they die out. Then,
+when there are few rabbits left, the foxes start to die out too, allowing the rabbit
+population to grow again.</p>
+</div>
+<div class="section" id="visualising-the-cycle">
+<h2>Visualising the cycle<a class="headerlink" href="#visualising-the-cycle" title="Permalink to this heading"></a></h2>
+<p>In the figure above, we show how foxes and rabbits change over time.
+We can also plot how they change relative to each other (a so called phase plane).
+For the numerical simulations we do this as follows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plotPhasePlane</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">F</span><span class="p">):</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">R</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Rabbits: R&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Foxes: F&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">5</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">12</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">30</span><span class="p">)</span>
+
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">plotPhasePlane</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_cts2D_002.png" srcset="../../_images/sphx_glr_plot_cts2D_002.png" alt="plot cts2D" class = "sphx-glr-single-img"/></div>
+<div class="section" id="finding-the-equilibrium">
+<h2>Finding the equilibrium<a class="headerlink" href="#finding-the-equilibrium" title="Permalink to this heading"></a></h2>
+<p>In order to better understand this cycle, in the book,
+Parker first looked at
+the equilibria where the rate at which rabbits are born equals the rate
+at which they die.</p>
+<p>BOOK TEXT HERE</p>
+<p>We can find the rabbit equilibtirum by solving</p>
+<div class="math notranslate nohighlight">
+\[\frac{dR}{dt} = a R - b R F =0\]</div>
+<p>i.e. the number of rabbits does not change over time. This occurs either when
+<span class="math notranslate nohighlight">\(R=0\)</span> (all the rabbits are dead) or when <span class="math notranslate nohighlight">\(F=a/b\)</span> (when the number of
+foxes is equal to the birth rate of rabbits divided by the rate at which
+foxes eat rabbits).</p>
+<p>Similarly, we can find the fox equilibtirum by solving</p>
+<div class="math notranslate nohighlight">
+\[\frac{dF}{dt} = c R F - d F =0\]</div>
+<p>i.e. the number of foxes does not change over time. This occurs either when
+<span class="math notranslate nohighlight">\(F=0\)</span> (all the foxes are dead) or when <span class="math notranslate nohighlight">\(R=d/c\)</span> (when the number of
+rabbits is equal to the death rate of foxes divided by the rate at which
+foxes grow after eating rabbits).</p>
+<p>We can now plot these equilibrium on the phase plane</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="c1">#Plot the rabbit equilibrium</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="c1">#Plot the fox equilibrium</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">],[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plotPhasePlane</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_cts2D_003.png" srcset="../../_images/sphx_glr_plot_cts2D_003.png" alt="plot cts2D" class = "sphx-glr-single-img"/><p>Parker went on to draw arrows to indicate the direction
+of change. We do this below by evaluating <span class="math notranslate nohighlight">\(dR/dt\)</span> and <span class="math notranslate nohighlight">\(dF/dt\)</span>
+for different values and plotting them.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span> <span class="p">,</span><span class="mi">6</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">X</span> <span class="p">,</span> <span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">dX</span><span class="p">,</span> <span class="n">dY</span> <span class="o">=</span> <span class="n">dXdt</span><span class="p">([</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">])</span>
+<span class="c1">#Make in to unit vectors.</span>
+<span class="n">M</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">hypot</span><span class="p">(</span><span class="n">dX</span><span class="p">,</span><span class="n">dY</span><span class="p">)</span>
+<span class="n">dX</span> <span class="o">=</span> <span class="n">dX</span><span class="o">/</span><span class="n">M</span>
+<span class="n">dY</span> <span class="o">=</span> <span class="n">dY</span><span class="o">/</span><span class="n">M</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">quiver</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">dX</span><span class="p">,</span> <span class="n">dY</span><span class="p">,</span> <span class="n">pivot</span><span class="o">=</span><span class="s1">&#39;mid&#39;</span><span class="p">)</span>
+<span class="c1">#Plot the rabbit equilibrium</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],[</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">,</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="c1">#Plot the fox equilibrium</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">,</span><span class="n">d</span><span class="o">/</span><span class="n">c</span><span class="p">],[</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
+<span class="n">plotPhasePlane</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_cts2D_004.png" srcset="../../_images/sphx_glr_plot_cts2D_004.png" alt="plot cts2D" class = "sphx-glr-single-img"/></div>
+<div class="section" id="a-look-at-lotka-s-orginal-article">
+<h2>A look at Lotka’s orginal article<a class="headerlink" href="#a-look-at-lotka-s-orginal-article" title="Permalink to this heading"></a></h2>
+<p>To find the exact shape of this rotation, we can use a trick that Lotka
+described in an article he wrote in 1920. By dividing the rabbit equation by the fox equation he got</p>
+<div class="math notranslate nohighlight">
+\[\frac{dR}{dF} = \frac{aR -bRF}{cRF - d F}\]</div>
+<p>We can then rearrange this equation to get</p>
+<div class="math notranslate nohighlight">
+\[\left(c -d/R \right) dR = \left(a/F -b \right) dF\]</div>
+<p>Integrating both sides ofthis equation we get</p>
+<div class="math notranslate nohighlight">
+\[cR -d\log(R) = a \log(F) - b F + C\]</div>
+<p>where <span class="math notranslate nohighlight">\(C\)</span>  is the constant of integration. This last equation tells us a relationship that
+must always hold between rabbits and foxes. To understand what the relationship implies,
+imagine  the equation above was simply <span class="math notranslate nohighlight">\(Y+X=C\)</span>  instead. This would imply the total number of
+rabbits and foxes is equal to C=10. So, if <span class="math notranslate nohighlight">\(C=10\)</span> then we could have <span class="math notranslate nohighlight">\(Y=3\)</span> foxes and <span class="math notranslate nohighlight">\(X=7\)</span>
+rabbits (because 3+7=10),
+or 6 foxes and 4 rabbits (because 6+4=10), but we couldn’t have <span class="math notranslate nohighlight">\(Y=6\)</span> foxes and <span class="math notranslate nohighlight">\(X=7\)</span> rabbits (because 6+7≠10).
+In our case, the relationship in the equation is more complicated, involving logarithms, but the idea is the
+same: it says that for any particular value of C all values of  X and Y must obey this equation.
+Imagine for example, we started with X=4 rabbits and Y=6 foxes. This gives C=</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.138 seconds)</p>
+<div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson2-plot-cts2d-py">
+<div class="sphx-glr-download sphx-glr-download-python docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/2eeea368b249021cc379de5c3423e3e6/plot_cts2D.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cts2D.py</span></code></a></p>
+</div>
+<div class="sphx-glr-download sphx-glr-download-jupyter docutils container">
+<p><a class="reference download internal" download="" href="../../_downloads/183cc3b7e2e8f2b6c62c2613c1ff7755/plot_cts2D.ipynb"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Jupyter</span> <span class="pre">notebook:</span> <span class="pre">plot_cts2D.ipynb</span></code></a></p>
+</div>
+</div>
+<p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2023, David Sumpter.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
