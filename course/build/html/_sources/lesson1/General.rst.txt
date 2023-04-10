@@ -44,7 +44,7 @@ The average fitness is then
 Thus
 
 .. math::
-  :label: repeqf
+  :label: repeqg
 
   \begin{aligned}
   \frac{dx}{dt} = f(x) & = & x (x+(1-x)S - x(x+(1-x)(S+T))) \nonumber \\
@@ -53,7 +53,7 @@ Thus
 
 is the replicator equation for the general case.
 
-The steady states of equation `:eq:`repeqf` are :math:`x_*=0`, :math:`x_*=1` 
+The steady states of equation :eq:`repeqg` are :math:`x_*=0`, :math:`x_*=1` 
 and the solution to
 
 .. math:: 
@@ -71,7 +71,7 @@ In order for this steady state to lie between 0 and 1 we need either
 -  | or :math:`T<1` and :math:`S<0`
 
 We can determine the stability of the three steady states by
-differentiating equation `[repeqf] <#repeqf>`__ with respect to
+differentiating equation :eq:`repeqg` with respect to
 :math:`x` we get:
 
 .. math:: 

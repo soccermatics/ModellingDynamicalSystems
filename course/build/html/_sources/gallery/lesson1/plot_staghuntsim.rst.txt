@@ -23,7 +23,7 @@
 The stag hunt
 =============
 
-** Now you should study a model yourself! ** Download the page as a 
+**Now you should study a model yourself!** Download the page as a 
 Python notebook and fill in the missing code according to the instructions.
 
 
@@ -264,7 +264,7 @@ We can evaluate the steady states we found using this derivative to determine th
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.043 seconds)
+   **Total running time of the script:** ( 0 minutes  4.525 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson1_plot_staghuntsim.py:

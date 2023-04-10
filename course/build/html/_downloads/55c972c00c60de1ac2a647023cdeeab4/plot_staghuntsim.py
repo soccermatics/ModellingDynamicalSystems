@@ -4,7 +4,7 @@
 The stag hunt
 =============
 
-** Now you should study a model yourself! ** Download the page as a 
+**Now you should study a model yourself!** Download the page as a 
 Python notebook and fill in the missing code according to the instructions.
 
 

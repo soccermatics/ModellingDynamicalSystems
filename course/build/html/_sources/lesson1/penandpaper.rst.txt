@@ -1,6 +1,0 @@
-
-.. _paperandpen1D:
-
-
-Paper and pencil
-================

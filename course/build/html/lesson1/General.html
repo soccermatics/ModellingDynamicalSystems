@@ -25,8 +25,8 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Rabbits and foxes" href="../gallery/lesson2/plot_cts2D.html" />
-    <link rel="prev" title="The Hawk Dove game" href="HawkDove.html" /> 
+    <link rel="next" title="Uppgifter (på svenska)" href="paperandpen.html" />
+    <link rel="prev" title="The stag hunt" href="../gallery/lesson1/plot_staghuntsim.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -47,8 +47,11 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Evolutionary games</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="HawkDove.html">The Hawk Dove game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="HawkDove.html">The hawk-dove game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson1/plot_hawkdovesim.html">Hawk-dove dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson1/plot_staghuntsim.html">The stag hunt</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">The general case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="paperandpen.html">Uppgifter (på svenska)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
 <ul>
@@ -56,7 +59,7 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson3/plot_discrete1D.html">El Farol</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson3/plot_discrete1D.html">Logistic Map</a></li>
 </ul>
 
         </div>
@@ -130,13 +133,13 @@ and they will choose a defector with probability <span class="math notranslate n
 \[x(x+(1-x)S) + (1-x)xT\]</div>
 </div></blockquote>
 <p>Thus</p>
-<div class="math notranslate nohighlight" id="equation-repeqf">
-<span class="eqno">(1)<a class="headerlink" href="#equation-repeqf" title="Permalink to this equation"></a></span>\[\begin{split}\begin{aligned}
+<div class="math notranslate nohighlight" id="equation-repeqg">
+<span class="eqno">(1)<a class="headerlink" href="#equation-repeqg" title="Permalink to this equation"></a></span>\[\begin{split}\begin{aligned}
 \frac{dx}{dt} = f(x) &amp; = &amp; x (x+(1-x)S - x(x+(1-x)(S+T))) \nonumber \\
 &amp; = &amp; x (1-x) (x+(1-x)S - Tx)
 \end{aligned}\end{split}\]</div>
 <p>is the replicator equation for the general case.</p>
-<p>The steady states of equation <cite>:eq:`repeqf</cite> are <span class="math notranslate nohighlight">\(x_*=0\)</span>, <span class="math notranslate nohighlight">\(x_*=1\)</span>
+<p>The steady states of equation <a class="reference internal" href="#equation-repeqg">(1)</a> are <span class="math notranslate nohighlight">\(x_*=0\)</span>, <span class="math notranslate nohighlight">\(x_*=1\)</span>
 and the solution to</p>
 <div class="math notranslate nohighlight">
 \[x_*+(1-x_*)S = Tx_*\]</div>
@@ -157,7 +160,7 @@ and the solution to</p>
 </li>
 </ul>
 <p>We can determine the stability of the three steady states by
-differentiating equation <a class="reference external" href="#repeqf">[repeqf]</a> with respect to
+differentiating equation <a class="reference internal" href="#equation-repeqg">(1)</a> with respect to
 <span class="math notranslate nohighlight">\(x\)</span> we get:</p>
 <div class="math notranslate nohighlight">
 \[f'(x) = x(1-x)(1-S-T) + (1-2x)(x+(1-x)S-Tx)\]</div>
@@ -243,8 +246,8 @@ stable to defection.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="HawkDove.html" class="btn btn-neutral float-left" title="The Hawk Dove game" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="../gallery/lesson2/plot_cts2D.html" class="btn btn-neutral float-right" title="Rabbits and foxes" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../gallery/lesson1/plot_staghuntsim.html" class="btn btn-neutral float-left" title="The stag hunt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="paperandpen.html" class="btn btn-neutral float-right" title="Uppgifter (på svenska)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

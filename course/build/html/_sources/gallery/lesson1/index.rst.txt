@@ -34,7 +34,7 @@ First part of the book.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="** Now you should study a model yourself! ** Download the page as a  Python notebook and fill i...">
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
 
 .. only:: html
 

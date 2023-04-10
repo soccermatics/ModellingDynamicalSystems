@@ -18,12 +18,12 @@
 .. _sphx_glr_gallery_lesson3_plot_discrete1D.py:
 
 
-.. _doublingmap:
+.. _logisticmap:
 
-El Farol
-========
+Logistic Map
+============
 
-.. GENERATED FROM PYTHON SOURCE LINES 7-10
+.. GENERATED FROM PYTHON SOURCE LINES 9-12
 
 .. code-block:: default
 
@@ -37,27 +37,26 @@ El Farol
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 11-28
+.. GENERATED FROM PYTHON SOURCE LINES 13-29
 
-Alex story
----------------
+The model
+---------
 
-In Alex story we take the attendance at the bar the previous week, :math:´x_t'
-double it. If ´2x_t \leq 50' then the number of visitors the next week is 
+The logistic map is a discrete model of growth and regulatory feedback. 
+It describes a variable :math:`x(k)` which changes over discrete times steps.
+The variable might be, for example, size of an insect population.  
 
-.. math::
-
-  x_{t+1} =2x_t
-
-On the other hand, if :math:´2x_t > 50' then the number of visitors next week is
+We write the model as 
 
 .. math::
 
-  x_{t+1} = 2(100 - x_t)
+  x(k+1)) = b x(k)(1-x(k)/K)
 
-Let's implement this in Python 
+The parameter :math:`b` determines how much the insect population increases when 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-52
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 29-54
 
 .. code-block:: default
 
@@ -70,20 +69,21 @@ Let's implement this in Python
     matplotlib.font_manager.FontProperties(family='Helvetica',size=11)
 
 
-    def tentmap(x0,n):
+    def logisticmap(x0,b,n):
         xs=np.zeros(n+1)
         xs[0]=x0
         for k in range(n):
-            xs[k+1]= 2* min(xs[k],100-xs[k])
+            xs[k+1]= b*xs[k]*(1-xs[k])
         return(xs)
 
-    x0=20
-    print('One iteration:' )
-    print(tentmap(x0,1))
-    print('Two iterations:' )
-    print(tentmap(x0,2))
-    print('Three iterations:' )
-    print(tentmap(x0,3))
+    b=2
+    x0=0.1
+    print('One iteration with b=%d:'%b )
+    print(logisticmap(x0,b,1))
+    print('Two iterations with b=%d:'%b )
+    print(logisticmap(x0,b,2))
+    print('Three iterations with b=%d:'%b )
+    print(logisticmap(x0,b,3))
 
 
 
@@ -93,27 +93,27 @@ Let's implement this in Python
 
  .. code-block:: none
 
-    One iteration:
-    [20. 40.]
-    Two iterations:
-    [20. 40. 80.]
-    Three iterations:
-    [20. 40. 80. 40.]
+    One iteration with b=2:
+    [0.1  0.18]
+    Two iterations with b=2:
+    [0.1    0.18   0.2952]
+    Three iterations with b=2:
+    [0.1        0.18       0.2952     0.41611392]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 53-54
+.. GENERATED FROM PYTHON SOURCE LINES 55-56
 
 If we keep iterating, we get
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-60
+.. GENERATED FROM PYTHON SOURCE LINES 57-62
 
 .. code-block:: default
 
 
-    print('Eleven iterations:' )
-    print(tentmap(x0,11))
+    print('Eleven iterations with b=%d:'%b )
+    print(logisticmap(x0,2,11))
 
 
 
@@ -124,76 +124,41 @@ If we keep iterating, we get
 
  .. code-block:: none
 
-    Eleven iterations:
-    [20. 40. 80. 40. 80. 40. 80. 40. 80. 40. 80. 40.]
+    Eleven iterations with b=2:
+    [0.1        0.18       0.2952     0.41611392 0.48592625 0.49960386
+     0.49999969 0.5        0.5        0.5        0.5        0.5       ]
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-66
+.. GENERATED FROM PYTHON SOURCE LINES 63-67
 
-Chocolate cake
---------------
+Change over time
+----------------
 
-In Richard chocolate cake story we 
+Lets start by plotting for b=2
 
-
-.. GENERATED FROM PYTHON SOURCE LINES 66-74
-
-.. code-block:: default
-
-
-
-    print('Starting with 13:' )
-    print(tentmap(13,7))
-    print('Starting with 14:' )
-    print(tentmap(14,7))
-
-
-
-
-
-
-.. rst-class:: sphx-glr-script-out
-
- .. code-block:: none
-
-    Starting with 13:
-    [13. 26. 52. 96.  8. 16. 32. 64.]
-    Starting with 14:
-    [14. 28. 56. 88. 24. 48. 96.  8.]
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 75-77
-
-Let's make the difference only 0.1
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 78-98
+.. GENERATED FROM PYTHON SOURCE LINES 67-85
 
 .. code-block:: default
 
 
     def formatFigure(ax,n):
-        ax.set_ylabel('Number')
-        ax.set_xlabel('Step')
-        ax.set_ylim((0,100))
+        ax.set_ylabel('Number: $k$')
+        ax.set_xlabel('Step: $x(k)$')
+        ax.set_ylim((0,1))
         ax.set_xlim((0,n))
-        ax.set_xticks(range(0,n+1,2))
-        ax.set_yticks(range(0,101,20))
+        ax.set_xticks(np.arange(0,n+1,n/10))
+        ax.set_yticks(np.arange(0,1.01,0.2))
         ax.spines['top'].set_visible(False)
         ax.spines['right'].set_visible(False)
 
     n=20
 
     fig,ax=plt.subplots(num=1)
-    ax.plot(tentmap(14.1,n), color='black')
-    ax.plot(tentmap(14.2,n), color='black',linestyle=':')
+    ax.plot(logisticmap(x0,2,n), color='black')
     formatFigure(ax,n)
     plt.show()
-
 
 
 
@@ -207,25 +172,49 @@ Let's make the difference only 0.1
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 99-101
+.. GENERATED FROM PYTHON SOURCE LINES 86-90
 
-And now let's make the difference only 0.001
+Increasing b
+------------
 
+Now let's take for b=2.5
 
-.. GENERATED FROM PYTHON SOURCE LINES 102-113
+.. GENERATED FROM PYTHON SOURCE LINES 90-123
 
 .. code-block:: default
 
-    n=30
+
+    n=50
 
     fig,ax=plt.subplots(num=1)
-    ax.plot(tentmap(14.001,n), color='black')
-    ax.plot(tentmap(14.002,n), color='black',linestyle=':')
+    ax.plot(logisticmap(x0,2.5,n), color='black')
     formatFigure(ax,n)
     plt.show()
 
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
 
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.2,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
 
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.5,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.8,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.9,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
 
 
 
@@ -239,44 +228,52 @@ And now let's make the difference only 0.001
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 114-117
+.. GENERATED FROM PYTHON SOURCE LINES 124-127
 
 Cobweb diagrams
 --------------
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-146
+.. GENERATED FROM PYTHON SOURCE LINES 127-164
 
 .. code-block:: default
 
 
     n = 50 
 
-    xs = tentmap(14.1,50)
-    xp = xs[1]
+    b_vals=[2.5, 3.2, 3.5, 3.9]
+
 
     rcParams['figure.figsize'] = 12/2.54, 12/2.54
-    fig,ax=plt.subplots(num=1)
+    fig,ax=plt.subplots(2,2)
 
-    for x in xs[2:]:
+
+    for i,b in enumerate(b_vals):
+        xs = logisticmap(0.1,b,50)
+        xp = xs[0]
+        ax[int(i/2)][np.mod(i,2)].plot([xp, xp],[0, xp],color='k',linewidth=0.5)
+        for x in xs:
+            ax[int(i/2)][np.mod(i,2)].plot([xp, xp],[xp, x],color='k',linewidth=0.5)
+            ax[int(i/2)][np.mod(i,2)].plot([xp, x],[x, x],color='k',linewidth=0.5)
+            xp = x
     
-        ax.plot([xp, xp],[xp, x],color='k',linewidth=0.5)
-        ax.plot([xp, x],[x, x],color='k',linewidth=0.5)
-        xp = x
-
-
-    ax.plot([-0.5, 105.5],[-0.5, 105.5],linestyle=':',color='k',linewidth=1)
-    ax.plot([100, 50],[0, 100],color='k',linewidth=1)
-    ax.plot([0, 100/2],[0, 100],color='k',linewidth=1)
-    ax.set_xlabel('Previous number')
-    ax.set_ylabel('Next number')
-    ax.spines['top'].set_visible(False)
-    ax.spines['right'].set_visible(False)
-    ax.set_xticks(np.arange(0,101,step=20))
-    ax.set_yticks(np.arange(0,101,step=20))
-    ax.set_xlim(0,101)
-    ax.set_ylim(0,101) 
+        xr=np.arange(0,1,0.001)
+        fxr=b*xr*(1-xr)
+        ax[int(i/2)][np.mod(i,2)].plot([-0.5, 105.5],[-0.5, 105.5],linestyle=':',color='k',linewidth=1)
+        ax[int(i/2)][np.mod(i,2)].plot(xr,fxr,color='k',linewidth=1)
+        ax[int(i/2)][np.mod(i,2)].set_xlabel('Previous number: $x(k)$')
+        ax[int(i/2)][np.mod(i,2)].set_ylabel('Next number: $x(k+1)$')
+        ax[int(i/2)][np.mod(i,2)].spines['top'].set_visible(False)
+        ax[int(i/2)][np.mod(i,2)].spines['right'].set_visible(False)
+        ax[int(i/2)][np.mod(i,2)].set_xticks(np.arange(0,1.01,step=0.20))
+        ax[int(i/2)][np.mod(i,2)].set_yticks(np.arange(0,1.01,step=0.20))
+        ax[int(i/2)][np.mod(i,2)].set_xlim(0,1.01)
+        ax[int(i/2)][np.mod(i,2)].set_ylim(0,1.01) 
+        ax[int(i/2)][np.mod(i,2)].text(0.05,0.9,'b=%.1f'%b)
+    
     plt.show()
+
+
 
 
 
@@ -290,10 +287,78 @@ Cobweb diagrams
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 165-170
+
+Sensitivity to initial conditions
+---------------------------------
+
+In Richard chocolate cake story we 
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 170-180
+
+.. code-block:: default
+
+
+
+    n=7
+    b=3.9
+
+    print('Starting with 0.1001:' )
+    print(logisticmap(0.1,b,n))
+    print('Starting with 0.1002:' )
+    print(logisticmap(0.11,b,n))
+
+
+
+
+
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+    Starting with 0.1001:
+    [0.1        0.351      0.8884161  0.38661844 0.92486402 0.27101319
+     0.77050365 0.68962832]
+    Starting with 0.1002:
+    [0.11       0.38181    0.92052138 0.28533089 0.79527697 0.63496489
+     0.90395947 0.33858531]
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 181-183
+
+And now let's make the difference only 0.001
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 184-191
+
+.. code-block:: default
+
+    n=30
+    b=3.9
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(0.1000,b,n), color='black')
+    ax.plot(logisticmap(0.1001,b,n), color='black',linestyle=':')
+    formatFigure(ax,n)
+    plt.show()
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
+   :alt: plot discrete1D
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.131 seconds)
+   **Total running time of the script:** ( 0 minutes  0.451 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson3_plot_discrete1D.py:

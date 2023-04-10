@@ -1,0 +1,203 @@
+\section{Olinjära system}
+\subsection{} kommer snart
+
+\subsection{}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  13.1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+$$
+\ddot{x} - (0.1-10\dot{x}^2/3)\dot{x} + x + x^2=0
+$$
+Inför tillståndsvariablerna
+$x_1 = x $ och $x_2 = \dot{x} $, samt skriv på
+tillståndsform
+
+\[
+\begin{array}{ccl}
+\dot{x}_1 &=& x_2 = f_1(x_1, x_2) \\
+\dot{x}_2 &=& -x_1(1+x_1) + x_2(0.1-10x_2^2/3) = f_2(x_1, x_2)
+\end{array}
+\]
+Bestäm de stationära (singulära) punkterna och deras karaktär, samt
+skissera fasplanet. (I lösningen nedan betecknas stationära punkter med $x^o$ istället för som i kompendiet
+$x_o$, detta för att slippa "dubbelindex")
+\begin{enumerate}
+\item {\bf Stationära punkter} \\
+$f(x^\circ ) = 0\ \ \Rightarrow\ \ 
+x{_2^\circ} = 0$ samt $x{_1^\circ} (1+x{^\circ _1}) = 0$.
+$$
+{\rm SP \  I}\ \left\{ \begin{array}{l} x{^\circ_1} = 0 \\ x{^\circ_2}
+= 0 \end {array} \right. ,\qquad \qquad {\rm SP \ II}\  \left\{
+\begin{array}{l} x{^\circ_1} = -1 \\ x{^\circ_2} = 0 \end{array}
+\right.   
+$$
+\item {\bf Linjärisera kring de stationära punkterna} \\
+Taylors formel:
+$$
+f(x) = f(x^\circ ) + \left. \frac{df}{dx}(x) \right|_{x=x^\circ}
+(x-x^\circ) + o|x-x^\circ| = \left. \frac{df}{dx}(x) 
+\right|_{x=x^\circ} (x-x^\circ) + o|x-x^\circ|
+$$
+eftersom $f(x^\circ )=0$.
+Matrisen $\frac{df}{dx}(x)$ är funktionen $f$:s
+Jacobian. Den har $ij$-elementet
+$\frac{\partial f_i}{\partial x_j}(x)$
+$$
+\renewcommand{\arraystretch}{2}
+\begin{array}{ll}
+\frac{\partial f_1}{\partial x_1} = 0\ \ \ &
+\frac{\partial f_1}{\partial x_2} = 1 \\
+\frac{\partial f_2}{\partial x_1} = -1 -2 x_1 \ \ \ &
+\frac{\partial f_2}{\partial x_2} = 0.1 - 10 x_2^2
+\end{array}
+\renewcommand{\arraystretch}{1}
+$$
+Gör variabelbytet $z = x - x^\circ$ i de olika
+stationära punkterna.
+\item {\bf SP I}\\
+Linjär approximation $\dot{z} = A_{SP1}z$, med
+$$
+A_{SP1} = \begin{pmatrix} 0 & 1 \\ -1 & 0.1 \end{pmatrix}
+$$
+Matrisen $A_{SP1}$:s egenvärden ges av
+\[0 = \det (\lambda I - A_{SP1}) = \lambda(\lambda-0.1) + 1,\]
+dvs
+\[ \lambda= 0.05 \pm \sqrt{0.05^2 - 1} \]
+
+Den linjära approximationen har således ett instabilt
+fokus i SP1 dvs (0,0). För instabila fokus gäller att
+den olinjära differentialekvationen har samma typ av
+singularitet som den linjära approximationen (se kursmaterialet). 
+Observera att den linjära approximationen endast gäller 
+\emph{nära} den stationära punkten.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.44\linewidth]{figures/u15_1a.eps}
+\includegraphics[width=0.44\linewidth]{figures/u15_1b.eps}
+\caption{Fasporträtt för SPI. Till vänster ses den länjära approximationen, och till höger visas fasporträttet beräknat numeriskt, ickelinjärt.}
+\end{figure}
+
+\item {\bf SP II} \\
+Linjär approximation $\dot{z} = A_{SP2}z$, med
+$$
+A_{SP2} = \begin{pmatrix} 0 & 1 \\ 1 & 0.1 \end{pmatrix}
+$$
+Egenvärden till $A_{SP2}$,
+\begin{eqnarray*}
+0 &=& {\rm det}(\lambda I -A_{SP2}) = \lambda (\lambda -0.1) - 1 \\
+\lambda &=& 0.05 \pm \sqrt{0.05^2 + 1}, \quad \lambda_1 \approx -0.95, \quad
+\lambda_2 \approx 1.05 
+\end{eqnarray*}
+Den linjäriserade ekvationen har tydligen en sadelpunkt
+i (-1,0). Detta gäller även för den olinjära
+ekvationen.
+Den stabila egenvektorn är (fås t ex från kommandot "eig" i matlab)  $(1,-0.95)$, och den instabila
+är $(1,1.05)$.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[width=0.8\linewidth]{figures/13.1.II.eps}
+\caption{Fasporträtt för SPII}
+\end{figure}
+
+\item{\bf Långt från stationära punkter} \\
+Hur ser banorna ut på långt avstånd från origo? 
+Bilda derivatan,
+$$
+\frac{d x_2}{d x_1} =
+\frac{\dot{x}_2}{\dot{x}_1} = \frac{-x_1(1+x_1) + 
+x_2(0.1 -10x_2^2/3)}{x_2} 
+$$
+När $x_1$ är begränsad och
+$x_2 \rightarrow \pm \infty $, så gäller tydligen
+att $\dot{x}_2/\dot{x}_1 \rightarrow -\infty$. Alltså blir
+banorna lodräta när $|x_2|$ växer (och även
+då $x_2 \rightarrow 0$).
+\end{enumerate}
+
+\begin{center} \includegraphics[width=0.8\linewidth]{figures/13.1.tot.eps} \end{center}
+
+\subsection{} kommer snart
+
+
+\subsection{}
+ Stationära (singulära) punkter ges av $x_1 = 0$, dvs hela
+  $x_2$-axeln, då $u=0$. Banorna ges av 
+  \begin{displaymath}
+    \frac{d x_2}{d x_1} = -\frac{1}{x_1^2}
+    \qquad \Leftrightarrow \qquad
+    x_2 = \frac{1}{x_1} + C.
+  \end{displaymath}
+\begin{center}\includegraphics[width=0.8\linewidth]{figures/13.7.1.eps}\end{center}
+
+
+
+\subsection{}
+\begin{itemize}
+\item[a)] 
+\begin{equation}
+\Delta \dot{v}(t)=\frac{-2b}{m}v_0\Delta v(t)+\frac{1}{m}\Delta F_d(t)
+\end{equation}
+där $\Delta v(t)=v(t)-v_0$ och $\Delta F_d(t)=F_d(t)-F_{d,0}$
+
+\item[b)]
+\begin{equation}
+\Delta V(s)=\frac{1/m}{s+2\sqrt{b}/m}\Delta F_d(s)
+\end{equation}
+Asymptotiskt stabil då $b>0$ vilket i detta fall alltid bör gälla.
+\end{itemize}
+
+
+\subsection{}
+\begin{itemize}
+\item[a)]
+Sätt $h=\begin{bmatrix} h_1(t) & h_2(t) \end{bmatrix}^T$. Jämviktshöjderna motsvarande $u_0=2$ blir
+$h_{1,0}=14.1$ cm  och $h_{2,0}=14.1$ cm. Med $\Delta h(t)=h(t)-h_0$
+kan det linjariserade systemet skrivas
+
+\begin{align*}
+\Delta \dot{h}(t)=\begin{bmatrix} -\frac{K}{2\sqrt{h_{1,0}}}& 0\\
+\frac{K}{2\sqrt{h_{1,0}}}&-\frac{K}{2\sqrt{h_{2,0}}}\end{bmatrix} \Delta h(t)+
+\begin{bmatrix} K_m\\0\end{bmatrix} \Delta u(t)
+\end{align*}
+där $K=0.06644$ och $K_m=0.125$. Med alla värden insatta blir systemet
+\begin{align*}
+\Delta \dot{h}(t)=\begin{bmatrix} -0.0088& 0\\
+0.0088&-0.0088\end{bmatrix} \Delta h(t)+
+\begin{bmatrix} 0.125\\0\end{bmatrix} \Delta u(t)
+\end{align*} 
+
+\item[b)]
+$\Delta y(t)=\Delta h_2(t)=\begin{bmatrix} 0&1\end{bmatrix}\Delta h(t)$.
+Sambandet mellan avvikelse i in och utsignal fås av $\Delta
+Y(s)=C(sI-A)^{-1}B \Delta U(s)$. Man erhåller med $A$, $B$ och $C$
+enligt ovan att 
+\begin{equation}
+\Delta Y(s)=\frac{0.0011}{s^2+0.0176 s+7.744\dot10^{-5}}\Delta U(s)
+\end{equation}
+Dubbelpol i $\lambda_{1,2}=-0.0088$ och jämviktspunkten därmed stabil.
+(Polerna för det linjariserade systemet hade också kunnat erhållas direkt från
+$A$-matrisens egenvärden).
+
+\end{itemize}
+
+\subsection{}
+$\dot{x}(t)=0$ och insättning verifierar jämviktspunkterna.
+Den linjära modellen kan skrivas
+\begin{align*} 
+\Delta \dot{x}(t)&=\begin{bmatrix} -\frac{1}{2 \sqrt{x_{1,0}}}& 1\\u_0&-1\end{bmatrix}
+\Delta x(t)+\begin{bmatrix} 0 \\x_{1,0}\end{bmatrix} \Delta u(t)\\
+\Delta y(t)&=\begin{bmatrix} 2 x_{1,0}\;\; 0\end{bmatrix} \Delta x(t)
+\end{align*}
+Med värden insatta fås att systemmatrisen $A$ är
+\begin{equation*}
+A=\begin{bmatrix} -0.25 &1\\0.5&-1\end{bmatrix}
+\end{equation*}
+Egenvärdena till denna (polerna till det linjäriserade systemet) ges
+av polynomet $(s+0.25)(s+1)-0.5=0$,  d v s
+$s=0.175$ och $s=-1.425$. Punkten är alltså en sadelpunkt, och 
+lösningarna till det olinjära systemet beter sig därmed på liknande
+sätt runt jämviktspunkten. 
+
+ 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>El Farol &mdash; Modelling Complex Systems  documentation</title>
+  <title>Logistic Map &mdash; Modelling Complex Systems  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
@@ -25,7 +25,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="prev" title="The Social Epidemic" href="../lesson1/plot_cts1D.html" /> 
+    <link rel="prev" title="Rabbits and foxes" href="../lesson2/plot_cts2D.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -46,18 +46,24 @@
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <p class="caption" role="heading"><span class="caption-text">Evolutionary games</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../lesson1/plot_cts1D.html">The Social Epidemic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson1/HawkDove.html">The hawk-dove game</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson1/plot_hawkdovesim.html">Hawk-dove dynamics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson1/plot_staghuntsim.html">The stag hunt</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson1/General.html">The general case</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../lesson1/paperandpen.html">Uppgifter (på svenska)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../lesson1/plot_cts1D.html">The Social Epidemic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson2/plot_cts2D.html">Rabbits and foxes</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
 <ul class="current">
-<li class="toctree-l1 current"><a class="current reference internal" href="#">El Farol</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#alex-story">Alex story</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#chocolate-cake">Chocolate cake</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logistic Map</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#the-model">The model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#change-over-time">Change over time</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#increasing-b">Increasing b</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#cobweb-diagrams">Cobweb diagrams</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#sensitivity-to-initial-conditions">Sensitivity to initial conditions</a></li>
 </ul>
 </li>
 </ul>
@@ -76,7 +82,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>El Farol</li>
+      <li>Logistic Map</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/gallery/lesson3/plot_discrete1D.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -91,21 +97,20 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-gallery-lesson3-plot-discrete1d-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="el-farol">
-<span id="doublingmap"></span><span id="sphx-glr-gallery-lesson3-plot-discrete1d-py"></span><h1>El Farol<a class="headerlink" href="#el-farol" title="Permalink to this heading"></a></h1>
+<div class="sphx-glr-example-title section" id="logistic-map">
+<span id="logisticmap"></span><span id="sphx-glr-gallery-lesson3-plot-discrete1d-py"></span><h1>Logistic Map<a class="headerlink" href="#logistic-map" title="Permalink to this heading"></a></h1>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
-<div class="section" id="alex-story">
-<h2>Alex story<a class="headerlink" href="#alex-story" title="Permalink to this heading"></a></h2>
-<p>In Alex story we take the attendance at the bar the previous week, :math:´x_t’
-double it. If ´2x_t leq 50’ then the number of visitors the next week is</p>
+<div class="section" id="the-model">
+<h2>The model<a class="headerlink" href="#the-model" title="Permalink to this heading"></a></h2>
+<p>The logistic map is a discrete model of growth and regulatory feedback.
+It describes a variable <span class="math notranslate nohighlight">\(x(k)\)</span> which changes over discrete times steps.
+The variable might be, for example, size of an insect population.</p>
+<p>We write the model as</p>
 <div class="math notranslate nohighlight">
-\[x_{t+1} =2x_t\]</div>
-<p>On the other hand, if :math:´2x_t &gt; 50’ then the number of visitors next week is</p>
-<div class="math notranslate nohighlight">
-\[x_{t+1} = 2(100 - x_t)\]</div>
-<p>Let’s implement this in Python</p>
+\[x(k+1)) = b x(k)(1-x(k)/K)\]</div>
+<p>The parameter <span class="math notranslate nohighlight">\(b\)</span> determines how much the insect population increases when</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
@@ -114,81 +119,96 @@ double it. If ´2x_t leq 50’ then the number of visitors the next week is</p>
 <span class="n">matplotlib</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
 
 
-<span class="k">def</span> <span class="nf">tentmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
     <span class="n">xs</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
     <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">=</span><span class="n">x0</span>
     <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
-        <span class="n">xs</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="mi">2</span><span class="o">*</span> <span class="nb">min</span><span class="p">(</span><span class="n">xs</span><span class="p">[</span><span class="n">k</span><span class="p">],</span><span class="mi">100</span><span class="o">-</span><span class="n">xs</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+        <span class="n">xs</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span><span class="o">=</span> <span class="n">b</span><span class="o">*</span><span class="n">xs</span><span class="p">[</span><span class="n">k</span><span class="p">]</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">xs</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
     <span class="k">return</span><span class="p">(</span><span class="n">xs</span><span class="p">)</span>
 
-<span class="n">x0</span><span class="o">=</span><span class="mi">20</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;One iteration:&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Two iterations:&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Three iterations:&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">b</span><span class="o">=</span><span class="mi">2</span>
+<span class="n">x0</span><span class="o">=</span><span class="mf">0.1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;One iteration with b=</span><span class="si">%d</span><span class="s1">:&#39;</span><span class="o">%</span><span class="n">b</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Two iterations with b=</span><span class="si">%d</span><span class="s1">:&#39;</span><span class="o">%</span><span class="n">b</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Three iterations with b=</span><span class="si">%d</span><span class="s1">:&#39;</span><span class="o">%</span><span class="n">b</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>One iteration:
-[20. 40.]
-Two iterations:
-[20. 40. 80.]
-Three iterations:
-[20. 40. 80. 40.]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>One iteration with b=2:
+[0.1  0.18]
+Two iterations with b=2:
+[0.1    0.18   0.2952]
+Three iterations with b=2:
+[0.1        0.18       0.2952     0.41611392]
 </pre></div>
 </div>
 <p>If we keep iterating, we get</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eleven iterations:&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Eleven iterations with b=</span><span class="si">%d</span><span class="s1">:&#39;</span><span class="o">%</span><span class="n">b</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">11</span><span class="p">))</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Eleven iterations:
-[20. 40. 80. 40. 80. 40. 80. 40. 80. 40. 80. 40.]
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Eleven iterations with b=2:
+[0.1        0.18       0.2952     0.41611392 0.48592625 0.49960386
+ 0.49999969 0.5        0.5        0.5        0.5        0.5       ]
 </pre></div>
 </div>
 </div>
-<div class="section" id="chocolate-cake">
-<h2>Chocolate cake<a class="headerlink" href="#chocolate-cake" title="Permalink to this heading"></a></h2>
-<p>In Richard chocolate cake story we</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting with 13:&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="mi">13</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting with 14:&#39;</span> <span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="mi">14</span><span class="p">,</span><span class="mi">7</span><span class="p">))</span>
-</pre></div>
-</div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Starting with 13:
-[13. 26. 52. 96.  8. 16. 32. 64.]
-Starting with 14:
-[14. 28. 56. 88. 24. 48. 96.  8.]
-</pre></div>
-</div>
-<p>Let’s make the difference only 0.1</p>
+<div class="section" id="change-over-time">
+<h2>Change over time<a class="headerlink" href="#change-over-time" title="Permalink to this heading"></a></h2>
+<p>Lets start by plotting for b=2</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">):</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Step&#39;</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number: $k$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Step: $x(k)$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="mi">20</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="o">/</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="mf">0.2</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
 
 <span class="n">n</span><span class="o">=</span><span class="mi">20</span>
 
 <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="mf">14.1</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="mf">14.2</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_discrete1D_001.png" srcset="../../_images/sphx_glr_plot_discrete1D_001.png" alt="plot discrete1D" class = "sphx-glr-single-img"/><p>And now let’s make the difference only 0.001</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">30</span>
+<img src="../../_images/sphx_glr_plot_discrete1D_001.png" srcset="../../_images/sphx_glr_plot_discrete1D_001.png" alt="plot discrete1D" class = "sphx-glr-single-img"/></div>
+<div class="section" id="increasing-b">
+<h2>Increasing b<a class="headerlink" href="#increasing-b" title="Permalink to this heading"></a></h2>
+<p>Now let’s take for b=2.5</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">50</span>
 
 <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="mf">14.001</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">tentmap</span><span class="p">(</span><span class="mf">14.002</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mf">2.5</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mf">3.2</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mf">3.5</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mf">3.8</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span><span class="mf">3.9</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
 <span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -198,34 +218,72 @@ Starting with 14:
 <h2>Cobweb diagrams<a class="headerlink" href="#cobweb-diagrams" title="Permalink to this heading"></a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">50</span>
 
-<span class="n">xs</span> <span class="o">=</span> <span class="n">tentmap</span><span class="p">(</span><span class="mf">14.1</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
-<span class="n">xp</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">b_vals</span><span class="o">=</span><span class="p">[</span><span class="mf">2.5</span><span class="p">,</span> <span class="mf">3.2</span><span class="p">,</span> <span class="mf">3.5</span><span class="p">,</span> <span class="mf">3.9</span><span class="p">]</span>
+
 
 <span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">12</span><span class="o">/</span><span class="mf">2.54</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">[</span><span class="mi">2</span><span class="p">:]:</span>
-
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">xp</span><span class="p">],[</span><span class="n">xp</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">x</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
-    <span class="n">xp</span> <span class="o">=</span> <span class="n">x</span>
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">2</span><span class="p">)</span>
 
 
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">105.5</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">105.5</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">100</span><span class="p">,</span> <span class="mi">50</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="o">/</span><span class="mi">2</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Previous number&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Next number&#39;</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">20</span><span class="p">))</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">101</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span><span class="n">b</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">b_vals</span><span class="p">):</span>
+    <span class="n">xs</span> <span class="o">=</span> <span class="n">logisticmap</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="mi">50</span><span class="p">)</span>
+    <span class="n">xp</span> <span class="o">=</span> <span class="n">xs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">xp</span><span class="p">],[</span><span class="mi">0</span><span class="p">,</span> <span class="n">xp</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">xs</span><span class="p">:</span>
+        <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">xp</span><span class="p">],[</span><span class="n">xp</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">xp</span><span class="p">,</span> <span class="n">x</span><span class="p">],[</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">],</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+        <span class="n">xp</span> <span class="o">=</span> <span class="n">x</span>
+
+    <span class="n">xr</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mf">0.001</span><span class="p">)</span>
+    <span class="n">fxr</span><span class="o">=</span><span class="n">b</span><span class="o">*</span><span class="n">xr</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">xr</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">105.5</span><span class="p">],[</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">105.5</span><span class="p">],</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xr</span><span class="p">,</span><span class="n">fxr</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Previous number: $x(k)$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Next number: $x(k+1)$&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.20</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.20</span><span class="p">))</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">)</span>
+    <span class="n">ax</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">i</span><span class="o">/</span><span class="mi">2</span><span class="p">)][</span><span class="n">np</span><span class="o">.</span><span class="n">mod</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="mi">2</span><span class="p">)]</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="mf">0.05</span><span class="p">,</span><span class="mf">0.9</span><span class="p">,</span><span class="s1">&#39;b=</span><span class="si">%.1f</span><span class="s1">&#39;</span><span class="o">%</span><span class="n">b</span><span class="p">)</span>
+
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_discrete1D_003.png" srcset="../../_images/sphx_glr_plot_discrete1D_003.png" alt="plot discrete1D" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.131 seconds)</p>
+<img src="../../_images/sphx_glr_plot_discrete1D_003.png" srcset="../../_images/sphx_glr_plot_discrete1D_003.png" alt="plot discrete1D" class = "sphx-glr-single-img"/></div>
+<div class="section" id="sensitivity-to-initial-conditions">
+<h2>Sensitivity to initial conditions<a class="headerlink" href="#sensitivity-to-initial-conditions" title="Permalink to this heading"></a></h2>
+<p>In Richard chocolate cake story we</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">7</span>
+<span class="n">b</span><span class="o">=</span><span class="mf">3.9</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting with 0.1001:&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Starting with 0.1002:&#39;</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="mf">0.11</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Starting with 0.1001:
+[0.1        0.351      0.8884161  0.38661844 0.92486402 0.27101319
+ 0.77050365 0.68962832]
+Starting with 0.1002:
+[0.11       0.38181    0.92052138 0.28533089 0.79527697 0.63496489
+ 0.90395947 0.33858531]
+</pre></div>
+</div>
+<p>And now let’s make the difference only 0.001</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">n</span><span class="o">=</span><span class="mi">30</span>
+<span class="n">b</span><span class="o">=</span><span class="mf">3.9</span>
+
+<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="mf">0.1000</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">logisticmap</span><span class="p">(</span><span class="mf">0.1001</span><span class="p">,</span><span class="n">b</span><span class="p">,</span><span class="n">n</span><span class="p">),</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span><span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;:&#39;</span><span class="p">)</span>
+<span class="n">formatFigure</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">n</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+<img src="../../_images/sphx_glr_plot_discrete1D_004.png" srcset="../../_images/sphx_glr_plot_discrete1D_004.png" alt="plot discrete1D" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.451 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson3-plot-discrete1d-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/39bc36c770bb025c585067ad4c8ffedf/plot_discrete1D.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_discrete1D.py</span></code></a></p>
@@ -242,7 +300,7 @@ Starting with 14:
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="../lesson1/plot_cts1D.html" class="btn btn-neutral float-left" title="The Social Epidemic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../lesson2/plot_cts2D.html" class="btn btn-neutral float-left" title="Rabbits and foxes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

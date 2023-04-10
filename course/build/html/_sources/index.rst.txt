@@ -10,6 +10,7 @@ Contents
    gallery/lesson1/plot_hawkdovesim
    gallery/lesson1/plot_staghuntsim
    lesson1/General.rst
+   lesson1/paperandpen.rst
 
 .. toctree::
    :maxdepth: 1
