@@ -56,11 +56,10 @@
 <p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Rabbits and foxes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#id1">Differential equations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#building-the-model">Building the model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#simulating-the-model">Simulating the model</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#visualising-the-cycle">Visualising the cycle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#finding-the-equilibrium">Finding the equilibrium</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#a-look-at-lotka-s-orginal-article">A look at Lotka’s orginal article</a></li>
 </ul>
 </li>
 </ul>
@@ -100,73 +99,27 @@ to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="rabbits-and-foxes">
 <span id="rabbitsandfoxes"></span><span id="sphx-glr-gallery-lesson2-plot-cts2d-py"></span><h1>Rabbits and foxes<a class="headerlink" href="#rabbits-and-foxes" title="Permalink to this heading"></a></h1>
-<p><strong>What we will learn:</strong> How to write differential equation models to show the rate of change of
-populatins of predators and prey. We will simulate the model using Python. Then we draw a phase plane
-for the model.</p>
-<p><strong>Watch this first:</strong> <a class="reference external" href="https://www.khanacademy.org/math/differential-equations">Differential equations</a></p>
-<div class="section" id="id1">
-<h2>Differential equations<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>In the book, I write Lotka’s equations in the form of chemical reactions,
-e.g.</p>
-<div class="math notranslate nohighlight">
-\[\mbox{F} +  \mbox{R} \rightarrow 2 \mbox{F}\]</div>
-<p>This means that an F and R together becomes two F’s. Parker expalins as follows,</p>
-<p>IMAGE FROM BOOK HERE</p>
-<p>While in Leipzig, A. J. Lotka learnt how chemical reactions can be used to
-specify the rate of change of populations, i.e. in terms of the derivates
-above, using an approach, known as the law of mass action.
-The idea is to think about the rate at which these chemical reactions take place.
-For the first reaction</p>
-<div class="math notranslate nohighlight">
-\[\mbox{R} \xrightarrow{a} 2 \mbox{R}\]</div>
-<p>We can think of <span class="math notranslate nohighlight">\(a\)</span> as being the rate of reproduction of the rabbits,
-how many baby rabbits an adult rabbit has per day. So, the rabbits grow
+<div class="section" id="building-the-model">
+<h2>Building the model<a class="headerlink" href="#building-the-model" title="Permalink to this heading"></a></h2>
+<p>Let the constant <span class="math notranslate nohighlight">\(a\)</span> as being the rate of reproduction of the rabbits:
+how many baby rabbits an adult rabbit has per month. So, the rabbits grow
 according to</p>
 <div class="math notranslate nohighlight" id="equation-rabbitgrow">
 <span class="eqno">(1)<a class="headerlink" href="#equation-rabbitgrow" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = a R\]</div>
 <p>This equation denotes the rate of change of <span class="math notranslate nohighlight">\(R\)</span> over time.
 the top part of the fraction <span class="math notranslate nohighlight">\(dR\)</span> denotes the change in rabbits, <span class="math notranslate nohighlight">\(R\)</span>,
-and the bottom part, <span class="math notranslate nohighlight">\(dt\)</span>, denotes the change in time, <span class="math notranslate nohighlight">\(t\)</span>.</p>
-<p>This type of equation, known as a differential equation can appear a bit strange
-the first rime we encounter it. When we first meet differntiation in school
-we write, for example,</p>
-<div class="math notranslate nohighlight" id="equation-timeint">
-<span class="eqno">(2)<a class="headerlink" href="#equation-timeint" title="Permalink to this equation"></a></span>\[R(t) = \frac{1}{2} a t^2\]</div>
-<p>then take the derivative to get</p>
-<div class="math notranslate nohighlight" id="equation-timegrow">
-<span class="eqno">(3)<a class="headerlink" href="#equation-timegrow" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = a t\]</div>
-<p>This is also a differential equation. It says that the rate of change of <span class="math notranslate nohighlight">\(R\)</span> over time
-is proportional to time. The modelling difference between equation <a class="reference internal" href="#equation-timegrow">(3)</a> and
-<a class="reference internal" href="#equation-rabbitgrow">(1)</a> is that the former says that rabbits grow proportionally to time, while
-the latter says that rabbits grow proportionally to the number of rabbits. In the case that
-rabbits grow in proportion to time, then we say that <a class="reference internal" href="#equation-timeint">(2)</a> is the solution to
-equation <a class="reference internal" href="#equation-timegrow">(3)</a> since it tells us how many rabbits there
-will be at any point in time. I think this is where differential equations can be a bit
-confusing, because in school we are usually given <a class="reference internal" href="#equation-timeint">(2)</a> and asked to find <a class="reference internal" href="#equation-timegrow">(3)</a>.
-For most differential equations it is the other way round. We are given equation <a class="reference internal" href="#equation-rabbitgrow">(1)</a>
-and asked to find the the number of rabbits <span class="math notranslate nohighlight">\(R\)</span> as a function of time.</p>
-<p>We aren’t going to solve these equations yet. First we need to have the equations for foxes. In chemical
-reaction form these are,</p>
-<div class="math notranslate nohighlight">
-\[\mbox{F} +  \mbox{R} \xrightarrow{b}  2 \mbox{F}\]</div>
-<p>for foxes eating rabbits and</p>
-<div class="math notranslate nohighlight">
-\[\mbox{F}   \xrightarrow{d}  \mbox{D}\]</div>
-<p>for foxes dying. Converted to differential equations, the rate of change for rabbits becomes</p>
+and the bottom part, <span class="math notranslate nohighlight">\(dt\)</span>, denotes the change in time, <span class="math notranslate nohighlight">\(t\)</span>. The
+rabbits grow proportionally to the number of rabbits.</p>
+<p>Let’s add a term to describe how foxes eat rabbits. The rate of change for rabbits now becomes</p>
 <div class="math notranslate nohighlight" id="equation-rabbits">
-<span class="eqno">(4)<a class="headerlink" href="#equation-rabbits" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = \underbrace{a R}_{\mbox{R} \xrightarrow{a} 2 \mbox{R}} - \underbrace{b R F}_{\mbox{F} + \mbox{R} \xrightarrow{b} 2 \mbox{F}}\]</div>
+<span class="eqno">(2)<a class="headerlink" href="#equation-rabbits" title="Permalink to this equation"></a></span>\[\frac{dR}{dt} = a R - b R F\]</div>
 <p>Similarly, we can write the rate of change of foxes as</p>
 <div class="math notranslate nohighlight" id="equation-foxes">
-<span class="eqno">(5)<a class="headerlink" href="#equation-foxes" title="Permalink to this equation"></a></span>\[\frac{dF}{dt} =  \underbrace{c R F}_{\mbox{F} + \mbox{R} \xrightarrow{c} 2 \mbox{F}} - \underbrace{d R}_{\mbox{R} \xrightarrow{d} 2 \mbox{R}}\]</div>
+<span class="eqno">(3)<a class="headerlink" href="#equation-foxes" title="Permalink to this equation"></a></span>\[\frac{dF}{dt} =  \underbrace{c R F}_{\mbox{F} + \mbox{R} \xrightarrow{c} 2 \mbox{F}} - \underbrace{d R}_{\mbox{R} \xrightarrow{d} 2 \mbox{R}}\]</div>
 <p>Notice that we have a different rate parameter for the death of rabbits (<span class="math notranslate nohighlight">\(b\)</span>)
 than for the birth of foxes (<span class="math notranslate nohighlight">\(c\)</span>). This is because
 it takes more than one rabbit to feed a fox and we set the parameters so that <span class="math notranslate nohighlight">\(c&lt;b\)</span>.</p>
-<p>It may seem strange to treat rabbits and foxes as chemicals.
-As we all know, two rabbits are needed to produce baby rabbits and when a fox eats a rabbit,
-it doesn’t simply transform it directly in to a new fox, as the chemical equation suggests.
-Also, in the description above, the grass is not depleted: there is no chemical equation
-describing how grass is transformed to rabbit poop. But the point of a mathematical model
-like this is not to be entirely realistic. Rather, it tries to capture the essence of the problem.
+<p>A mathematical model like this is not to be entirely realistic. Rather, it tries to capture the essence of the problem.
 We want to imagine a big grassy meadow, where the more rabbits there are, the faster the rabbit
 population grows and the more foxes there are the faster the rabbits are eaten. We will try to
 understand this abstract problem first, before we make any claims about what happens to real
@@ -174,7 +127,7 @@ rabbits and real foxes.</p>
 </div>
 <div class="section" id="simulating-the-model">
 <h2>Simulating the model<a class="headerlink" href="#simulating-the-model" title="Permalink to this heading"></a></h2>
-<p>In this section we use Python to run a numerical simulation of the model.</p>
+<p>We can use Python to run a numerical simulation of the model.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import the libraries we use</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -186,7 +139,7 @@ rabbits and real foxes.</p>
 </pre></div>
 </div>
 <p>We start by defining the model. This code creates a function
-which we can use to simulate differential equations <a class="reference internal" href="#equation-rabbits">(4)</a> and <a class="reference internal" href="#equation-foxes">(5)</a>.</p>
+which we can use to simulate differential equations <a class="reference internal" href="#equation-rabbits">(2)</a> and <a class="reference internal" href="#equation-foxes">(3)</a>.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># Differential equation</span>
 <span class="k">def</span> <span class="nf">dXdt</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="c1"># Growth rate of fox and rabbit populations.</span>
@@ -255,12 +208,9 @@ For the numerical simulations we do this as follows:</p>
 <img src="../../_images/sphx_glr_plot_cts2D_002.png" srcset="../../_images/sphx_glr_plot_cts2D_002.png" alt="plot cts2D" class = "sphx-glr-single-img"/></div>
 <div class="section" id="finding-the-equilibrium">
 <h2>Finding the equilibrium<a class="headerlink" href="#finding-the-equilibrium" title="Permalink to this heading"></a></h2>
-<p>In order to better understand this cycle, in the book,
-Parker first looked at
-the equilibria where the rate at which rabbits are born equals the rate
-at which they die.</p>
-<p>BOOK TEXT HERE</p>
-<p>We can find the rabbit equilibtirum by solving</p>
+<p>In order to better understand this cycle we look at
+the equilibria (the steady states) where the rate at which rabbits are born equals the rate
+at which they die. We can find the rabbit equilibtirum by solving</p>
 <div class="math notranslate nohighlight">
 \[\frac{dR}{dt} = a R - b R F =0\]</div>
 <p>i.e. the number of rabbits does not change over time. This occurs either when
@@ -283,9 +233,9 @@ foxes grow after eating rabbits).</p>
 <span class="n">plotPhasePlane</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_cts2D_003.png" srcset="../../_images/sphx_glr_plot_cts2D_003.png" alt="plot cts2D" class = "sphx-glr-single-img"/><p>Parker went on to draw arrows to indicate the direction
-of change. We do this below by evaluating <span class="math notranslate nohighlight">\(dR/dt\)</span> and <span class="math notranslate nohighlight">\(dF/dt\)</span>
-for different values and plotting them.</p>
+<img src="../../_images/sphx_glr_plot_cts2D_003.png" srcset="../../_images/sphx_glr_plot_cts2D_003.png" alt="plot cts2D" class = "sphx-glr-single-img"/><p>We can draw arrows to indicate the direction of change. To
+do this, we evaluate <span class="math notranslate nohighlight">\(dR/dt\)</span> and <span class="math notranslate nohighlight">\(dF/dt\)</span>
+for different values and plot them.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">30</span> <span class="p">,</span><span class="mi">6</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">X</span> <span class="p">,</span> <span class="n">Y</span>  <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -304,29 +254,7 @@ for different values and plotting them.</p>
 <span class="n">plotPhasePlane</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">R</span><span class="p">,</span><span class="n">F</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_cts2D_004.png" srcset="../../_images/sphx_glr_plot_cts2D_004.png" alt="plot cts2D" class = "sphx-glr-single-img"/></div>
-<div class="section" id="a-look-at-lotka-s-orginal-article">
-<h2>A look at Lotka’s orginal article<a class="headerlink" href="#a-look-at-lotka-s-orginal-article" title="Permalink to this heading"></a></h2>
-<p>To find the exact shape of this rotation, we can use a trick that Lotka
-described in an article he wrote in 1920. By dividing the rabbit equation by the fox equation he got</p>
-<div class="math notranslate nohighlight">
-\[\frac{dR}{dF} = \frac{aR -bRF}{cRF - d F}\]</div>
-<p>We can then rearrange this equation to get</p>
-<div class="math notranslate nohighlight">
-\[\left(c -d/R \right) dR = \left(a/F -b \right) dF\]</div>
-<p>Integrating both sides ofthis equation we get</p>
-<div class="math notranslate nohighlight">
-\[cR -d\log(R) = a \log(F) - b F + C\]</div>
-<p>where <span class="math notranslate nohighlight">\(C\)</span>  is the constant of integration. This last equation tells us a relationship that
-must always hold between rabbits and foxes. To understand what the relationship implies,
-imagine  the equation above was simply <span class="math notranslate nohighlight">\(Y+X=C\)</span>  instead. This would imply the total number of
-rabbits and foxes is equal to C=10. So, if <span class="math notranslate nohighlight">\(C=10\)</span> then we could have <span class="math notranslate nohighlight">\(Y=3\)</span> foxes and <span class="math notranslate nohighlight">\(X=7\)</span>
-rabbits (because 3+7=10),
-or 6 foxes and 4 rabbits (because 6+4=10), but we couldn’t have <span class="math notranslate nohighlight">\(Y=6\)</span> foxes and <span class="math notranslate nohighlight">\(X=7\)</span> rabbits (because 6+7≠10).
-In our case, the relationship in the equation is more complicated, involving logarithms, but the idea is the
-same: it says that for any particular value of C all values of  X and Y must obey this equation.
-Imagine for example, we started with X=4 rabbits and Y=6 foxes. This gives C=</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.138 seconds)</p>
+<img src="../../_images/sphx_glr_plot_cts2D_004.png" srcset="../../_images/sphx_glr_plot_cts2D_004.png" alt="plot cts2D" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  3.975 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson2-plot-cts2d-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/2eeea368b249021cc379de5c3423e3e6/plot_cts2D.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cts2D.py</span></code></a></p>

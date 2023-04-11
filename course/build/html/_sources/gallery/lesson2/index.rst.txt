@@ -17,7 +17,7 @@ From the book
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip=" **What we will learn:** How to write differential equation models to show the rate of change o...">
+    <div class="sphx-glr-thumbcontainer" tooltip="Building the model ------------------">
 
 .. only:: html
 
@@ -34,6 +34,40 @@ From the book
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Example script with invalid Python syntax ">
+
+.. only:: html
+
+  .. image:: /gallery/lesson2/images/thumb/sphx_glr_plot_SEIR_thumb.png
+    :alt: SyntaxError
+
+  :ref:`sphx_glr_gallery_lesson2_plot_SEIR.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">SyntaxError</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="and the rate of change of infectives is ">
+
+.. only:: html
+
+  .. image:: /gallery/lesson2/images/thumb/sphx_glr_plot_epidemic_thumb.png
+    :alt: The SIR model
+
+  :ref:`sphx_glr_gallery_lesson2_plot_epidemic.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The SIR model</div>
+    </div>
+
+
+.. raw:: html
+
     </div>
 
 
@@ -41,4 +75,6 @@ From the book
    :hidden:
 
    /gallery/lesson2/plot_cts2D
+   /gallery/lesson2/plot_SEIR
+   /gallery/lesson2/plot_epidemic
 

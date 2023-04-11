@@ -165,9 +165,8 @@ plt.show()
 # Sensitivity to initial conditions
 # ---------------------------------
 #
-# In Richard chocolate cake story we 
+# For the case where :math:`b=3.9` lets look what happens as we iterate the map.
 # 
-
 
 n=7
 b=3.9
@@ -179,7 +178,7 @@ print(logisticmap(0.11,b,n))
 
 ##############################################################################
 #
-# And now let's make the difference only 0.001
+# Now let's make the difference only 0.001 and plot the change over time.
 #
 n=30
 b=3.9
@@ -189,3 +188,9 @@ ax.plot(logisticmap(0.1000,b,n), color='black')
 ax.plot(logisticmap(0.1001,b,n), color='black',linestyle=':')
 formatFigure(ax,n)
 plt.show()
+
+##############################################################################
+#
+# It is this sensitivity to initial conditions which characterises choas. If we take
+# two nearby points then (in almost all cases) they diverge after a small number of iteractions.
+#

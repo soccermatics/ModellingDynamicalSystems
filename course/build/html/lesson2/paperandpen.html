@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>&lt;no title&gt; &mdash; Modelling Complex Systems  documentation</title>
+  <title>Uppgifter (på svenska) &mdash; Modelling Complex Systems  documentation</title>
       <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../_static/css/custom.css" type="text/css" />
@@ -20,6 +20,8 @@
         <script src="../_static/underscore.js"></script>
         <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
+        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" /> 
@@ -72,7 +74,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>&lt;no title&gt;</li>
+      <li>Uppgifter (på svenska)</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../_sources/lesson2/paperandpen.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -82,7 +84,89 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  
+  <div class="section" id="uppgifter-pa-svenska">
+<h1>Uppgifter (på svenska)<a class="headerlink" href="#uppgifter-pa-svenska" title="Permalink to this heading"></a></h1>
+<ol class="arabic simple">
+<li><p>Givet differentialekvationen</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\ddot{x} - (0.1 - \frac{10}{3} \dot{x}^2 ) \dot{x} + x + x^2 = 0\]</div>
+<p>Inför tillståndsvariablerna <span class="math notranslate nohighlight">\(x_1 = x\)</span> och <span class="math notranslate nohighlight">\(x_2 = \dot{x}\)</span>,
+och skriv systemet på tillståndsform. Bestäm de stationära punkterna,
+linjärisera tillståndsmodellen kring dessa och undersök de stationära
+punkternas karaktär.</p>
+<ol class="arabic simple">
+<li><p>En variant av Lotka-Voltera modellen är</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\frac{dx}{dt} &amp; = &amp; f(x,y) = bx-xy - ax^2  \\
+\frac{dy}{dt} &amp; = &amp; g(x,y) =xy-dy
+\end{aligned}\end{split}\]</div>
+<p>Skriv fasportraiter för modellerna (det finns minst två olika ’typ’ av
+fasportrait), hitta jämviktspunkter och bestäm stabilitet.</p>
+<ol class="arabic simple">
+<li><p>Undersök SIRS modellen:</p></li>
+</ol>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\frac{dS}{dt} &amp; = - \beta S I + \alpha R\\
+\frac{dI}{dt} &amp; = \beta S I  -  \gamma I \\
+\frac{dR}{dt} &amp; =  \gamma I - \alpha R
+\end{aligned}\end{split}\]</div>
+<p>Rita en fasporträtt för modellen för fallet <span class="math notranslate nohighlight">\(\beta&gt;\gamma\)</span>.
+Bestäm ’nullclines’ för modellen. Använd <span class="math notranslate nohighlight">\(R=1-S-I\)</span> för att
+substituera bort <span class="math notranslate nohighlight">\(R\)</span> i modellen ovan.
+Hitta jämviktspunkten för systemet. Anta att <span class="math notranslate nohighlight">\(\beta=1/5\)</span> och
+<span class="math notranslate nohighlight">\(\gamma =1/10\)</span>. Visa att (oavsett värdet för <span class="math notranslate nohighlight">\(\alpha\)</span>)
+jämviktspunkten är asymptotiskt stabil.</p>
+<p><strong>Extra utmaning :</strong> (bara om du tycker att det intressant) Ange villkor
+för att jämviktspunkten är en stabil spiral.</p>
+</div></blockquote>
+<ol class="arabic simple">
+<li><p>Betrakta systemet</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\begin{split}\dot{x} = \left(
+\begin{array}{c}
+-x_1^3 + u \\ x_1
+\end{array} \right)\end{split}\]</div>
+<div class="line-block">
+<div class="line">Skissa fasplanet för <span class="math notranslate nohighlight">\(u = 0\)</span>.</div>
+</div>
+<p>#. I processlabben stötte ni på dubbeltankprocessen. I princip kan ett
+system av olinjära differentialekvationer som beskriver vätskehöjderna i
+tankarna skrivas som</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{aligned}
+\dot{h_1}(t)&amp;=-\frac{a}{A}\sqrt{2 g h_1(t)}+\frac{K_P}{A}u(t)\\
+\dot{h_2}(t)&amp;=\frac{a}{A}\sqrt{2 g h_1(t)}-\frac{a}{A}\sqrt{2 g h_2(t)}
+\end{aligned}\end{split}\]</div>
+<p>där <span class="math notranslate nohighlight">\(h_1\)</span> är vätskehöjden i övre tanken, <span class="math notranslate nohighlight">\(h_2\)</span> är
+vätskehöjden i undre tanken, <span class="math notranslate nohighlight">\(u(t)\)</span> är spänningen på den lilla
+motor som pumpar vatten till övre tanken. Övriga variabler är
+konstanter, <span class="math notranslate nohighlight">\(a/A\)</span> är kvoten mellan bottenhålets area och tankens
+tvärsnittsarea (som vi antar vara samma för båda tankarna),
+<span class="math notranslate nohighlight">\(K_P/A\)</span> [cm/s/V] är förhållandet mellan en motorkonstant och
+tankarean, och <span class="math notranslate nohighlight">\(g\)</span> är tyngdaccelerationen <span class="math notranslate nohighlight">\(981\)</span>
+[cm/s<span class="math notranslate nohighlight">\(^2\)</span>]. I ett lab-experiment har vi erhållit
+<span class="math notranslate nohighlight">\(a/A\)</span>=0.015 och <span class="math notranslate nohighlight">\(K_P/A\)</span>=0.125. Sätter man in dessa
+värden i modellen ovan får man:</p>
+<div class="math notranslate nohighlight">
+\[ \begin{align}\begin{aligned}\begin{split}\begin{aligned}
+\dot{h_1}(t)&amp;=-0.06644\sqrt{h_1(t)}+0.125u(t)\\
+\dot{h_2}(t)&amp;=0.0664\sqrt{h_1(t)}-0.0664\sqrt{h_2(t)}
+\end{aligned}\end{split}\\ *  Antag nu att de tillstånd vi väljer är vätskehöjderna i respektive
+ tank. Tag fram en linjär modell som beskriver systemet (eg avvikelsen
+ från jmv.punkten :math:`x-x_0`) i ett område runt den stationära
+ punkt som fås då insignalen u(t) är konstant 2 V, dvs
+ :math:`u=u_0=2`.\\ * Antag nu att den utsignal vi vill studera är vätskenivåns avvikelse
+ från jämviktsläget i den undre tanken (:math:`y-y_0`). Tag fram
+ överföringsfunktionen från insignalens avvikelse från jämviktspunkten
+ (:math:`u-u_0`) till :math:`y-y_0`. Är systemet stabilt?\end{aligned}\end{align} \]</div>
+</div>
+
 
            </div>
           </div>

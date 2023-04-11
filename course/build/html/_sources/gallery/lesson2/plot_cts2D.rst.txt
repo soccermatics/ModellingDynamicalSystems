@@ -23,39 +23,11 @@
 Rabbits and foxes
 =================
 
+Building the model
+------------------
 
-**What we will learn:** How to write differential equation models to show the rate of change of
-populatins of predators and prey. We will simulate the model using Python. Then we draw a phase plane 
-for the model.
-
-**Watch this first:** `Differential equations <https://www.khanacademy.org/math/differential-equations>`_
-
-Differential equations
-----------------------
-
-In the book, I write Lotka's equations in the form of chemical reactions, 
-e.g. 
-
-.. math::
-   
-   \mbox{F} +  \mbox{R} \rightarrow 2 \mbox{F} 
-
-This means that an F and R together becomes two F's. Parker expalins as follows,
-
-IMAGE FROM BOOK HERE
-
-While in Leipzig, A. J. Lotka learnt how chemical reactions can be used to 
-specify the rate of change of populations, i.e. in terms of the derivates 
-above, using an approach, known as the law of mass action. 
-The idea is to think about the rate at which these chemical reactions take place. 
-For the first reaction 
-
-.. math::
-   
-   \mbox{R} \xrightarrow{a} 2 \mbox{R} 
-
-We can think of :math:`a` as being the rate of reproduction of the rabbits, 
-how many baby rabbits an adult rabbit has per day. So, the rabbits grow 
+Let the constant :math:`a` as being the rate of reproduction of the rabbits: 
+how many baby rabbits an adult rabbit has per month. So, the rabbits grow 
 according to 
 
 .. math::
@@ -65,56 +37,15 @@ according to
    
 This equation denotes the rate of change of :math:`R` over time. 
 the top part of the fraction :math:`dR` denotes the change in rabbits, :math:`R`, 
-and the bottom part, :math:`dt`, denotes the change in time, :math:`t`. 
+and the bottom part, :math:`dt`, denotes the change in time, :math:`t`. The 
+rabbits grow proportionally to the number of rabbits. 
 
-This type of equation, known as a differential equation can appear a bit strange 
-the first rime we encounter it. When we first meet differntiation in school
-we write, for example,
-
-.. math::
-   :label: timeint
-
-   R(t) = \frac{1}{2} a t^2
-
-
-then take the derivative to get 
-
-.. math::
-   :label: timegrow
- 
-   \frac{dR}{dt} = a t
-
-  
-This is also a differential equation. It says that the rate of change of :math:`R` over time
-is proportional to time. The modelling difference between equation :eq:`timegrow` and 
-:eq:`rabbitgrow` is that the former says that rabbits grow proportionally to time, while
-the latter says that rabbits grow proportionally to the number of rabbits. In the case that
-rabbits grow in proportion to time, then we say that :eq:`timeint` is the solution to 
-equation :eq:`timegrow` since it tells us how many rabbits there 
-will be at any point in time. I think this is where differential equations can be a bit
-confusing, because in school we are usually given :eq:`timeint` and asked to find :eq:`timegrow`. 
-For most differential equations it is the other way round. We are given equation :eq:`rabbitgrow` 
-and asked to find the the number of rabbits :math:`R` as a function of time. 
-
-We aren't going to solve these equations yet. First we need to have the equations for foxes. In chemical 
-reaction form these are,
-
-.. math::
-
-      \mbox{F} +  \mbox{R} \xrightarrow{b}  2 \mbox{F} 
-
-for foxes eating rabbits and
-
-.. math::
-
-      \mbox{F}   \xrightarrow{d}  \mbox{D} 
-   
-for foxes dying. Converted to differential equations, the rate of change for rabbits becomes
+Let's add a term to describe how foxes eat rabbits. The rate of change for rabbits now becomes
 
 .. math::
    :label: rabbits
  
-   \frac{dR}{dt} = \underbrace{a R}_{\mbox{R} \xrightarrow{a} 2 \mbox{R}} - \underbrace{b R F}_{\mbox{F} + \mbox{R} \xrightarrow{b} 2 \mbox{F}}
+   \frac{dR}{dt} = a R - b R F
 
 Similarly, we can write the rate of change of foxes as 
 
@@ -127,26 +58,19 @@ Notice that we have a different rate parameter for the death of rabbits (:math:`
 than for the birth of foxes (:math:`c`). This is because
 it takes more than one rabbit to feed a fox and we set the parameters so that :math:`c<b`.
 
-It may seem strange to treat rabbits and foxes as chemicals.  
-As we all know, two rabbits are needed to produce baby rabbits and when a fox eats a rabbit, 
-it doesn’t simply transform it directly in to a new fox, as the chemical equation suggests. 
-Also, in the description above, the grass is not depleted: there is no chemical equation 
-describing how grass is transformed to rabbit poop. But the point of a mathematical model 
-like this is not to be entirely realistic. Rather, it tries to capture the essence of the problem. 
+A mathematical model like this is not to be entirely realistic. Rather, it tries to capture the essence of the problem. 
 We want to imagine a big grassy meadow, where the more rabbits there are, the faster the rabbit 
 population grows and the more foxes there are the faster the rabbits are eaten. We will try to 
 understand this abstract problem first, before we make any claims about what happens to real 
 rabbits and real foxes. 
 
 
-
-
 Simulating the model
 --------------------
 
-In this section we use Python to run a numerical simulation of the model.
+We can use Python to run a numerical simulation of the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-142
+.. GENERATED FROM PYTHON SOURCE LINES 55-66
 
 .. code-block:: default
 
@@ -168,12 +92,12 @@ In this section we use Python to run a numerical simulation of the model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 143-145
+.. GENERATED FROM PYTHON SOURCE LINES 67-69
 
 We start by defining the model. This code creates a function 
 which we can use to simulate differential equations :eq:`rabbits` and :eq:`foxes`.
 
-.. GENERATED FROM PYTHON SOURCE LINES 145-153
+.. GENERATED FROM PYTHON SOURCE LINES 69-77
 
 .. code-block:: default
 
@@ -192,12 +116,12 @@ which we can use to simulate differential equations :eq:`rabbits` and :eq:`foxes
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 154-156
+.. GENERATED FROM PYTHON SOURCE LINES 78-80
 
 Next we define the parameter values. You can change these to see how
 changes to the paramaters leads to changes in the outcome of the model. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 156-163
+.. GENERATED FROM PYTHON SOURCE LINES 80-87
 
 .. code-block:: default
 
@@ -215,11 +139,11 @@ changes to the paramaters leads to changes in the outcome of the model.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 164-165
+.. GENERATED FROM PYTHON SOURCE LINES 88-89
 
 Now we solve the equations numerically
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-185
+.. GENERATED FROM PYTHON SOURCE LINES 89-109
 
 .. code-block:: default
 
@@ -255,7 +179,7 @@ Now we solve the equations numerically
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 186-198
+.. GENERATED FROM PYTHON SOURCE LINES 110-122
 
 First the rabbit populations grow, because there are only two foxes.
 But this leads to an increase in foxes. Once the population of foxes is sufficiently
@@ -270,12 +194,9 @@ In the figure above, we show how foxes and rabbits change over time.
 We can also plot how they change relative to each other (a so called phase plane). 
 For the numerical simulations we do this as follows:
 
-.. GENERATED FROM PYTHON SOURCE LINES 198-218
+.. GENERATED FROM PYTHON SOURCE LINES 122-139
 
 .. code-block:: default
-
-
-
 
 
     def plotPhasePlane(ax,R,F):
@@ -306,18 +227,13 @@ For the numerical simulations we do this as follows:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 219-252
+.. GENERATED FROM PYTHON SOURCE LINES 140-168
 
 Finding the equilibrium
 -----------------------
-In order to better understand this cycle, in the book, 
-Parker first looked at 
-the equilibria where the rate at which rabbits are born equals the rate 
-at which they die. 
-
-BOOK TEXT HERE
-
-We can find the rabbit equilibtirum by solving
+In order to better understand this cycle we look at
+the equilibria (the steady states) where the rate at which rabbits are born equals the rate 
+at which they die. We can find the rabbit equilibtirum by solving
 
 .. math::
 
@@ -342,7 +258,7 @@ foxes grow after eating rabbits).
 We can now plot these equilibrium on the phase plane
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 253-261
+.. GENERATED FROM PYTHON SOURCE LINES 169-177
 
 .. code-block:: default
 
@@ -366,13 +282,13 @@ We can now plot these equilibrium on the phase plane
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 262-265
+.. GENERATED FROM PYTHON SOURCE LINES 178-181
 
-Parker went on to draw arrows to indicate the direction 
-of change. We do this below by evaluating :math:`dR/dt` and :math:`dF/dt`
-for different values and plotting them.
+We can draw arrows to indicate the direction of change. To
+do this, we evaluate :math:`dR/dt` and :math:`dF/dt`
+for different values and plot them.
 
-.. GENERATED FROM PYTHON SOURCE LINES 265-283
+.. GENERATED FROM PYTHON SOURCE LINES 181-200
 
 .. code-block:: default
 
@@ -397,6 +313,7 @@ for different values and plotting them.
 
 
 
+
 .. image-sg:: /gallery/lesson2/images/sphx_glr_plot_cts2D_004.png
    :alt: plot cts2D
    :srcset: /gallery/lesson2/images/sphx_glr_plot_cts2D_004.png
@@ -406,43 +323,10 @@ for different values and plotting them.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 284-314
-
-A look at Lotka's orginal article
-----------------------------------
-To find the exact shape of this rotation, we can use a trick that Lotka 
-described in an article he wrote in 1920. By dividing the rabbit equation by the fox equation he got 
-
-.. math::
-
-   \frac{dR}{dF} = \frac{aR -bRF}{cRF - d F}  
-
-We can then rearrange this equation to get 
-
-.. math::
-
-   \left(c -d/R \right) dR = \left(a/F -b \right) dF 
-
-Integrating both sides ofthis equation we get 
-
-.. math::
-
-   cR -d\log(R) = a \log(F) - b F + C
-
-where :math:`C`  is the constant of integration. This last equation tells us a relationship that 
-must always hold between rabbits and foxes. To understand what the relationship implies, 
-imagine  the equation above was simply :math:`Y+X=C`  instead. This would imply the total number of 
-rabbits and foxes is equal to C=10. So, if :math:`C=10` then we could have :math:`Y=3` foxes and :math:`X=7` 
-rabbits (because 3+7=10), 
-or 6 foxes and 4 rabbits (because 6+4=10), but we couldn’t have :math:`Y=6` foxes and :math:`X=7` rabbits (because 6+7≠10). 
-In our case, the relationship in the equation is more complicated, involving logarithms, but the idea is the 
-same: it says that for any particular value of C all values of  X and Y must obey this equation.  
-Imagine for example, we started with X=4 rabbits and Y=6 foxes. This gives C=
-
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.138 seconds)
+   **Total running time of the script:** ( 0 minutes  3.975 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson2_plot_cts2D.py:

@@ -292,13 +292,12 @@ Cobweb diagrams
 Sensitivity to initial conditions
 ---------------------------------
 
-In Richard chocolate cake story we 
+For the case where :math:`b=3.9` lets look what happens as we iterate the map.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-180
+.. GENERATED FROM PYTHON SOURCE LINES 170-179
 
 .. code-block:: default
-
 
 
     n=7
@@ -327,12 +326,12 @@ In Richard chocolate cake story we
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 181-183
+.. GENERATED FROM PYTHON SOURCE LINES 180-182
 
-And now let's make the difference only 0.001
+Now let's make the difference only 0.001 and plot the change over time.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 184-191
+.. GENERATED FROM PYTHON SOURCE LINES 183-192
 
 .. code-block:: default
 
@@ -346,6 +345,8 @@ And now let's make the difference only 0.001
     plt.show()
 
 
+
+
 .. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
    :alt: plot discrete1D
    :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
@@ -355,10 +356,15 @@ And now let's make the difference only 0.001
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 193-195
+
+It is this sensitivity to initial conditions which characterises choas. If we take
+two nearby points then (in almost all cases) they diverge after a small number of iteractions.
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.451 seconds)
+   **Total running time of the script:** ( 0 minutes  0.629 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson3_plot_discrete1D.py:

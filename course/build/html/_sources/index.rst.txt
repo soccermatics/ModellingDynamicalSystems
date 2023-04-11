@@ -17,7 +17,9 @@ Contents
    :caption: Ecology and epidemiology
 
    gallery/lesson2/plot_cts2D
-
+   gallery/lesson2/plot_epidemic
+   gallery/lesson2/plot_SEIR
+   lesson2/paperandpen.rst
 
 .. toctree::
    :maxdepth: 1

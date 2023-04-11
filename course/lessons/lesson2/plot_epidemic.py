@@ -4,19 +4,19 @@
 The SIR model
 =============
   
-Inthe SIR model, the rate of change of susceptible individuals is
+In the SIR model, the rate of change of susceptible individuals is
 
 .. math::
    :label: susc
  
-   \\frac{dS}{dt} = \\underbrace{-b S I }_{\mbox{I} + \mbox{S} \\xrightarrow{b} 2 \mbox{I}}
+   \\frac{dS}{dt} = -\beta S I 
 
 and the rate of change of infectives is 
 
 .. math::
    :label: infect
  
-   \\frac{dI}{dt} = \\underbrace{b S I }_{\mbox{I} + \mbox{S} \\xrightarrow{b} 2 \mbox{I}} - \\underbrace{c I }_{\mbox{I} \\xrightarrow{c} \mbox{R}} 
+   \\frac{dI}{dt} = \beta S I - \gamma I
 
 The constant :math:`b` is the rate of contact between people and :math:`c` is the rate of recovery.
 We can also write down an equation for recovery as follows,
@@ -24,7 +24,7 @@ We can also write down an equation for recovery as follows,
 .. math::
    :label: recover
  
-   \\frac{dR}{dt} = \\underbrace{c I }_{\mbox{I} \\xrightarrow{c} \mbox{R}} 
+   \\frac{dR}{dt} = \gamma I
 
 In this model :math:`S`, :math:`I` and :math:`R` are proportions of the population. Summing them up gives :math:`S+I+R=1`, since 
 everyone in the popultaion is either susceptible, infective or recovered.
@@ -51,15 +51,14 @@ from scipy import integrate
 # Investigate yourself what happens when :math:`b=1/3, 1/6, 1/10`.
 
 # Parameter values
-b = 1/2
-c = 1/7
+beta = 1/2
+gamma = 1/7
 
 # Differential equation
 def dXdt(X, t=0):
-    # Growth rate of fox and rabbit populations.
-    return np.array([  - b*X[0]*X[1] ,              #Susceptible X[0] is S
-                      b*X[0]*X[1]   - c*X[1],       #Infectives X[1] is I
-                      c*X[1]])                      #Recovered X[2] is R
+    return np.array([  - beta*X[0]*X[1] ,              #Susceptible X[0] is S
+                      beta*X[0]*X[1]   - gamma*X[1],       #Infectives X[1] is I
+                      gamma*X[1]])                      #Recovered X[2] is R
 
 
 ##############################################################################
@@ -67,21 +66,21 @@ def dXdt(X, t=0):
 
 def plotEpidemicOverTime(ax,S,I,R):
 
-    ax.plot(t, S, '-',color='k', label='Suceptible (S)')
-    ax.plot(t, I  , '--',color='k', label='Infectives (I)')
-    ax.plot(t, R  , '--',color='k', label='Recovered (R)')
+    ax.plot(t, S, '--',color='k', label='Suceptible (S)')
+    ax.plot(t, I  , '-',color='k', label='Infectives (I)')
+    ax.plot(t, R  , ':',color='k', label='Recovered (R)')
     ax.legend(loc='best')
     ax.set_xlabel('Time: t')
     ax.set_ylabel('Population')
     ax.spines['top'].set_visible(False)
     ax.spines['right'].set_visible(False)
-    ax.set_xticks(np.arange(0,20,step=2))
+    ax.set_xticks(np.arange(0,100,step=10))
     ax.set_yticks(np.arange(0,1.01,step=0.5))
-    ax.set_xlim(0,20)
+    ax.set_xlim(0,100)
     ax.set_ylim(0,1) 
     
 
-t = np.linspace(0, 20,  1000)               # time
+t = np.linspace(0, 100,  1000)               # time
 X0 = np.array([0.9999, 0.0001,0.0000])      # initially 99.99% are uninfected
 X = integrate.odeint(dXdt, X0, t)           # uses a Python package to simulate the interactions
 S, I, R = X.T
@@ -99,7 +98,7 @@ plt.show()
 #   \\frac{dI}{dt} = b S I - c I =0  
 #
 # This occurs either when :math:`I=0` (no-one has the disease) or 
-# when :math:`S=c/b`. We can now plot these equilibrium on the phase plane
+# when :math:`S=\gamma/\beta`. We can now plot these equilibrium on the phase plane
 # 
 
 def plotPhasePlane(ax,S,I):
@@ -125,7 +124,7 @@ def drawArrows(ax,dXdt):
     ax.quiver(X, Y, dX, dY, pivot='mid')
 
 fig,ax=plt.subplots(num=1)
-ax.plot([c/b,c/b],[-100,100],linestyle=':',color='k')
+ax.plot([gamma/beta,gamma/beta],[-100,100],linestyle=':',color='k')
 plotPhasePlane(ax,S,I)
 drawArrows(ax,dXdt)
 plt.show()
