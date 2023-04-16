@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SyntaxError &mdash; Modelling Complex Systems  documentation</title>
+  <title>The SEIR model &mdash; Modelling Complex Systems  documentation</title>
       <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
       <link rel="stylesheet" href="../../_static/css/custom.css" type="text/css" />
@@ -57,7 +57,13 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="plot_cts2D.html">Rabbits and foxes</a></li>
 <li class="toctree-l1"><a class="reference internal" href="plot_epidemic.html">The SIR model</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">SyntaxError</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">The SEIR model</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#simulating-the-model">Simulating the model</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#introducing-restrictions">Introducing restrictions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-help">Code help</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusions">Conclusions</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson2/paperandpen.html">Uppgifter (på svenska)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
@@ -79,7 +85,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>SyntaxError</li>
+      <li>The SEIR model</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/gallery/lesson2/plot_SEIR.rst.txt" rel="nofollow"> View page source</a>
       </li>
@@ -94,99 +100,151 @@
 <p>Click <a class="reference internal" href="#sphx-glr-download-gallery-lesson2-plot-seir-py"><span class="std std-ref">here</span></a>
 to download the full example code</p>
 </div>
-<div class="sphx-glr-example-title section" id="syntaxerror">
-<span id="sphx-glr-gallery-lesson2-plot-seir-py"></span><h1>SyntaxError<a class="headerlink" href="#syntaxerror" title="Permalink to this heading"></a></h1>
-<p>Example script with invalid Python syntax</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">.. _epidemic:</span>
-
-<span class="sd">The SEIR model</span>
-<span class="sd">=============</span>
-
-<span class="sd">In the SEIR model, there is an additional class for people exposed (but not yet infective). The equations</span>
-<span class="sd">are now,</span>
-
-<span class="sd">  .. math::</span>
-
-<span class="sd">     \begin{aligned}</span>
-<span class="sd">     \frac{dS}{dt} &amp; = - \beta S I \\</span>
-<span class="sd">     \frac{dE}{dt} &amp; = \beta S I - \delta E\\</span>
-<span class="sd">     \frac{dI}{dt} &amp; = \delta E -  \gamma I \\</span>
-<span class="sd">     \frac{dR}{dt} &amp; =  \gamma I</span>
-<span class="sd">     \end{aligned}</span>
-
-
-
-<span class="sd">  Assume that :math:`\gamma=1/7` and :math:`\beta=1/5`. Write code to draw a</span>
-<span class="sd">  graph of :math:`I(t)` as a function of time (:math:`t`) for the cases in which</span>
-<span class="sd">  (on average) a person is exposed for 1, 5 and respectively 9 days before they are infected.</span>
-<span class="sd">  Assume that :math:`S(0)=999/1000`, :math:`E(0)=0`</span>
-<span class="sd">  and :math:`I(0)=1/1000`.</span>
-<span class="sd">&quot;&quot;&quot;</span>
+<div class="sphx-glr-example-title section" id="the-seir-model">
+<span id="epidemic"></span><span id="sphx-glr-gallery-lesson2-plot-seir-py"></span><h1>The SEIR model<a class="headerlink" href="#the-seir-model" title="Permalink to this heading"></a></h1>
+<p>In the SEIR model, there is an additional class for people exposed (but not yet infective). The equations
+are now,</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\begin{aligned}
+    \frac{dS}{dt} &amp; = &amp; - \beta S I \
+    \frac{dE}{dt} &amp; = &amp; \beta S I - \delta E\
+    \frac{dI}{dt} &amp; = &amp; \delta E -  \gamma I \
+    \frac{dR}{dt} &amp; = &amp; \gamma I
+\end{aligned}\]</div>
+</div></blockquote>
+<div class="section" id="simulating-the-model">
+<h2>Simulating the model<a class="headerlink" href="#simulating-the-model" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Assume that <span class="math notranslate nohighlight">\(\gamma=1/7\)</span> and <span class="math notranslate nohighlight">\(\beta=1/5\)</span>. Write code to draw a
+graph of <span class="math notranslate nohighlight">\(I(t)\)</span> as a function of time (<span class="math notranslate nohighlight">\(t\)</span>) for the cases in which
+(on average) a person is exposed for 1, 5 and respectively 9 days before they are infected.
+Assume that <span class="math notranslate nohighlight">\(S(0)=999/1000\)</span>, <span class="math notranslate nohighlight">\(E(0)=0\)</span>
+and <span class="math notranslate nohighlight">\(I(0)=1/1000\)</span>.</p>
+</div></blockquote>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">from</span> <span class="nn">pylab</span> <span class="kn">import</span> <span class="n">rcParams</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span>
+<span class="n">rcParams</span><span class="p">[</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">12</span><span class="o">/</span><span class="mf">2.54</span><span class="p">,</span> <span class="mi">6</span><span class="o">/</span><span class="mf">2.54</span>
+<span class="n">matplotlib</span><span class="o">.</span><span class="n">font_manager</span><span class="o">.</span><span class="n">FontProperties</span><span class="p">(</span><span class="n">family</span><span class="o">=</span><span class="s1">&#39;Helvetica&#39;</span><span class="p">,</span><span class="n">size</span><span class="o">=</span><span class="mi">11</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">scipy</span> <span class="kn">import</span> <span class="n">integrate</span>
 
 <span class="c1"># Parameter values</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span>
 <span class="n">gamma</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">7</span>
-<span class="n">delta</span> <span class="o">=</span>
 
-<span class="c1"># Differential equation</span>
+<span class="n">timesteps</span><span class="o">=</span><span class="mi">400</span>
+
+<span class="c1"># Set up the equations here</span>
 <span class="k">def</span> <span class="nf">dXdt</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">t</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
-    <span class="c1"># Growth rate</span>
-    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>  <span class="p">])</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span>  <span class="o">-</span> <span class="n">beta</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="p">,</span>              <span class="c1">#Susceptible X[0] is S</span>
+                      <span class="n">beta</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>   <span class="o">-</span> <span class="n">delta</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span>    <span class="c1">#Exposed X[1] is I</span>
+                      <span class="n">delta</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>   <span class="o">-</span> <span class="n">gamma</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span>      <span class="c1">#Infectives X[2] is I</span>
+                      <span class="n">gamma</span><span class="o">*</span><span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">]])</span>                      <span class="c1">#Recovered X[3] is R</span>
 
 
+<span class="k">def</span> <span class="nf">plotEpidemicOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">):</span>
 
-<span class="k">def</span> <span class="nf">plotEpidemicOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">):</span>
-
-    <span class="c1">#Add code here.</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Suceptible (S)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">E</span>  <span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Exposed (E)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">I</span>  <span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Infectives (I)&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">R</span>  <span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span><span class="n">color</span><span class="o">=</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Recovered (R)&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;best&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Time: t&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Population&#39;</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;top&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">spines</span><span class="p">[</span><span class="s1">&#39;right&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">set_visible</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">10</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">timesteps</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">50</span><span class="p">))</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mf">1.01</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mf">0.5</span><span class="p">))</span>
-    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">20</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="n">timesteps</span><span class="p">)</span>
     <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 
+<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">)</span>               <span class="c1"># time</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.999</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">])</span>      <span class="c1"># initially 99.9% are uninfected</span>
 
-<span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">)</span>               <span class="c1"># time</span>
-<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.9999</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">])</span>      <span class="c1"># initially 99.99% are uninfected</span>
-<span class="n">X</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>           <span class="c1"># uses a Python package to simulate the interactions</span>
-<span class="n">S</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
-<span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">plotEpidemicOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">)</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+<span class="c1"># Set delta here</span>
+<span class="k">for</span> <span class="n">delta</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">5</span><span class="p">,</span><span class="mi">1</span><span class="o">/</span><span class="mi">9</span><span class="p">]):</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span> <span class="c1"># uses a Python package to simulate the interactions</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plotEpidemicOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-pytb notranslate"><div class="highlight"><pre><span></span><span class="gt">Traceback (most recent call last):</span>
-  File <span class="nb">&quot;/Users/davsu428/Documents/GitHub/ModellingComplexSystems/course/lessons/lesson2/plot_SEIR.py&quot;</span>, line <span class="m">31</span>
-    <span class="n">delta</span> <span class="o">=</span>
-           <span class="p p-Marker">^</span>
-<span class="gr">SyntaxError</span>: <span class="n">invalid syntax</span>
+<img src="../../_images/sphx_glr_plot_SEIR_001.png" srcset="../../_images/sphx_glr_plot_SEIR_001.png" alt="plot SEIR" class = "sphx-glr-single-img"/><p>Does <span class="math notranslate nohighlight">\(\delta\)</span> have a large effect on the final number of people infected?
+Add a text box and explain your answer below.</p>
+</div>
+<div class="section" id="introducing-restrictions">
+<h2>Introducing restrictions<a class="headerlink" href="#introducing-restrictions" title="Permalink to this heading"></a></h2>
+<p>The helath authority decide to introduce restrictions when a threshold <span class="math notranslate nohighlight">\(I_T\)</span>beta=1/10` and without them <span class="math notranslate nohighlight">\(\beta=1/5\)</span>. The other paramters are
+<span class="math notranslate nohighlight">\(\gamma=1/7\)</span> and <span class="math notranslate nohighlight">\(\delta=1/3\)</span>.
+Investigate the consequences of that decision for various values of <span class="math notranslate nohighlight">\(\delta\)</span>, i.e.
+simulate the spread,with <span class="math notranslate nohighlight">\(\beta=1/5\)</span> until <span class="math notranslate nohighlight">\(I(t)=I_T\)</span> and then with <span class="math notranslate nohighlight">\(\beta=1/10\)</span>.
+Make plots of <span class="math notranslate nohighlight">\(R(t)\)</span> for different <span class="math notranslate nohighlight">\(T\)</span> values</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">t1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">timesteps</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">)</span>               <span class="c1"># time</span>
+<span class="n">X0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.999</span><span class="p">,</span> <span class="mf">0.000</span><span class="p">,</span> <span class="mf">0.001</span><span class="p">,</span><span class="mf">0.0000</span><span class="p">])</span>      <span class="c1"># initially 99.9% are uninfected</span>
+
+<span class="c1"># Set delta here</span>
+<span class="k">for</span> <span class="n">IT</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.005</span><span class="p">,</span><span class="mf">0.01</span><span class="p">,</span><span class="mf">0.02</span><span class="p">]):</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">5</span>
+    <span class="n">X1</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">X0</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span> <span class="c1"># uses a Python package to simulate the interactions</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">X1</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span><span class="o">&gt;=</span><span class="n">IT</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">onepercent</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">ind</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">New_X0</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[</span><span class="n">onepercent</span><span class="p">,:]</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">X1</span><span class="p">[:</span><span class="n">onepercent</span><span class="p">,:]</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">t1</span><span class="p">[:</span><span class="n">onepercent</span><span class="p">]</span>
+    <span class="n">t2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">t1</span><span class="p">[</span><span class="n">onepercent</span><span class="p">],</span> <span class="n">timesteps</span><span class="p">,</span>  <span class="mi">1000</span><span class="p">)</span>
+
+    <span class="n">beta</span> <span class="o">=</span> <span class="mi">1</span><span class="o">/</span><span class="mi">10</span>
+    <span class="n">X2</span> <span class="o">=</span> <span class="n">integrate</span><span class="o">.</span><span class="n">odeint</span><span class="p">(</span><span class="n">dXdt</span><span class="p">,</span> <span class="n">New_X0</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span> <span class="c1"># uses a Python package to simulate the interactions</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X</span><span class="p">,</span> <span class="n">X2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">t</span><span class="p">,</span> <span class="n">t2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+    <span class="n">S</span><span class="p">,</span> <span class="n">E</span><span class="p">,</span> <span class="n">I</span><span class="p">,</span> <span class="n">R</span> <span class="o">=</span> <span class="n">X</span><span class="o">.</span><span class="n">T</span>
+    <span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">num</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">plotEpidemicOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span><span class="n">S</span><span class="p">,</span><span class="n">E</span><span class="p">,</span><span class="n">I</span><span class="p">,</span><span class="n">R</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
 </div>
-<p>Does <span class="math notranslate nohighlight">\(\delta\)</span> have a large effect on the final number of people infected?
-Explain your answer.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>| Hälsomyndigheten bestämmer att införa restriktioner först när 1% av
-  befolkning är infekterad. Med restriktioner är :math:`\beta=1/15` men
-  utan restriktioner är :math:`\beta=1/5`. Undersök konsekvenser av
-  detta beslut för olika värden på :math:`\delta`, dvs simulera
-  spridning först under antagandet att :math:`\beta=1/5` och när
-  :math:`I(0)=0.01` ändra smittsamheten till :math:`\beta=1/15`. Skissa
-  :math:`R(t)` för olika :math:`\delta`-värden och beskriv hur
-  :math:`\delta` påverkar utfallet.
-| **Tips:** Använd
-
-::
-
-   ind = find(I&gt;=0.01);
-   onepercent=ind(1);
-
-för att hitta tidpunkten, :math:`t`, då :math:`I(t)=0.01`.
+<img src="../../_images/sphx_glr_plot_SEIR_002.png" srcset="../../_images/sphx_glr_plot_SEIR_002.png" alt="plot SEIR" class = "sphx-glr-single-img"/></div>
+<div class="section" id="code-help">
+<h2>Code help<a class="headerlink" href="#code-help" title="Permalink to this heading"></a></h2>
+<p>The following command will help you find then <span class="math notranslate nohighlight">\(I(t) \geq 0.01\)</span></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">I</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">0.001</span><span class="p">,</span> <span class="mf">0.0025</span><span class="p">,</span> <span class="mf">0.005</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">,</span> <span class="mf">0.02</span><span class="p">,</span> <span class="mf">0.05</span><span class="p">])</span>
+<span class="n">ind</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span><span class="o">&gt;=</span><span class="mf">0.01</span><span class="p">)</span><span class="o">.</span><span class="n">nonzero</span><span class="p">()[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">onepercent</span><span class="o">=</span><span class="nb">int</span><span class="p">(</span><span class="n">ind</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Infectives became 1 percent at time </span><span class="si">%d</span><span class="s1">&#39;</span><span class="o">%</span> <span class="n">onepercent</span><span class="p">)</span>
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.037 seconds)</p>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Infectives became 1 percent at time 3
+</pre></div>
+</div>
+<p>The following code concatenates two arrays</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">X1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],[</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">],[</span><span class="mi">3</span><span class="p">,</span><span class="mi">6</span><span class="p">]])</span>
+<span class="n">X2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">],[</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">],[</span><span class="mi">5</span><span class="p">,</span><span class="mi">12</span><span class="p">]])</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">((</span><span class="n">X1</span><span class="p">,</span> <span class="n">X2</span><span class="p">),</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Concatinated matrix:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Concatinated matrix:
+
+[[ 1  2]
+ [ 2  3]
+ [ 3  6]
+ [ 3  8]
+ [ 4  9]
+ [ 5 12]]
+</pre></div>
+</div>
+</div>
+<div class="section" id="conclusions">
+<h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading"></a></h2>
+<p>Add a text box below and describe (in words) how <span class="math notranslate nohighlight">\(\delta\)</span> affects the outcome.</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.494 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson2-plot-seir-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/6169f809528871020105e20a4f4cdbb9/plot_SEIR.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_SEIR.py</span></code></a></p>
@@ -196,6 +254,7 @@ för att hitta tidpunkten, :math:`t`, då :math:`I(t)=0.01`.
 </div>
 </div>
 <p class="sphx-glr-signature"><a class="reference external" href="https://sphinx-gallery.github.io">Gallery generated by Sphinx-Gallery</a></p>
+</div>
 </div>
 
 

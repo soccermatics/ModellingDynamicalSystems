@@ -23,11 +23,13 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Chaos
+   :caption: Chaos and weather
 
    gallery/lesson3/plot_discrete1D
+   gallery/lesson3/plot_Ricker
+   lesson3/paperandpen.rst
 
 .. toctree::
    :maxdepth: 1
-   :caption: Stock market
+   :caption: Stock markets
 

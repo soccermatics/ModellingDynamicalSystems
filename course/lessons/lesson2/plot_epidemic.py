@@ -9,14 +9,14 @@ In the SIR model, the rate of change of susceptible individuals is
 .. math::
    :label: susc
  
-   \\frac{dS}{dt} = -\beta S I 
+   \\frac{dS}{dt} = -\\beta S I 
 
 and the rate of change of infectives is 
 
 .. math::
    :label: infect
  
-   \\frac{dI}{dt} = \beta S I - \gamma I
+   \\frac{dI}{dt} = \\beta S I - \gamma I
 
 The constant :math:`b` is the rate of contact between people and :math:`c` is the rate of recovery.
 We can also write down an equation for recovery as follows,
@@ -64,7 +64,7 @@ def dXdt(X, t=0):
 ##############################################################################
 # We solve the equations numerically and plot solution over time. 
 
-def plotEpidemicOverTime(ax,S,I,R):
+def plotEpidemicOverTime(ax,t,S,I,R):
 
     ax.plot(t, S, '--',color='k', label='Suceptible (S)')
     ax.plot(t, I  , '-',color='k', label='Infectives (I)')
@@ -85,7 +85,7 @@ X0 = np.array([0.9999, 0.0001,0.0000])      # initially 99.99% are uninfected
 X = integrate.odeint(dXdt, X0, t)           # uses a Python package to simulate the interactions
 S, I, R = X.T
 fig,ax=plt.subplots(num=1)
-plotEpidemicOverTime(ax,S,I,R)
+plotEpidemicOverTime(ax,t,S,I,R)
 plt.show()
 
 ##############################################################################

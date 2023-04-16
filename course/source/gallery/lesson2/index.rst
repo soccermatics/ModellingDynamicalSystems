@@ -34,18 +34,35 @@ From the book
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Example script with invalid Python syntax ">
+    <div class="sphx-glr-thumbcontainer" tooltip="  .. math::">
+
+.. only:: html
+
+  .. image:: /gallery/lesson2/images/thumb/sphx_glr_plot_SEIR_answers_thumb.png
+    :alt: The SEIR model
+
+  :ref:`sphx_glr_gallery_lesson2_plot_SEIR_answers.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The SEIR model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="  .. math::">
 
 .. only:: html
 
   .. image:: /gallery/lesson2/images/thumb/sphx_glr_plot_SEIR_thumb.png
-    :alt: SyntaxError
+    :alt: The SEIR model
 
   :ref:`sphx_glr_gallery_lesson2_plot_SEIR.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">SyntaxError</div>
+      <div class="sphx-glr-thumbnail-title">The SEIR model</div>
     </div>
 
 
@@ -75,6 +92,7 @@ From the book
    :hidden:
 
    /gallery/lesson2/plot_cts2D
+   /gallery/lesson2/plot_SEIR_answers
    /gallery/lesson2/plot_SEIR
    /gallery/lesson2/plot_epidemic
 

@@ -1,13 +1,12 @@
 Uppgifter (på svenska)
 ======================
 
-#. Undersöker följande replicator ekvationen
+#. Undersöker följande replicator ekvation
 
    .. math::
 
-      \begin{aligned}
-      \dot{x}(t) & = &  x(t) (1-x(t)) (1/4 - 1/2 x(t)) 
-     \label{repeqf}
+     \begin{aligned}
+      \dot{x}(t)  =   x(t) (1-x(t)) (1/4 - 1/2 x(t)) 
      \end{aligned}
 
    Hitta alla jämviktspunkter och använder linjärisering för att bestäm stabilitet. Har modellen dynamik som
@@ -56,7 +55,7 @@ Uppgifter (på svenska)
    .. math::
 
       \begin{aligned}
-        \frac{d}{dt}x(t) = f(x) = r x(t)(1- x(t)) + c - b \frac{x^3}{F^3 + x^3}
+        \frac{dx}{dt} = f(x) = r x(1- x) + c - b \frac{x^3}{F^3 + x^3}
       \end{aligned}
 
    De skatar parameter :math:`r`, :math:`b`, :math:`c` och :math:`F` och

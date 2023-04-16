@@ -24,7 +24,9 @@
         <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" /> 
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Logistic Map" href="../gallery/lesson3/plot_discrete1D.html" />
+    <link rel="prev" title="The SEIR model" href="../gallery/lesson2/plot_SEIR.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -52,8 +54,11 @@
 <li class="toctree-l1"><a class="reference internal" href="../lesson1/paperandpen.html">Uppgifter (på svenska)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Ecology and epidemiology</span></p>
-<ul>
+<ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../gallery/lesson2/plot_cts2D.html">Rabbits and foxes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson2/plot_epidemic.html">The SIR model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gallery/lesson2/plot_SEIR.html">The SEIR model</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Uppgifter (på svenska)</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
 <ul>
@@ -86,26 +91,24 @@
              
   <div class="section" id="uppgifter-pa-svenska">
 <h1>Uppgifter (på svenska)<a class="headerlink" href="#uppgifter-pa-svenska" title="Permalink to this heading"></a></h1>
-<ol class="arabic simple">
-<li><p>Givet differentialekvationen</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Givet differentialekvationen</p>
 <div class="math notranslate nohighlight">
 \[\ddot{x} - (0.1 - \frac{10}{3} \dot{x}^2 ) \dot{x} + x + x^2 = 0\]</div>
 <p>Inför tillståndsvariablerna <span class="math notranslate nohighlight">\(x_1 = x\)</span> och <span class="math notranslate nohighlight">\(x_2 = \dot{x}\)</span>,
 och skriv systemet på tillståndsform. Bestäm de stationära punkterna,
 linjärisera tillståndsmodellen kring dessa och undersök de stationära
 punkternas karaktär.</p>
-<ol class="arabic simple">
-<li><p>En variant av Lotka-Voltera modellen är</p></li>
-</ol>
+</li>
+<li><p>En variant av Lotka-Voltera modellen är</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\begin{aligned}
-\frac{dx}{dt} &amp; = &amp; f(x,y) = bx-xy - ax^2  \\
-\frac{dy}{dt} &amp; = &amp; g(x,y) =xy-dy
+   \frac{dx}{dt} &amp; = &amp; f(x,y) = bx-xy - ax^2  \\
+   \frac{dy}{dt} &amp; = &amp; g(x,y) =xy-dy
 \end{aligned}\end{split}\]</div>
 <p>Skriv fasportraiter för modellerna (det finns minst två olika ’typ’ av
 fasportrait), hitta jämviktspunkter och bestäm stabilitet.</p>
-<ol class="arabic simple">
+</li>
 <li><p>Undersök SIRS modellen:</p></li>
 </ol>
 <blockquote>
@@ -121,21 +124,18 @@ substituera bort <span class="math notranslate nohighlight">\(R\)</span> i model
 Hitta jämviktspunkten för systemet. Anta att <span class="math notranslate nohighlight">\(\beta=1/5\)</span> och
 <span class="math notranslate nohighlight">\(\gamma =1/10\)</span>. Visa att (oavsett värdet för <span class="math notranslate nohighlight">\(\alpha\)</span>)
 jämviktspunkten är asymptotiskt stabil.</p>
-<p><strong>Extra utmaning :</strong> (bara om du tycker att det intressant) Ange villkor
-för att jämviktspunkten är en stabil spiral.</p>
+<p><strong>Extra utmaning :</strong> Ange villkor för att jämviktspunkten är en stabil spiral.</p>
 </div></blockquote>
-<ol class="arabic simple">
-<li><p>Betrakta systemet</p></li>
-</ol>
+<ol class="arabic">
+<li><p>Betrakta systemet</p>
 <div class="math notranslate nohighlight">
 \[\begin{split}\dot{x} = \left(
-\begin{array}{c}
--x_1^3 + u \\ x_1
-\end{array} \right)\end{split}\]</div>
-<div class="line-block">
-<div class="line">Skissa fasplanet för <span class="math notranslate nohighlight">\(u = 0\)</span>.</div>
-</div>
-<p>#. I processlabben stötte ni på dubbeltankprocessen. I princip kan ett
+ \begin{array}{c}
+ -x_1^3 + u \\ x_1
+ \end{array} \right)\end{split}\]</div>
+<p>Skissa fasplanet för <span class="math notranslate nohighlight">\(u = 0\)</span>.</p>
+</li>
+<li><p>I processlabben stötte vi på dubbeltankprocessen. I princip kan ett
 system av olinjära differentialekvationer som beskriver vätskehöjderna i
 tankarna skrivas som</p>
 <div class="math notranslate nohighlight">
@@ -154,23 +154,38 @@ tankarean, och <span class="math notranslate nohighlight">\(g\)</span> är tyngd
 <span class="math notranslate nohighlight">\(a/A\)</span>=0.015 och <span class="math notranslate nohighlight">\(K_P/A\)</span>=0.125. Sätter man in dessa
 värden i modellen ovan får man:</p>
 <div class="math notranslate nohighlight">
-\[ \begin{align}\begin{aligned}\begin{split}\begin{aligned}
+\[\begin{split}\begin{aligned}
 \dot{h_1}(t)&amp;=-0.06644\sqrt{h_1(t)}+0.125u(t)\\
 \dot{h_2}(t)&amp;=0.0664\sqrt{h_1(t)}-0.0664\sqrt{h_2(t)}
-\end{aligned}\end{split}\\ *  Antag nu att de tillstånd vi väljer är vätskehöjderna i respektive
- tank. Tag fram en linjär modell som beskriver systemet (eg avvikelsen
- från jmv.punkten :math:`x-x_0`) i ett område runt den stationära
- punkt som fås då insignalen u(t) är konstant 2 V, dvs
- :math:`u=u_0=2`.\\ * Antag nu att den utsignal vi vill studera är vätskenivåns avvikelse
- från jämviktsläget i den undre tanken (:math:`y-y_0`). Tag fram
- överföringsfunktionen från insignalens avvikelse från jämviktspunkten
- (:math:`u-u_0`) till :math:`y-y_0`. Är systemet stabilt?\end{aligned}\end{align} \]</div>
+\end{aligned}\end{split}\]</div>
+<ul class="simple">
+<li><p>Antag nu att de tillstånd vi väljer är vätskehöjderna i respektive</p></li>
+</ul>
+<blockquote>
+<div><p>tank. Tag fram en linjär modell som beskriver systemet (eg avvikelsen
+från jmv.punkten <span class="math notranslate nohighlight">\(x-x_0\)</span>) i ett område runt den stationära
+punkt som fås då insignalen u(t) är konstant 2 V, dvs
+<span class="math notranslate nohighlight">\(u=u_0=2\)</span>.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>Antag nu att den utsignal vi vill studera är vätskenivåns avvikelse</p></li>
+</ul>
+<blockquote>
+<div><p>från jämviktsläget i den undre tanken (<span class="math notranslate nohighlight">\(y-y_0\)</span>). Tag fram
+överföringsfunktionen från insignalens avvikelse från jämviktspunkten
+(<span class="math notranslate nohighlight">\(u-u_0\)</span>) till <span class="math notranslate nohighlight">\(y-y_0\)</span>. Är systemet stabilt?</p>
+</div></blockquote>
+</li>
+</ol>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="../gallery/lesson2/plot_SEIR.html" class="btn btn-neutral float-left" title="The SEIR model" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../gallery/lesson3/plot_discrete1D.html" class="btn btn-neutral float-right" title="Logistic Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
 
   <hr/>
 
