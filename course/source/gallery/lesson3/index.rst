@@ -17,7 +17,7 @@ From the book
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="Logistic Map">
+    <div class="sphx-glr-thumbcontainer" tooltip="The model ---------">
 
 .. only:: html
 
@@ -34,6 +34,40 @@ From the book
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+
+.. only:: html
+
+  .. image:: /gallery/lesson3/images/thumb/sphx_glr_plot_Ricker_thumb.png
+    :alt: Ricker map
+
+  :ref:`sphx_glr_gallery_lesson3_plot_Ricker.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ricker map</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+
+.. only:: html
+
+  .. image:: /gallery/lesson3/images/thumb/sphx_glr_plot_Ricker_answers_thumb.png
+    :alt: Ricker map
+
+  :ref:`sphx_glr_gallery_lesson3_plot_Ricker_answers.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ricker map</div>
+    </div>
+
+
+.. raw:: html
+
     </div>
 
 
@@ -41,4 +75,6 @@ From the book
    :hidden:
 
    /gallery/lesson3/plot_discrete1D
+   /gallery/lesson3/plot_Ricker
+   /gallery/lesson3/plot_Ricker_answers
 

@@ -26,8 +26,16 @@ Contents
    :caption: Chaos
 
    gallery/lesson3/plot_discrete1D
+   gallery/lesson3/plot_Ricker
+   lesson3/paperandpen.rst
 
 .. toctree::
    :maxdepth: 1
-   :caption: Stock market
+   :caption: Randomness and Noise
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Socio-economic development
+
 

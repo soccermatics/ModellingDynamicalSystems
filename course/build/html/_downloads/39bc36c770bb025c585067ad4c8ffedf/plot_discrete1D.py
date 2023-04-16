@@ -5,27 +5,25 @@ Logistic Map
 ============
 
 
+
+The model
+---------
+
+The logistic map is a discrete model of growth and regulatory feedback. 
+It describes a variable :math:`x(k)` which changes over discrete times steps.
+The variable might be, for example, size of an insect population.  
+
+We write the model as 
+
+.. math::
+  
+  x(k+1)) = b x(k)(1-x(k))
+
+The parameter :math:`b` determines how much the insect population increases when 
+
+
 """
 
-import numpy as np
-
-##############################################################################
-# The model
-# ---------
-#
-# The logistic map is a discrete model of growth and regulatory feedback. 
-# It describes a variable :math:`x(k)` which changes over discrete times steps.
-# The variable might be, for example, size of an insect population.  
-#
-# We write the model as 
-#
-# .. math::
-#   
-#   x(k+1)) = b x(k)(1-x(k)/K)
-#
-# The parameter :math:`b` determines how much the insect population increases when 
-# 
-#
 
 import numpy as np
 import matplotlib.pyplot as plt
@@ -95,25 +93,45 @@ ax.plot(logisticmap(x0,2.5,n), color='black')
 formatFigure(ax,n)
 plt.show()
 
+
+##############################################################################
+# Then b= 3
+
 fig,ax=plt.subplots(num=1)
 ax.plot(logisticmap(x0,3,n), color='black')
 formatFigure(ax,n)
 plt.show()
+
+
+##############################################################################
+# Then b= 3.2
 
 fig,ax=plt.subplots(num=1)
 ax.plot(logisticmap(x0,3.2,n), color='black')
 formatFigure(ax,n)
 plt.show()
 
+
+##############################################################################
+# Then b= 3.5
+
 fig,ax=plt.subplots(num=1)
 ax.plot(logisticmap(x0,3.5,n), color='black')
 formatFigure(ax,n)
 plt.show()
 
+
+##############################################################################
+# Then b= 3.8
+
 fig,ax=plt.subplots(num=1)
 ax.plot(logisticmap(x0,3.8,n), color='black')
 formatFigure(ax,n)
 plt.show()
+
+
+##############################################################################
+# Then b= 3.9
 
 fig,ax=plt.subplots(num=1)
 ax.plot(logisticmap(x0,3.9,n), color='black')
@@ -177,6 +195,8 @@ print('Starting with 0.1002:' )
 print(logisticmap(0.11,b,n))
 
 ##############################################################################
+# Notice that even after a small number of iterations two initially close 
+# points are far apart.
 #
 # Now let's make the difference only 0.001 and plot the change over time.
 #

@@ -34,7 +34,7 @@ From the book
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="  .. math::">
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
 
 .. only:: html
 

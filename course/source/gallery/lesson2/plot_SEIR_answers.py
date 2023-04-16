@@ -3,7 +3,10 @@
 
 The SEIR model
 =============
-  
+
+**Now you should study a model yourself!** Download the page as a 
+Python notebook and fill in the missing code according to the instructions.
+
 In the SEIR model, there is an additional class for people exposed (but not yet infective). The equations 
 are now,
 

@@ -15,33 +15,33 @@ Uppgifter (på svenska)
    .. math::
 
       \begin{aligned}
-         \frac{dx}{dt} & = & f(x,y) = bx-xy - ax^2  \\
-         \frac{dy}{dt} & = & g(x,y) =xy-dy
+         \frac{dx}{dt} & = f(x,y) = bx-xy - ax^2  \\
+         \frac{dy}{dt} & = g(x,y) =xy-dy
       \end{aligned}
 
    Skriv fasportraiter för modellerna (det finns minst två olika ’typ’ av 
    fasportrait), hitta jämviktspunkter och bestäm stabilitet.
-
-#. Undersök SIRS modellen:
+   
+   #. Undersök SIRS modellen:
 
   .. math::
 
      \begin{aligned}
-     \frac{dS}{dt} & = - \beta S I + \alpha R\\
-     \frac{dI}{dt} & = \beta S I  -  \gamma I \\
-     \frac{dR}{dt} & =  \gamma I - \alpha R
+     \frac{dS}{dt} & = & - \beta S I + \alpha R\\
+     \frac{dI}{dt} & = & \beta S I  -  \gamma I \\
+     \frac{dR}{dt} & = & \gamma I - \alpha R
      \end{aligned}
 
-  Rita en fasporträtt för modellen för fallet :math:`\beta>\gamma`.
-  Bestäm ’nullclines’ för modellen. Använd :math:`R=1-S-I` för att
-  substituera bort :math:`R` i modellen ovan.
-  Hitta jämviktspunkten för systemet. Anta att :math:`\beta=1/5` och
-  :math:`\gamma =1/10`. Visa att (oavsett värdet för :math:`\alpha`)
-  jämviktspunkten är asymptotiskt stabil.
+   Rita en fasporträtt för modellen för fallet :math:`\beta>\gamma`.
+   Bestäm ’nullclines’ för modellen. Använd :math:`R=1-S-I` för att
+   substituera bort :math:`R` i modellen ovan.
+   Hitta jämviktspunkten för systemet. Anta att :math:`\beta=1/5` och
+   :math:`\gamma =1/10`. Visa att (oavsett värdet för :math:`\alpha`)
+   jämviktspunkten är asymptotiskt stabil.
+   
+   **Extra utmaning :** Ange villkor för att jämviktspunkten är en stabil spiral.
   
-  **Extra utmaning :** Ange villkor för att jämviktspunkten är en stabil spiral.
-
-#. Betrakta systemet
+  #. Betrakta systemet
 
    .. math::
 

@@ -23,21 +23,7 @@
 Logistic Map
 ============
 
-.. GENERATED FROM PYTHON SOURCE LINES 9-12
 
-.. code-block:: default
-
-
-    import numpy as np
-
-
-
-
-
-
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 13-29
 
 The model
 ---------
@@ -49,16 +35,15 @@ The variable might be, for example, size of an insect population.
 We write the model as 
 
 .. math::
-
-  x(k+1)) = b x(k)(1-x(k)/K)
+  
+  x(k+1)) = b x(k)(1-x(k))
 
 The parameter :math:`b` determines how much the insect population increases when 
 
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 29-54
+.. GENERATED FROM PYTHON SOURCE LINES 26-52
 
 .. code-block:: default
+
 
 
     import numpy as np
@@ -103,11 +88,11 @@ The parameter :math:`b` determines how much the insect population increases when
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-56
+.. GENERATED FROM PYTHON SOURCE LINES 53-54
 
 If we keep iterating, we get
 
-.. GENERATED FROM PYTHON SOURCE LINES 57-62
+.. GENERATED FROM PYTHON SOURCE LINES 55-60
 
 .. code-block:: default
 
@@ -131,14 +116,14 @@ If we keep iterating, we get
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 63-67
+.. GENERATED FROM PYTHON SOURCE LINES 61-65
 
 Change over time
 ----------------
 
 Lets start by plotting for b=2
 
-.. GENERATED FROM PYTHON SOURCE LINES 67-85
+.. GENERATED FROM PYTHON SOURCE LINES 65-83
 
 .. code-block:: default
 
@@ -172,14 +157,14 @@ Lets start by plotting for b=2
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-90
+.. GENERATED FROM PYTHON SOURCE LINES 84-88
 
 Increasing b
 ------------
 
 Now let's take for b=2.5
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-123
+.. GENERATED FROM PYTHON SOURCE LINES 88-97
 
 .. code-block:: default
 
@@ -191,30 +176,6 @@ Now let's take for b=2.5
     formatFigure(ax,n)
     plt.show()
 
-    fig,ax=plt.subplots(num=1)
-    ax.plot(logisticmap(x0,3,n), color='black')
-    formatFigure(ax,n)
-    plt.show()
-
-    fig,ax=plt.subplots(num=1)
-    ax.plot(logisticmap(x0,3.2,n), color='black')
-    formatFigure(ax,n)
-    plt.show()
-
-    fig,ax=plt.subplots(num=1)
-    ax.plot(logisticmap(x0,3.5,n), color='black')
-    formatFigure(ax,n)
-    plt.show()
-
-    fig,ax=plt.subplots(num=1)
-    ax.plot(logisticmap(x0,3.8,n), color='black')
-    formatFigure(ax,n)
-    plt.show()
-
-    fig,ax=plt.subplots(num=1)
-    ax.plot(logisticmap(x0,3.9,n), color='black')
-    formatFigure(ax,n)
-    plt.show()
 
 
 
@@ -228,13 +189,147 @@ Now let's take for b=2.5
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 124-127
+.. GENERATED FROM PYTHON SOURCE LINES 98-99
+
+Then b= 3
+
+.. GENERATED FROM PYTHON SOURCE LINES 99-106
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_003.png
+   :alt: plot discrete1D
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 107-108
+
+Then b= 3.2
+
+.. GENERATED FROM PYTHON SOURCE LINES 108-115
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.2,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
+   :alt: plot discrete1D
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 116-117
+
+Then b= 3.5
+
+.. GENERATED FROM PYTHON SOURCE LINES 117-124
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.5,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_005.png
+   :alt: plot discrete1D
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_005.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 125-126
+
+Then b= 3.8
+
+.. GENERATED FROM PYTHON SOURCE LINES 126-133
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.8,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_006.png
+   :alt: plot discrete1D
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_006.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 134-135
+
+Then b= 3.9
+
+.. GENERATED FROM PYTHON SOURCE LINES 135-141
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,3.9,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_007.png
+   :alt: plot discrete1D
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_007.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 142-145
 
 Cobweb diagrams
 --------------
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 127-164
+.. GENERATED FROM PYTHON SOURCE LINES 145-182
 
 .. code-block:: default
 
@@ -278,16 +373,16 @@ Cobweb diagrams
 
 
 
-.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_003.png
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_008.png
    :alt: plot discrete1D
-   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_003.png
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_008.png
    :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 165-170
+.. GENERATED FROM PYTHON SOURCE LINES 183-188
 
 Sensitivity to initial conditions
 ---------------------------------
@@ -295,7 +390,7 @@ Sensitivity to initial conditions
 For the case where :math:`b=3.9` lets look what happens as we iterate the map.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 170-179
+.. GENERATED FROM PYTHON SOURCE LINES 188-197
 
 .. code-block:: default
 
@@ -326,12 +421,15 @@ For the case where :math:`b=3.9` lets look what happens as we iterate the map.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 180-182
+.. GENERATED FROM PYTHON SOURCE LINES 198-203
+
+Notice that even after a small number of iterations two initially close 
+points are far apart.
 
 Now let's make the difference only 0.001 and plot the change over time.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 183-192
+.. GENERATED FROM PYTHON SOURCE LINES 203-212
 
 .. code-block:: default
 
@@ -347,16 +445,16 @@ Now let's make the difference only 0.001 and plot the change over time.
 
 
 
-.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_discrete1D_009.png
    :alt: plot discrete1D
-   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_004.png
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_discrete1D_009.png
    :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 193-195
+.. GENERATED FROM PYTHON SOURCE LINES 213-215
 
 It is this sensitivity to initial conditions which characterises choas. If we take
 two nearby points then (in almost all cases) they diverge after a small number of iteractions.
@@ -364,7 +462,7 @@ two nearby points then (in almost all cases) they diverge after a small number o
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.629 seconds)
+   **Total running time of the script:** ( 0 minutes  0.805 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson3_plot_discrete1D.py:

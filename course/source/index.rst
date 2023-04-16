@@ -23,7 +23,7 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Chaos and weather
+   :caption: Chaos
 
    gallery/lesson3/plot_discrete1D
    gallery/lesson3/plot_Ricker
@@ -31,5 +31,11 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Stock markets
+   :caption: Randomness and Noise
+
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Socio-economic development
+
 

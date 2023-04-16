@@ -5,14 +5,14 @@
 
 Computation times
 =================
-**00:02.680** total execution time for **gallery_lesson2** files:
+**00:04.655** total execution time for **gallery_lesson2** files:
 
 +---------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_lesson2_plot_epidemic.py` (``plot_epidemic.py``)         | 00:02.680 | 0.0 MB |
+| :ref:`sphx_glr_gallery_lesson2_plot_SEIR_answers.py` (``plot_SEIR_answers.py``) | 00:04.655 | 0.0 MB |
 +---------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_gallery_lesson2_plot_SEIR.py` (``plot_SEIR.py``)                 | 00:00.000 | 0.0 MB |
 +---------------------------------------------------------------------------------+-----------+--------+
-| :ref:`sphx_glr_gallery_lesson2_plot_SEIR_answers.py` (``plot_SEIR_answers.py``) | 00:00.000 | 0.0 MB |
-+---------------------------------------------------------------------------------+-----------+--------+
 | :ref:`sphx_glr_gallery_lesson2_plot_cts2D.py` (``plot_cts2D.py``)               | 00:00.000 | 0.0 MB |
++---------------------------------------------------------------------------------+-----------+--------+
+| :ref:`sphx_glr_gallery_lesson2_plot_epidemic.py` (``plot_epidemic.py``)         | 00:00.000 | 0.0 MB |
 +---------------------------------------------------------------------------------+-----------+--------+
