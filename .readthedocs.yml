@@ -15,8 +15,10 @@ sphinx:
   configuration: course/source/conf.py
 
 # Optionally build your docs in additional formats such as PDF
-#formats:
-#  - pdf
+# Build PDF & ePub
+formats:
+  - epub
+  - pdf
 
 conda:
   environment: environment.yml
