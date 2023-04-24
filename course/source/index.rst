@@ -31,11 +31,16 @@ Contents
 
 .. toctree::
    :maxdepth: 1
-   :caption: Randomness and Noise
+   :caption: Randomness and noise
 
+   gallery/lesson4/plot_ARMA
 
 .. toctree::
    :maxdepth: 1
    :caption: Socio-economic development
 
-
+   gallery/lesson5/plot_downloading
+   gallery/lesson5/plot_onevariable
+   gallery/lesson5/plot_twovariable
+   gallery/lesson5/plot_doityourself
+   

@@ -20,7 +20,7 @@
 
 .. _logisticmap:
 
-Logistic Map
+Logistic map
 ============
 
 
@@ -462,7 +462,7 @@ two nearby points then (in almost all cases) they diverge after a small number o
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.805 seconds)
+   **Total running time of the script:** ( 0 minutes  0.874 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson3_plot_discrete1D.py:

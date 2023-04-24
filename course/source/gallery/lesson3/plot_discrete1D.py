@@ -1,7 +1,7 @@
 """
 .. _logisticmap:
 
-Logistic Map
+Logistic map
 ============
 
 

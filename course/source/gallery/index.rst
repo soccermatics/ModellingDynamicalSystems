@@ -66,23 +66,6 @@ First part of the book.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="** Now you should study a model yourself! ** Download the page as a  Python notebook and fill i...">
-
-.. only:: html
-
-  .. image:: /gallery/lesson1/images/thumb/sphx_glr_plot_staghuntsim_answers_thumb.png
-    :alt: The stag hunt
-
-  :ref:`sphx_glr_gallery_lesson1_plot_staghuntsim_answers.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">The stag hunt</div>
-    </div>
-
-
-.. raw:: html
-
     </div>
 
 --------
@@ -112,23 +95,6 @@ From the book
 .. raw:: html
 
       <div class="sphx-glr-thumbnail-title">Rabbits and foxes</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
-
-.. only:: html
-
-  .. image:: /gallery/lesson2/images/thumb/sphx_glr_plot_SEIR_answers_thumb.png
-    :alt: The SEIR model
-
-  :ref:`sphx_glr_gallery_lesson2_plot_SEIR_answers.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">The SEIR model</div>
     </div>
 
 
@@ -190,13 +156,13 @@ From the book
 .. only:: html
 
   .. image:: /gallery/lesson3/images/thumb/sphx_glr_plot_discrete1D_thumb.png
-    :alt: Logistic Map
+    :alt: Logistic map
 
   :ref:`sphx_glr_gallery_lesson3_plot_discrete1D.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Logistic Map</div>
+      <div class="sphx-glr-thumbnail-title">Logistic map</div>
     </div>
 
 
@@ -219,18 +185,35 @@ From the book
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+    </div>
+
+--------
+Class IV
+--------
+
+From the book
+
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="ARMA models">
 
 .. only:: html
 
-  .. image:: /gallery/lesson3/images/thumb/sphx_glr_plot_Ricker_answers_thumb.png
-    :alt: Ricker map
+  .. image:: /gallery/lesson4/images/thumb/sphx_glr_plot_ARMA_thumb.png
+    :alt: ARMA models
 
-  :ref:`sphx_glr_gallery_lesson3_plot_Ricker_answers.py`
+  :ref:`sphx_glr_gallery_lesson4_plot_ARMA.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">Ricker map</div>
+      <div class="sphx-glr-thumbnail-title">ARMA models</div>
     </div>
 
 
@@ -253,19 +236,87 @@ From the book
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="Fitting a single variable model to GDP --------------------------------------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_doityourself_answers_thumb.png
+    :alt: Do it yourself
+
+  :ref:`sphx_glr_gallery_lesson5_plot_doityourself_answers.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Do it yourself</div>
     </div>
-
---------
-Class IV
---------
-
-From the book
-
 
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbnails">
+    <div class="sphx-glr-thumbcontainer" tooltip="Fitting a single variable model to GDP --------------------------------------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_doityourself_thumb.png
+    :alt: Do it yourself
+
+  :ref:`sphx_glr_gallery_lesson5_plot_doityourself.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Do it yourself</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plotting the data -----------------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_onevariable_thumb.png
+    :alt: Single variable model
+
+  :ref:`sphx_glr_gallery_lesson5_plot_onevariable.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Single variable model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Plotting the data -----------------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_twovariable_thumb.png
+    :alt: Two variable model
+
+  :ref:`sphx_glr_gallery_lesson5_plot_twovariable.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Two variable model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="In this notebook we will model world development, inspired by the presentations of `Hans Roslin...">
+
+.. only:: html
+
+  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_downloading_thumb.png
+    :alt: World Bank Data
+
+  :ref:`sphx_glr_gallery_lesson5_plot_downloading.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">World Bank Data</div>
+    </div>
 
 
 .. raw:: html

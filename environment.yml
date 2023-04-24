@@ -30,3 +30,4 @@ dependencies:
       - mplsoccer
       - sphinxcontrib-youtube
       - myst-parser
+      - world_bank_data
