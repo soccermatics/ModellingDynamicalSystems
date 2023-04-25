@@ -67,11 +67,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../lesson2/plot_SEIR.html">The SEIR model</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson2/paperandpen.html">Uppgifter (på svenska)</a></li>
 </ul>
-<p class="caption" role="heading"><span class="caption-text">Chaos and weather</span></p>
+<p class="caption" role="heading"><span class="caption-text">Chaos</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../lesson3/plot_discrete1D.html">Logistic Map</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../lesson3/plot_Ricker.html">Ricker Map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson3/plot_discrete1D.html">Logistic map</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson3/plot_Ricker.html">Ricker map</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../lesson3/paperandpen.html">Uppgifter (på svenska)</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Randomness and noise</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lesson4/plot_ARMA.html">ARMA models</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Socio-economic development</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../lesson5/plot_downloading.html">World Bank Data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson5/plot_onevariable.html">Single variable model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson5/plot_twovariable.html">Two variable model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson5/plot_doityourself.html">Do it yourself</a></li>
 </ul>
 
         </div>
@@ -111,11 +122,33 @@ Python notebook and fill in the missing code according to the instructions.</p>
 <h2>The model<a class="headerlink" href="#the-model" title="Permalink to this heading"></a></h2>
 <p>The stag hunt is modelled using the following payoff matrix. The dilemna is whether
 an individual should go hunting for a stag together with the group
-(which involves getting up early and driving to a desolate meeting place</p>
-<blockquote>
-<div><p>where your partner may of may not be wating for you) or hunt alone</p>
-</div></blockquote>
-<p>(which allows you to have a lie-in but means you only catch a rabbit).</p>
+(which involves getting up early and driving to a desolate meeting place
+where your partner may of may not be wating for you) or hunt alone
+(which allows you to have a lie-in but means you only catch a rabbit).
+The payoffs are as follows:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 28%" />
+<col style="width: 30%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>individual/partner</p></th>
+<th class="head"><p>Group (C)</p></th>
+<th class="head"><p>Self (D)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Group (C)</p></td>
+<td><p>1</p></td>
+<td><p><span class="math notranslate nohighlight">\(S=-1/4\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p>Self (D)</p></td>
+<td><p><span class="math notranslate nohighlight">\(T=1/2\)</span></p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
 <p>Write a replicator equation for this model. Start by finding the fitness of C and D.
 Then work out the average fitness.From there you can write down the replicator equation.</p>
 <div class="math notranslate nohighlight" id="equation-stagsim">
@@ -239,7 +272,7 @@ Steady state 0.00 is unstable (f&#39;(x)= 1.0000)
 Steady state 0.00 is unstable (f&#39;(x)= 1.0000)
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  4.525 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.580 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson1-plot-staghuntsim-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/55c972c00c60de1ac2a647023cdeeab4/plot_staghuntsim.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_staghuntsim.py</span></code></a></p>

@@ -14,14 +14,15 @@ The model
 The stag hunt is modelled using the following payoff matrix. The dilemna is whether 
 an individual should go hunting for a stag together with the group 
 (which involves getting up early and driving to a desolate meeting place 
- where your partner may of may not be wating for you) or hunt alone 
-(which allows you to have a lie-in but means you only catch a rabbit).
+where your partner may of may not be wating for you) or hunt alone 
+(which allows you to have a lie-in but means you only catch a rabbit). 
+The payoffs are as follows:
 
 =================== ============= ==============
 individual/partner  Group (C)      Self (D)
 =================== ============= ==============
-Group (C)              1             :math:`S=-1/4`
-Self (D)               :math:`T=1/2` 0
+Group (C)           1             :math:`S=-1/4`
+Self (D)            :math:`T=1/2` 0
 =================== ============= ==============
 
 Write a replicator equation for this model. Start by finding the fitness of C and D. 

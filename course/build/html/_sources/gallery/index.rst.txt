@@ -240,23 +240,6 @@ From the book
 
 .. only:: html
 
-  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_doityourself_answers_thumb.png
-    :alt: Do it yourself
-
-  :ref:`sphx_glr_gallery_lesson5_plot_doityourself_answers.py`
-
-.. raw:: html
-
-      <div class="sphx-glr-thumbnail-title">Do it yourself</div>
-    </div>
-
-
-.. raw:: html
-
-    <div class="sphx-glr-thumbcontainer" tooltip="Fitting a single variable model to GDP --------------------------------------">
-
-.. only:: html
-
   .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_doityourself_thumb.png
     :alt: Do it yourself
 

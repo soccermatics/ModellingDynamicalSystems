@@ -33,14 +33,15 @@ The model
 The stag hunt is modelled using the following payoff matrix. The dilemna is whether 
 an individual should go hunting for a stag together with the group 
 (which involves getting up early and driving to a desolate meeting place 
- where your partner may of may not be wating for you) or hunt alone 
-(which allows you to have a lie-in but means you only catch a rabbit).
+where your partner may of may not be wating for you) or hunt alone 
+(which allows you to have a lie-in but means you only catch a rabbit). 
+The payoffs are as follows:
 
 =================== ============= ==============
 individual/partner  Group (C)      Self (D)
 =================== ============= ==============
-Group (C)              1             :math:`S=-1/4`
-Self (D)               :math:`T=1/2` 0
+Group (C)           1             :math:`S=-1/4`
+Self (D)            :math:`T=1/2` 0
 =================== ============= ==============
 
 Write a replicator equation for this model. Start by finding the fitness of C and D. 
@@ -53,7 +54,7 @@ Then work out the average fitness.From there you can write down the replicator e
 
 Use it to define the equation below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 38-53
+.. GENERATED FROM PYTHON SOURCE LINES 39-54
 
 .. code-block:: default
 
@@ -79,7 +80,7 @@ Use it to define the equation below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-64
+.. GENERATED FROM PYTHON SOURCE LINES 55-65
 
 Simulation
 ----------
@@ -92,7 +93,7 @@ Make two different plots using the *plotOverTime* function:
 one in which eventually everyone co-operates, another in which 
 eventually everyone defects.
 
-.. GENERATED FROM PYTHON SOURCE LINES 64-79
+.. GENERATED FROM PYTHON SOURCE LINES 65-80
 
 .. code-block:: default
 
@@ -118,7 +119,7 @@ eventually everyone defects.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-86
+.. GENERATED FROM PYTHON SOURCE LINES 81-87
 
 Rate of change
 --------------
@@ -127,7 +128,7 @@ In order to understand how the change in co-operators depends on the
 current proportion of co-operators we plot equation eq:`repeqsim`
 as a function of :math:`x` as follows.
 
-.. GENERATED FROM PYTHON SOURCE LINES 86-115
+.. GENERATED FROM PYTHON SOURCE LINES 87-116
 
 .. code-block:: default
 
@@ -172,7 +173,7 @@ as a function of :math:`x` as follows.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 116-122
+.. GENERATED FROM PYTHON SOURCE LINES 117-123
 
 Steady states
 -------------
@@ -181,7 +182,7 @@ The steady states are the points where :math:`f(x_*)=0`. Find them
 numerically using Python as follows.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 122-130
+.. GENERATED FROM PYTHON SOURCE LINES 123-131
 
 .. code-block:: default
 
@@ -208,7 +209,7 @@ numerically using Python as follows.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 131-146
+.. GENERATED FROM PYTHON SOURCE LINES 132-147
 
 The solution we find depends on the starting position. Here
 we chose values we knew were nearby in order to be sure that we found them. 
@@ -226,7 +227,7 @@ and use it to evaluate stability of the steady states.
 
 We can evaluate the steady states we found using this derivative to determine their stability.
 
-.. GENERATED FROM PYTHON SOURCE LINES 146-162
+.. GENERATED FROM PYTHON SOURCE LINES 147-163
 
 .. code-block:: default
 
@@ -264,7 +265,7 @@ We can evaluate the steady states we found using this derivative to determine th
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  4.525 seconds)
+   **Total running time of the script:** ( 0 minutes  0.580 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson1_plot_staghuntsim.py:
