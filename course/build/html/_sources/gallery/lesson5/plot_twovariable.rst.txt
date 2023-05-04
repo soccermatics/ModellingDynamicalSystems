@@ -101,8 +101,8 @@ influence each other. We assume that
 
    \begin{aligned}
        y_C(k) & = C(k+1) - C(k) = a_C + b_{C0} C(k) + b_{C1} C(k)^2 & \\
-       &  + b_{C2} C(k)^3 + b_{C3} G(k) + b_{C4} G(k)^2 + b_{C5} C(k) G(k) & \\
-       &  + \epsilon_C(k), \qquad \epsilon_C(k) \sim \mathcal{N}(0, \sigma_C^2) 
+       &  + b_{C2} C(k)^3 + b_{C3} G(k) + b_{C4} G(k)^2 + b_{C5} C(k) G(k) + \epsilon_C(k)& \\
+       &  , \qquad \epsilon_C(k) \sim \mathcal{N}(0, \sigma_C^2) 
   \end{aligned}       
 
 and
@@ -111,8 +111,8 @@ and
 
    \begin{aligned}
        y_G(k) & =  G(k+1) - G(k) = a_G + b_{G0} C(k) + b_{G1} C(k)^2 &  \\
-       &  + b_{G2} C(k)^3 + b_{G3} G(k) + b_{G4} G(k)^2 + b_{G5} C(k) G(k) & \\
-       & + \epsilon_G(k), \qquad \epsilon_G(k) \sim \mathcal{N}(0, \sigma_G^2)
+       &  + b_{G2} C(k)^3 + b_{G3} G(k) + b_{G4} G(k)^2 + b_{G5} C(k) G(k) + \epsilon_G(k) & \\
+       & , \qquad \epsilon_G(k) \sim \mathcal{N}(0, \sigma_G^2)
   \end{aligned}       
 
 
@@ -195,7 +195,7 @@ We will simulate this model as one of the exercises on the next page.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.525 seconds)
+   **Total running time of the script:** ( 0 minutes  8.832 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson5_plot_twovariable.py:

@@ -33,6 +33,7 @@ Contents
    :maxdepth: 1
    :caption: Randomness and noise
 
+   gallery/lesson4/plot_White
    gallery/lesson4/plot_ARMA
 
 .. toctree::

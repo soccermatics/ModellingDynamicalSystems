@@ -65,7 +65,8 @@
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Randomness and noise</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../lesson4/plot_ARMA.html">ARMA models</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson4/plot_White.html">White noise</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../lesson4/plot_ARMA.html">ARMA model</a></li>
 </ul>
 <p class="caption" role="heading"><span class="caption-text">Socio-economic development</span></p>
 <ul class="current">
@@ -163,15 +164,15 @@ influence each other. We assume that</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{aligned}
      y_C(k) &amp; = C(k+1) - C(k) = a_C + b_{C0} C(k) + b_{C1} C(k)^2 &amp; \\
-     &amp;  + b_{C2} C(k)^3 + b_{C3} G(k) + b_{C4} G(k)^2 + b_{C5} C(k) G(k) &amp; \\
-     &amp;  + \epsilon_C(k), \qquad \epsilon_C(k) \sim \mathcal{N}(0, \sigma_C^2)
+     &amp;  + b_{C2} C(k)^3 + b_{C3} G(k) + b_{C4} G(k)^2 + b_{C5} C(k) G(k) + \epsilon_C(k)&amp; \\
+     &amp;  , \qquad \epsilon_C(k) \sim \mathcal{N}(0, \sigma_C^2)
 \end{aligned}\end{split}\]</div>
 <p>and</p>
 <div class="math notranslate nohighlight">
 \[\begin{split} \begin{aligned}
      y_G(k) &amp; =  G(k+1) - G(k) = a_G + b_{G0} C(k) + b_{G1} C(k)^2 &amp;  \\
-     &amp;  + b_{G2} C(k)^3 + b_{G3} G(k) + b_{G4} G(k)^2 + b_{G5} C(k) G(k) &amp; \\
-     &amp; + \epsilon_G(k), \qquad \epsilon_G(k) \sim \mathcal{N}(0, \sigma_G^2)
+     &amp;  + b_{G2} C(k)^3 + b_{G3} G(k) + b_{G4} G(k)^2 + b_{G5} C(k) G(k) + \epsilon_G(k) &amp; \\
+     &amp; , \qquad \epsilon_G(k) \sim \mathcal{N}(0, \sigma_G^2)
 \end{aligned}\end{split}\]</div>
 <p>describes the interaction and fit the model below. We fit the model then
 plot the vector field it creates.</p>
@@ -226,7 +227,7 @@ The offset is: {model.intercept_:.3f}
 </pre></div>
 </div>
 <p>We will simulate this model as one of the exercises on the next page.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.525 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  8.832 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson5-plot-twovariable-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/79dbf3a60394e4860c8036cd0e36e032/plot_twovariable.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_twovariable.py</span></code></a></p>

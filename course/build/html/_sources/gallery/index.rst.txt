@@ -202,18 +202,35 @@ From the book
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="ARMA models">
+    <div class="sphx-glr-thumbcontainer" tooltip=" The moving average ------------------">
 
 .. only:: html
 
   .. image:: /gallery/lesson4/images/thumb/sphx_glr_plot_ARMA_thumb.png
-    :alt: ARMA models
+    :alt: ARMA model
 
   :ref:`sphx_glr_gallery_lesson4_plot_ARMA.py`
 
 .. raw:: html
 
-      <div class="sphx-glr-thumbnail-title">ARMA models</div>
+      <div class="sphx-glr-thumbnail-title">ARMA model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Random walk -----------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson4/images/thumb/sphx_glr_plot_White_thumb.png
+    :alt: White noise
+
+  :ref:`sphx_glr_gallery_lesson4_plot_White.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">White noise</div>
     </div>
 
 
