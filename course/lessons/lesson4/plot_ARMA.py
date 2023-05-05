@@ -226,7 +226,11 @@ plt.show()
 # ------------
 #
 # Now let's use your function to calulate a covariance function for H&M share 
-# prices. First lets load in and plot the data.
+# prices. First lets load in and plot the data. 
+#
+# You can download the data file here:
+#
+# :ref:`https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv<https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`
 
 import pandas as pd
 
