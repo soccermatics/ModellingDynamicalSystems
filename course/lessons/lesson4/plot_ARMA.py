@@ -237,7 +237,7 @@ fig,ax=plt.subplots(1)
 
 w=w-np.mean(w)
 plotOverTime(ax, w)
-ax.set_ylabel('Share price (relative to price June 2019): w')
+ax.set_ylabel('Price (relative to June 2019): w')
 ax.set_ylim(-75,75) 
 plt.show()
 
