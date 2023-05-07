@@ -344,15 +344,19 @@ AR(1) model with :math:`a_1=-0.9`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 225-230
+.. GENERATED FROM PYTHON SOURCE LINES 225-234
 
 Share prices
 ------------
 
 Now let's use your function to calulate a covariance function for H&M share 
-prices. First lets load in and plot the data.
+prices. First lets load in and plot the data. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 230-246
+You can download the data file here:
+
+`HandM.csv <https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`_
+
+.. GENERATED FROM PYTHON SOURCE LINES 234-250
 
 .. code-block:: default
 
@@ -366,7 +370,7 @@ prices. First lets load in and plot the data.
 
     w=w-np.mean(w)
     plotOverTime(ax, w)
-    ax.set_ylabel('Share price (relative to price June 2019): w')
+    ax.set_ylabel('Price (relative to June 2019): w')
     ax.set_ylim(-75,75) 
     plt.show()
 
@@ -384,14 +388,14 @@ prices. First lets load in and plot the data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 247-251
+.. GENERATED FROM PYTHON SOURCE LINES 251-255
 
 Share prices
 ------------
 
 Now plot the covariance using your empirical function
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-259
+.. GENERATED FROM PYTHON SOURCE LINES 255-263
 
 .. code-block:: default
 
@@ -418,7 +422,7 @@ Now plot the covariance using your empirical function
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  1.509 seconds)
+   **Total running time of the script:** ( 0 minutes  5.878 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson4_plot_ARMA.py:

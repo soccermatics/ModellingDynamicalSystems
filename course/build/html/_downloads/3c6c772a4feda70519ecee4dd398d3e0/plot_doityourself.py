@@ -1,5 +1,4 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+
 """
 Do it yourself
 ==============
@@ -8,7 +7,7 @@ Fitting a single variable model to GDP
 --------------------------------------
 
 The plot below should show change in GDP for the four countries. The code below is wrong. Complete it by filling in the correct code
-below.
+below. (You can generate the data file needed using the code on page :ref:`World Bank Data<download>`)
 
 """
 #Import libraries

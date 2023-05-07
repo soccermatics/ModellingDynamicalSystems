@@ -230,7 +230,7 @@ plt.show()
 #
 # You can download the data file here:
 #
-# :ref:`https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv<https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`
+# `HandM.csv <https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`_
 
 import pandas as pd
 

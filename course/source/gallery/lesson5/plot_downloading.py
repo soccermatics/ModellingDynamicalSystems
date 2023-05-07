@@ -1,4 +1,7 @@
 """
+
+.. _download:
+
 World Bank Data
 ===============
 

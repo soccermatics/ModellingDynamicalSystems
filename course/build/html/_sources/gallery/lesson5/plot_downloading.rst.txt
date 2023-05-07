@@ -18,6 +18,8 @@
 .. _sphx_glr_gallery_lesson5_plot_downloading.py:
 
 
+.. _download:
+
 World Bank Data
 ===============
 
@@ -32,7 +34,7 @@ predictions.
 
 First we use the World Bank API in order to download the data.
 
-.. GENERATED FROM PYTHON SOURCE LINES 16-36
+.. GENERATED FROM PYTHON SOURCE LINES 19-39
 
 .. code-block:: default
 
@@ -63,13 +65,13 @@ First we use the World Bank API in order to download the data.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 37-40
+.. GENERATED FROM PYTHON SOURCE LINES 40-43
 
 Now we download the data set, indexed with the country code.
 
 The data is downloaded from here `here <https://databank.worldbank.org/home>`_.
 
-.. GENERATED FROM PYTHON SOURCE LINES 40-46
+.. GENERATED FROM PYTHON SOURCE LINES 43-49
 
 .. code-block:: default
 
@@ -104,7 +106,7 @@ The data is downloaded from here `here <https://databank.worldbank.org/home>`_.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 47-54
+.. GENERATED FROM PYTHON SOURCE LINES 50-57
 
 Now we reorganise the data so it is in a dataframe (like an Excel
 spreadsheet) with columns Year, Country, Child Mortality (per 10,000
@@ -114,7 +116,7 @@ and :math:`G(k+1)-G(k)` — over time :math:`k`.
 
 (This can take one minute or so to run)
 
-.. GENERATED FROM PYTHON SOURCE LINES 54-89
+.. GENERATED FROM PYTHON SOURCE LINES 57-92
 
 .. code-block:: default
 
@@ -240,7 +242,7 @@ and :math:`G(k+1)-G(k)` — over time :math:`k`.
     <br />
     <br />
 
-.. GENERATED FROM PYTHON SOURCE LINES 90-91
+.. GENERATED FROM PYTHON SOURCE LINES 93-94
 
 By uncommenting the line above you save the data set to a directory called
 data. 
@@ -248,7 +250,7 @@ data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  10.716 seconds)
+   **Total running time of the script:** ( 0 minutes  11.497 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson5_plot_downloading.py:

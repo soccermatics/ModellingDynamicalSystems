@@ -25,9 +25,9 @@ Fitting a single variable model to GDP
 --------------------------------------
 
 The plot below should show change in GDP for the four countries. The code below is wrong. Complete it by filling in the correct code
-below.
+below. (You can generate the data file needed using the code on page :ref:`World Bank Data<download>`)
 
-.. GENERATED FROM PYTHON SOURCE LINES 14-51
+.. GENERATED FROM PYTHON SOURCE LINES 13-50
 
 .. code-block:: default
 
@@ -80,7 +80,7 @@ below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 52-64
+.. GENERATED FROM PYTHON SOURCE LINES 51-63
 
 Single variable
 ---------------
@@ -95,12 +95,12 @@ Fit a linear regression model
 to describe the change in log(GDP) from one year to the next. Write the code to do this below.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 70-72
+.. GENERATED FROM PYTHON SOURCE LINES 69-71
 
 This code can be used to make a plot of the change in GDP as a function of GDP.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 72-90
+.. GENERATED FROM PYTHON SOURCE LINES 71-89
 
 .. code-block:: default
 
@@ -134,12 +134,12 @@ This code can be used to make a plot of the change in GDP as a function of GDP.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 91-93
+.. GENERATED FROM PYTHON SOURCE LINES 90-92
 
 Predict future evoltion of GDP
 Add code to make this prediction
 
-.. GENERATED FROM PYTHON SOURCE LINES 93-122
+.. GENERATED FROM PYTHON SOURCE LINES 92-121
 
 .. code-block:: default
 
@@ -184,7 +184,7 @@ Add code to make this prediction
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-130
+.. GENERATED FROM PYTHON SOURCE LINES 122-129
 
 Two variables
 -------------
@@ -194,7 +194,7 @@ to make predictions of how child mortality and GDP will chnage over the next 30 
 
 The co-efficients in your simulated model must be the same as the ones you found when fitting the model.
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-159
+.. GENERATED FROM PYTHON SOURCE LINES 129-158
 
 .. code-block:: default
 
@@ -248,7 +248,7 @@ The co-efficients in your simulated model must be the same as the ones you found
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.196 seconds)
+   **Total running time of the script:** ( 0 minutes  1.484 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson5_plot_doityourself.py:

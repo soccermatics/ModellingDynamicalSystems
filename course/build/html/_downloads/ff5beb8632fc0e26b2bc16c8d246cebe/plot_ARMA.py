@@ -226,7 +226,11 @@ plt.show()
 # ------------
 #
 # Now let's use your function to calulate a covariance function for H&M share 
-# prices. First lets load in and plot the data.
+# prices. First lets load in and plot the data. 
+#
+# You can download the data file here:
+#
+# `HandM.csv <https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`_
 
 import pandas as pd
 
@@ -237,7 +241,7 @@ fig,ax=plt.subplots(1)
 
 w=w-np.mean(w)
 plotOverTime(ax, w)
-ax.set_ylabel('Share price (relative to price June 2019): w')
+ax.set_ylabel('Price (relative to June 2019): w')
 ax.set_ylim(-75,75) 
 plt.show()
 
