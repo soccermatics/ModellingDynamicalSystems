@@ -20,12 +20,12 @@ an individual should go hunting for a stag together with the group
 =================== ============= ==============
 individual/partner  Group (C)      Self (D)
 =================== ============= ==============
-Group (C)              1             :math:`S=-1/4`
-Self (D)               :math:`T=1/2` 0
+Group (C)           1             :math:`S=-1/4`
+Self (D)            :math:`T=1/2` 0
 =================== ============= ==============
 
 Write a replicator equation for this model. Start by finding the fitness of C and D. 
-Then work out the average fitness.From there you can write down the replicator equation.
+Then work out the average fitness. From there you can write down the replicator equation.
 
 .. math::
   :label: stagsim
