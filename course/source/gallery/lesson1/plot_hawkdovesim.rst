@@ -269,7 +269,7 @@ We can evaluate the steady states we found using this derivative to determine th
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.700 seconds)
+   **Total running time of the script:** ( 0 minutes  5.320 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson1_plot_hawkdovesim.py:

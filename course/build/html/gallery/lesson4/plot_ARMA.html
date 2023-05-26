@@ -20,8 +20,6 @@
         <script src="../../_static/underscore.js"></script>
         <script src="../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../_static/doctools.js"></script>
-        <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
-        <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
@@ -175,7 +173,7 @@ to download the full example code</p>
 </div>
 <div class="section" id="autogressive-model">
 <h2>Autogressive model<a class="headerlink" href="#autogressive-model" title="Permalink to this heading"></a></h2>
-<p>Here we plot the AR(1) model with <span class="math notranslate nohighlight">\(a_1=-0.9\)</span>.</p>
+<p>Here we plot the AR(1) model with :math;´a_1=-0.9´.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">AR</span><span class="p">(</span><span class="n">w0</span><span class="p">,</span><span class="n">steps</span><span class="p">,</span><span class="n">a_vals</span><span class="p">,</span><span class="n">sigma</span><span class="o">=</span><span class="mi">1</span><span class="p">):</span>
     <span class="c1"># n step random walk</span>
 
@@ -216,7 +214,7 @@ to download the full example code</p>
 </div>
 <img src="../../_images/sphx_glr_plot_ARMA_002.png" srcset="../../_images/sphx_glr_plot_ARMA_002.png" alt="plot ARMA" class = "sphx-glr-single-img"/><p>Now there is a longer memory. The process increases and decreases
 more slowly in comparison to the fluctuations caused by noise.</p>
-<p>When we reduce  <span class="math notranslate nohighlight">\(a_1\)</span> then the process moves more randomly, like
+<p>When we reduce  :math;´a_1´ then the process moves more randomly, like
 the random walk.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">steps</span><span class="o">=</span><span class="mi">30</span>
@@ -229,7 +227,7 @@ the random walk.</p>
             <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Position: w&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_ARMA_003.png" srcset="../../_images/sphx_glr_plot_ARMA_003.png" alt="plot ARMA" class = "sphx-glr-single-img"/><p>If <span class="math notranslate nohighlight">\(a_1\)</span> is positive then the process oscilates backwards and forwards.</p>
+<img src="../../_images/sphx_glr_plot_ARMA_003.png" srcset="../../_images/sphx_glr_plot_ARMA_003.png" alt="plot ARMA" class = "sphx-glr-single-img"/><p>If :math;´a_1´ is positive then the process oscilates backwards and forwards.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">axs</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span><span class="mi">3</span><span class="p">)</span>
 <span class="n">steps</span><span class="o">=</span><span class="mi">30</span>
 <span class="n">a_vals</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.9</span><span class="p">]</span>
@@ -273,10 +271,10 @@ the random walk.</p>
 <img src="../../_images/sphx_glr_plot_ARMA_005.png" srcset="../../_images/sphx_glr_plot_ARMA_005.png" alt="a_1=-0.90, a_1=-0.10, a_1=0.90" class = "sphx-glr-single-img"/></div>
 <div class="section" id="empirical-covariance">
 <h2>Empirical covariance<a class="headerlink" href="#empirical-covariance" title="Permalink to this heading"></a></h2>
-<p>Correct the code below to
+<p>Fill in the code below to
 write a function yourself to calculate the empirical covariance.</p>
 <p>Then use it to calculate the standard deviation over 1000 time steps of an
-AR(1) model with <span class="math notranslate nohighlight">\(a_1=-0.9\)</span>.</p>
+AR(1) model with :math:´a_1=-0.9´.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">R_empirical</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">maxtau</span><span class="p">):</span>
 
     <span class="n">steps</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
@@ -285,9 +283,9 @@ AR(1) model with <span class="math notranslate nohighlight">\(a_1=-0.9\)</span>.
         <span class="n">Rk</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">steps</span><span class="p">)</span>
         <span class="k">for</span> <span class="n">k</span><span class="p">,</span><span class="n">wk</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">w</span><span class="p">):</span>
             <span class="k">if</span> <span class="n">k</span><span class="o">&lt;</span><span class="n">steps</span><span class="o">-</span><span class="n">tau</span><span class="p">:</span>
-                <span class="n">Rk</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span>  <span class="mi">0</span>
+                <span class="n">Rk</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span>  <span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="n">tau</span><span class="p">]</span><span class="o">*</span><span class="n">w</span><span class="p">[</span><span class="n">k</span><span class="p">]</span>
 
-        <span class="n">R</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">R</span><span class="p">[</span><span class="n">tau</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">Rk</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="n">steps</span><span class="o">-</span><span class="n">tau</span><span class="p">)</span>
 
 
     <span class="k">return</span> <span class="n">R</span>
@@ -309,8 +307,6 @@ AR(1) model with <span class="math notranslate nohighlight">\(a_1=-0.9\)</span>.
 <h2>Share prices<a class="headerlink" href="#share-prices" title="Permalink to this heading"></a></h2>
 <p>Now let’s use your function to calulate a covariance function for H&amp;M share
 prices. First lets load in and plot the data.</p>
-<p>You can download the data file here:</p>
-<p><a class="reference external" href="https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv">HandM.csv</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">share_prices</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;../data/HandM.csv&#39;</span><span class="p">)</span>
@@ -320,7 +316,7 @@ prices. First lets load in and plot the data.</p>
 
 <span class="n">w</span><span class="o">=</span><span class="n">w</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
 <span class="n">plotOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">w</span><span class="p">)</span>
-<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Price (relative to June 2019): w&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Share price (relative to price June 2019): w&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">75</span><span class="p">,</span><span class="mi">75</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
@@ -328,11 +324,19 @@ prices. First lets load in and plot the data.</p>
 <img src="../../_images/sphx_glr_plot_ARMA_007.png" srcset="../../_images/sphx_glr_plot_ARMA_007.png" alt="plot ARMA" class = "sphx-glr-single-img"/></div>
 <div class="section" id="id1">
 <h2>Share prices<a class="headerlink" href="#id1" title="Permalink to this heading"></a></h2>
-<p>Now plot the covariance using your empirical function</p>
+<p>Now plot the correlation as a function</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span><span class="p">,</span><span class="n">ax</span><span class="o">=</span><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">R</span><span class="o">=</span><span class="n">R_empirical</span><span class="p">(</span><span class="n">w</span><span class="p">,</span><span class="n">maxtau</span><span class="o">=</span><span class="mi">200</span><span class="p">)</span>
+<span class="n">plotOverTime</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">R</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_yticks</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="o">-</span><span class="mi">600</span><span class="p">,</span><span class="mi">1600</span><span class="p">,</span><span class="n">step</span><span class="o">=</span><span class="mi">100</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">500</span><span class="p">,</span><span class="mi">1500</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Covariance: R&#39;</span><span class="p">)</span>
 </pre></div>
 </div>
-<img src="../../_images/sphx_glr_plot_ARMA_008.png" srcset="../../_images/sphx_glr_plot_ARMA_008.png" alt="plot ARMA" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  5.878 seconds)</p>
+<img src="../../_images/sphx_glr_plot_ARMA_008.png" srcset="../../_images/sphx_glr_plot_ARMA_008.png" alt="plot ARMA" class = "sphx-glr-single-img"/><div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>Text(15.369860017497809, 0.5, &#39;Covariance: R&#39;)
+</pre></div>
+</div>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  1.841 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson4-plot-arma-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/ff5beb8632fc0e26b2bc16c8d246cebe/plot_ARMA.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_ARMA.py</span></code></a></p>

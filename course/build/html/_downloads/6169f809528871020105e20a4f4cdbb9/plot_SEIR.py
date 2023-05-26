@@ -3,23 +3,26 @@
 
 The SEIR model
 =============
-  
+
+**Now you should study a model yourself!** Download the page as a 
+Python notebook and fill in the missing code according to the instructions.
+
 In the SEIR model, there is an additional class for people exposed (but not yet infective). The equations 
 are now,
 
   .. math::
 
-    \\begin{aligned}
-        \\frac{dS}{dt} & = & - \\beta S I \\
-        \\frac{dE}{dt} & = & \\beta S I - \delta E\\
-        \\frac{dI}{dt} & = & \delta E -  \gamma I \\
-        \\frac{dR}{dt} & = & \gamma I 
-    \\end{aligned}
+     \begin{aligned}
+     \frac{dS}{dt} & = - \beta S I \\
+     \frac{dE}{dt} & = \beta S I - \delta E\\
+     \frac{dI}{dt} & = \delta E -  \gamma I \\
+     \frac{dR}{dt} & =  \gamma I 
+     \end{aligned}
 
 Simulating the model
 --------------------
 
-  Assume that :math:`\gamma=1/7` and :math:`\\beta=1/5`. Write code to draw a
+  Assume that :math:`\gamma=1/7` and :math:`\beta=1/5`. Write code to draw a
   graph of :math:`I(t)` as a function of time (:math:`t`) for the cases in which
   (on average) a person is exposed for 1, 5 and respectively 9 days before they are infected.
   Assume that :math:`S(0)=999/1000`, :math:`E(0)=0`

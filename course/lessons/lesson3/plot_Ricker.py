@@ -7,6 +7,7 @@ Ricker map
 **Now you should study a model yourself!** Download the page as a 
 Python notebook and fill in the missing code according to the instructions.
 
+
 The model
 ---------
 
@@ -39,8 +40,7 @@ def logisticmap(x0,r,n):
     xs=np.zeros(n+1)
     xs[0]=x0
     for k in range(n):
-        # Need to fill in correct equation here
-        xs[k+1]= xs[k]
+        xs[k+1]= r*xs[k]*np.exp(-xs[k])
     return(xs)
 
 def formatFigure(ax,n):
@@ -56,12 +56,86 @@ def formatFigure(ax,n):
 n=20
 x0=0.2
 
+##############################################################################
+# Answer
+# ------
+#
+# Stable is given by r=3
+
+n=50
+
+fig,ax=plt.subplots(num=1)
+ax.plot(logisticmap(x0,3,n), color='black')
+formatFigure(ax,n)
+plt.show()
+
+
+##############################################################################
+# Periodic by r = 10
+
+fig,ax=plt.subplots(num=1)
+ax.plot(logisticmap(x0,10,n), color='black')
+formatFigure(ax,n)
+plt.show()
+
+
+##############################################################################
+# Period 4 by r =13
+
+fig,ax=plt.subplots(num=1)
+ax.plot(logisticmap(x0,13,n), color='black')
+formatFigure(ax,n)
+plt.show()
+
+
+##############################################################################
+# And period 3 by r=23
+
+fig,ax=plt.subplots(num=1)
+ax.plot(logisticmap(x0,23,n), color='black')
+formatFigure(ax,n)
+plt.show()
+
 
 ##############################################################################
 # Cobweb diagrams
 # --------------
 #
 # Make cobweb diagrams for the values you found.
+
+n = 50 
+
+r_vals=[3, 10, 13, 23]
+
+
+rcParams['figure.figsize'] = 12/2.54, 12/2.54
+fig,ax=plt.subplots(2,2)
+
+
+for i,r in enumerate(r_vals):
+    xs = logisticmap(0.1,r,50)
+    xp = xs[0]
+    ax[int(i/2)][np.mod(i,2)].plot([xp, xp],[0, xp],color='k',linewidth=0.5)
+    for x in xs:
+        ax[int(i/2)][np.mod(i,2)].plot([xp, xp],[xp, x],color='k',linewidth=0.5)
+        ax[int(i/2)][np.mod(i,2)].plot([xp, x],[x, x],color='k',linewidth=0.5)
+        xp = x
+    
+    xr=np.arange(0,20,0.001)
+    fxr=r*xr*np.exp(-xr)
+    ax[int(i/2)][np.mod(i,2)].plot([-0.5, 105.5],[-0.5, 105.5],linestyle=':',color='k',linewidth=1)
+    ax[int(i/2)][np.mod(i,2)].plot(xr,fxr,color='r',linewidth=1)
+    ax[int(i/2)][np.mod(i,2)].set_xlabel('Previous number: $x(k)$')
+    ax[int(i/2)][np.mod(i,2)].set_ylabel('Next number: $x(k+1)$')
+    ax[int(i/2)][np.mod(i,2)].spines['top'].set_visible(False)
+    ax[int(i/2)][np.mod(i,2)].spines['right'].set_visible(False)
+    ax[int(i/2)][np.mod(i,2)].set_xticks(np.arange(0,10.01,step=1))
+    ax[int(i/2)][np.mod(i,2)].set_yticks(np.arange(0,10.01,step=1))
+    ax[int(i/2)][np.mod(i,2)].set_xlim(0,10.01)
+    ax[int(i/2)][np.mod(i,2)].set_ylim(0,10.01) 
+    ax[int(i/2)][np.mod(i,2)].text(1.0,9.0,'r=%.1f'%r)
+    
+plt.show()
 
 
 
@@ -75,7 +149,7 @@ x0=0.2
 # 
 
 n=30
-r=0
+r=26
 
 fig,ax=plt.subplots(num=1)
 ax.plot(logisticmap(0.1000,r,n), color='black')

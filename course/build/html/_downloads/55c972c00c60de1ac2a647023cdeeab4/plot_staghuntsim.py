@@ -4,7 +4,7 @@
 The stag hunt
 =============
 
-**Now you should study a model yourself!** Download the page as a 
+** Now you should study a model yourself! ** Download the page as a 
 Python notebook and fill in the missing code according to the instructions.
 
 
@@ -14,15 +14,14 @@ The model
 The stag hunt is modelled using the following payoff matrix. The dilemna is whether 
 an individual should go hunting for a stag together with the group 
 (which involves getting up early and driving to a desolate meeting place 
-where your partner may of may not be wating for you) or hunt alone 
-(which allows you to have a lie-in but means you only catch a rabbit). 
-The payoffs are as follows:
+ where your partner may of may not be wating for you) or hunt alone 
+(which allows you to have a lie-in but means you only catch a rabbit).
 
 =================== ============= ==============
 individual/partner  Group (C)      Self (D)
 =================== ============= ==============
-Group (C)           1             :math:`S=-1/4`
-Self (D)            :math:`T=1/2` 0
+Group (C)              1             :math:`S=-1/4`
+Self (D)               :math:`T=1/2` 0
 =================== ============= ==============
 
 Write a replicator equation for this model. Start by finding the fitness of C and D. 
@@ -48,7 +47,7 @@ from scipy import integrate
 # Differential equation
 def dXdt(X, t=0):
     # Replicator equation - This is just a place holder for now 
-    return np.array([X[0]])                   
+    return np.array([(1/4)*X[0]*(1-X[0])*(3*X[0]-1)])                   
 
 
 ##############################################################################
@@ -76,6 +75,20 @@ def plotOverTime(ax,X):
     ax.set_xlim(0,30)
     ax.set_ylim(0,1) 
     
+
+t = np.linspace(0, 30,  1000)       # time
+X0 = np.array([0.1])                # initially 10% are co-operators
+X = integrate.odeint(dXdt, X0, t)   # uses a Python package to simulate the interactions
+fig,ax=plt.subplots(num=1)
+plotOverTime(ax,X)
+plt.show()
+
+t = np.linspace(0, 30,  1000)       # time
+X0 = np.array([0.5])                # initially 10% are co-operators
+X = integrate.odeint(dXdt, X0, t)   # uses a Python package to simulate the interactions
+fig,ax=plt.subplots(num=1)
+plotOverTime(ax,X)
+plt.show()
 
 ##############################################################################
 # Rate of change
@@ -123,7 +136,7 @@ plt.show()
 
 from scipy.optimize import fsolve
 x_s=np.zeros(3)
-x_initial=[0,0,0]
+x_initial=[0.1,0.3,0.9]
 for i,x_i in enumerate(x_initial):
     x_s[i]=fsolve(dXdt, (x_i))
     print('Starting with value %.2f gives steady state %.2f'%(x_i,x_s[i]))
@@ -147,7 +160,7 @@ for i,x_i in enumerate(x_initial):
 
 def dfdx(x):
     # Replicator equation - place holder just now
-    return 1
+    return (1/4)*((1-2*x)*(3*x-1) + 3*x*(1-x))
  
 for x in x_s:
     dfx=dfdx(x)

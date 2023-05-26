@@ -105,7 +105,7 @@ This process doesn't move far from zero, because it has no "memory".
 Autogressive model 
 ------------------
 
-Here we plot the AR(1) model with :math:`a_1=-0.9`. 
+Here we plot the AR(1) model with :math;´a_1=-0.9´. 
 
 .. GENERATED FROM PYTHON SOURCE LINES 75-114
 
@@ -167,7 +167,7 @@ Here we plot the AR(1) model with :math:`a_1=-0.9`.
 Now there is a longer memory. The process increases and decreases
 more slowly in comparison to the fluctuations caused by noise.
 
-When we reduce  :math:`a_1` then the process moves more randomly, like 
+When we reduce  :math;´a_1´ then the process moves more randomly, like 
 the random walk.
 
 .. GENERATED FROM PYTHON SOURCE LINES 120-131
@@ -199,7 +199,7 @@ the random walk.
 
 .. GENERATED FROM PYTHON SOURCE LINES 132-133
 
-If :math:`a_1` is positive then the process oscilates backwards and forwards.
+If :math;´a_1´ is positive then the process oscilates backwards and forwards.
 
 .. GENERATED FROM PYTHON SOURCE LINES 133-147
 
@@ -291,11 +291,11 @@ The covariance functionfor AR(1) is calcuated as follows.
 Empirical covariance 
 --------------------
 
-Correct the code below to
+Fill in the code below to
 write a function yourself to calculate the empirical covariance. 
 
 Then use it to calculate the standard deviation over 1000 time steps of an
-AR(1) model with :math:`a_1=-0.9`.
+AR(1) model with :math:´a_1=-0.9´.
 
 
 .. GENERATED FROM PYTHON SOURCE LINES 194-224
@@ -312,9 +312,9 @@ AR(1) model with :math:`a_1=-0.9`.
             Rk = np.zeros(steps)
             for k,wk in enumerate(w):
                 if k<steps-tau:
-                    Rk[k] =  0
+                    Rk[k] =  w[k+tau]*w[k]
            
-            R[tau] = 0
+            R[tau] = np.sum(Rk)/(steps-tau)
         
             
         return R
@@ -344,19 +344,15 @@ AR(1) model with :math:`a_1=-0.9`.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 225-234
+.. GENERATED FROM PYTHON SOURCE LINES 225-230
 
 Share prices
 ------------
 
 Now let's use your function to calulate a covariance function for H&M share 
-prices. First lets load in and plot the data. 
+prices. First lets load in and plot the data.
 
-You can download the data file here:
-
-`HandM.csv <https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`_
-
-.. GENERATED FROM PYTHON SOURCE LINES 234-250
+.. GENERATED FROM PYTHON SOURCE LINES 230-246
 
 .. code-block:: default
 
@@ -370,7 +366,7 @@ You can download the data file here:
 
     w=w-np.mean(w)
     plotOverTime(ax, w)
-    ax.set_ylabel('Price (relative to June 2019): w')
+    ax.set_ylabel('Share price (relative to price June 2019): w')
     ax.set_ylim(-75,75) 
     plt.show()
 
@@ -388,20 +384,24 @@ You can download the data file here:
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 251-255
+.. GENERATED FROM PYTHON SOURCE LINES 247-251
 
 Share prices
 ------------
 
-Now plot the covariance using your empirical function
+Now plot the correlation as a function
 
-.. GENERATED FROM PYTHON SOURCE LINES 255-263
+.. GENERATED FROM PYTHON SOURCE LINES 251-263
 
 .. code-block:: default
 
 
     fig,ax=plt.subplots(1)
-
+    R=R_empirical(w,maxtau=200)
+    plotOverTime(ax, R)
+    ax.set_yticks(np.arange(-600,1600,step=100))
+    ax.set_ylim(-500,1500) 
+    ax.set_ylabel('Covariance: R')
 
 
 
@@ -416,13 +416,19 @@ Now plot the covariance using your empirical function
    :class: sphx-glr-single-img
 
 
+.. rst-class:: sphx-glr-script-out
+
+ .. code-block:: none
+
+
+    Text(15.369860017497809, 0.5, 'Covariance: R')
 
 
 
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  5.878 seconds)
+   **Total running time of the script:** ( 0 minutes  1.841 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson4_plot_ARMA.py:

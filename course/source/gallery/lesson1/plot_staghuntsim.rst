@@ -23,7 +23,7 @@
 The stag hunt
 =============
 
-**Now you should study a model yourself!** Download the page as a 
+** Now you should study a model yourself! ** Download the page as a 
 Python notebook and fill in the missing code according to the instructions.
 
 
@@ -33,15 +33,14 @@ The model
 The stag hunt is modelled using the following payoff matrix. The dilemna is whether 
 an individual should go hunting for a stag together with the group 
 (which involves getting up early and driving to a desolate meeting place 
-where your partner may of may not be wating for you) or hunt alone 
-(which allows you to have a lie-in but means you only catch a rabbit). 
-The payoffs are as follows:
+ where your partner may of may not be wating for you) or hunt alone 
+(which allows you to have a lie-in but means you only catch a rabbit).
 
 =================== ============= ==============
 individual/partner  Group (C)      Self (D)
 =================== ============= ==============
-Group (C)           1             :math:`S=-1/4`
-Self (D)            :math:`T=1/2` 0
+Group (C)              1             :math:`S=-1/4`
+Self (D)               :math:`T=1/2` 0
 =================== ============= ==============
 
 Write a replicator equation for this model. Start by finding the fitness of C and D. 
@@ -54,7 +53,7 @@ Then work out the average fitness.From there you can write down the replicator e
 
 Use it to define the equation below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 39-54
+.. GENERATED FROM PYTHON SOURCE LINES 38-53
 
 .. code-block:: default
 
@@ -70,7 +69,7 @@ Use it to define the equation below.
     # Differential equation
     def dXdt(X, t=0):
         # Replicator equation - This is just a place holder for now 
-        return np.array([X[0]])                   
+        return np.array([(1/4)*X[0]*(1-X[0])*(3*X[0]-1)])                   
 
 
 
@@ -80,7 +79,7 @@ Use it to define the equation below.
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 55-65
+.. GENERATED FROM PYTHON SOURCE LINES 54-64
 
 Simulation
 ----------
@@ -93,7 +92,7 @@ Make two different plots using the *plotOverTime* function:
 one in which eventually everyone co-operates, another in which 
 eventually everyone defects.
 
-.. GENERATED FROM PYTHON SOURCE LINES 65-80
+.. GENERATED FROM PYTHON SOURCE LINES 64-93
 
 .. code-block:: default
 
@@ -112,14 +111,33 @@ eventually everyone defects.
         ax.set_ylim(0,1) 
     
 
+    t = np.linspace(0, 30,  1000)       # time
+    X0 = np.array([0.1])                # initially 10% are co-operators
+    X = integrate.odeint(dXdt, X0, t)   # uses a Python package to simulate the interactions
+    fig,ax=plt.subplots(num=1)
+    plotOverTime(ax,X)
+    plt.show()
+
+    t = np.linspace(0, 30,  1000)       # time
+    X0 = np.array([0.5])                # initially 10% are co-operators
+    X = integrate.odeint(dXdt, X0, t)   # uses a Python package to simulate the interactions
+    fig,ax=plt.subplots(num=1)
+    plotOverTime(ax,X)
+    plt.show()
+
+
+
+
+.. image-sg:: /gallery/lesson1/images/sphx_glr_plot_staghuntsim_001.png
+   :alt: plot staghuntsim
+   :srcset: /gallery/lesson1/images/sphx_glr_plot_staghuntsim_001.png
+   :class: sphx-glr-single-img
 
 
 
 
 
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 81-87
+.. GENERATED FROM PYTHON SOURCE LINES 94-100
 
 Rate of change
 --------------
@@ -128,7 +146,7 @@ In order to understand how the change in co-operators depends on the
 current proportion of co-operators we plot equation eq:`repeqsim`
 as a function of :math:`x` as follows.
 
-.. GENERATED FROM PYTHON SOURCE LINES 87-116
+.. GENERATED FROM PYTHON SOURCE LINES 100-129
 
 .. code-block:: default
 
@@ -164,16 +182,16 @@ as a function of :math:`x` as follows.
 
 
 
-.. image-sg:: /gallery/lesson1/images/sphx_glr_plot_staghuntsim_001.png
+.. image-sg:: /gallery/lesson1/images/sphx_glr_plot_staghuntsim_002.png
    :alt: plot staghuntsim
-   :srcset: /gallery/lesson1/images/sphx_glr_plot_staghuntsim_001.png
+   :srcset: /gallery/lesson1/images/sphx_glr_plot_staghuntsim_002.png
    :class: sphx-glr-single-img
 
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 117-123
+.. GENERATED FROM PYTHON SOURCE LINES 130-136
 
 Steady states
 -------------
@@ -182,14 +200,14 @@ The steady states are the points where :math:`f(x_*)=0`. Find them
 numerically using Python as follows.
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 123-131
+.. GENERATED FROM PYTHON SOURCE LINES 136-144
 
 .. code-block:: default
 
 
     from scipy.optimize import fsolve
     x_s=np.zeros(3)
-    x_initial=[0,0,0]
+    x_initial=[0.1,0.3,0.9]
     for i,x_i in enumerate(x_initial):
         x_s[i]=fsolve(dXdt, (x_i))
         print('Starting with value %.2f gives steady state %.2f'%(x_i,x_s[i]))
@@ -202,14 +220,14 @@ numerically using Python as follows.
 
  .. code-block:: none
 
-    Starting with value 0.00 gives steady state 0.00
-    Starting with value 0.00 gives steady state 0.00
-    Starting with value 0.00 gives steady state 0.00
+    Starting with value 0.10 gives steady state 0.00
+    Starting with value 0.30 gives steady state 0.33
+    Starting with value 0.90 gives steady state 1.00
 
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 132-147
+.. GENERATED FROM PYTHON SOURCE LINES 145-160
 
 The solution we find depends on the starting position. Here
 we chose values we knew were nearby in order to be sure that we found them. 
@@ -227,14 +245,14 @@ and use it to evaluate stability of the steady states.
 
 We can evaluate the steady states we found using this derivative to determine their stability.
 
-.. GENERATED FROM PYTHON SOURCE LINES 147-163
+.. GENERATED FROM PYTHON SOURCE LINES 160-176
 
 .. code-block:: default
 
 
     def dfdx(x):
         # Replicator equation - place holder just now
-        return 1
+        return (1/4)*((1-2*x)*(3*x-1) + 3*x*(1-x))
  
     for x in x_s:
         dfx=dfdx(x)
@@ -255,9 +273,9 @@ We can evaluate the steady states we found using this derivative to determine th
 
  .. code-block:: none
 
-    Steady state 0.00 is unstable (f'(x)= 1.0000)
-    Steady state 0.00 is unstable (f'(x)= 1.0000)
-    Steady state 0.00 is unstable (f'(x)= 1.0000)
+    Steady state 0.00 is stable (f'(x)= -0.2500)
+    Steady state 0.33 is unstable (f'(x)= 0.1667)
+    Steady state 1.00 is stable (f'(x)= -0.5000)
 
 
 
@@ -265,7 +283,7 @@ We can evaluate the steady states we found using this derivative to determine th
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.580 seconds)
+   **Total running time of the script:** ( 0 minutes  0.226 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson1_plot_staghuntsim.py:

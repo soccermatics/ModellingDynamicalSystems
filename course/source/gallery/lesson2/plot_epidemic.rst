@@ -210,7 +210,7 @@ when :math:`S=\gamma/\beta`. We can now plot these equilibrium on the phase plan
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  2.680 seconds)
+   **Total running time of the script:** ( 0 minutes  0.129 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson2_plot_epidemic.py:

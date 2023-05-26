@@ -113,21 +113,23 @@ to download the full example code</p>
 </div>
 <div class="sphx-glr-example-title section" id="the-seir-model">
 <span id="epidemic"></span><span id="sphx-glr-gallery-lesson2-plot-seir-py"></span><h1>The SEIR model<a class="headerlink" href="#the-seir-model" title="Permalink to this heading"></a></h1>
+<p><strong>Now you should study a model yourself!</strong> Download the page as a
+Python notebook and fill in the missing code according to the instructions.</p>
 <p>In the SEIR model, there is an additional class for people exposed (but not yet infective). The equations
 are now,</p>
 <blockquote>
 <div><div class="math notranslate nohighlight">
-\[\begin{aligned}
-    \frac{dS}{dt} &amp; = &amp; - \beta S I \
-    \frac{dE}{dt} &amp; = &amp; \beta S I - \delta E\
-    \frac{dI}{dt} &amp; = &amp; \delta E -  \gamma I \
-    \frac{dR}{dt} &amp; = &amp; \gamma I
+\[egin{aligned}
+ rac{dS}{dt} &amp; = - eta S I \
+ rac{dE}{dt} &amp; = eta S I - \delta E\
+ rac{dI}{dt} &amp; = \delta E -  \gamma I \
+ rac{dR}{dt} &amp; =  \gamma I
 \end{aligned}\]</div>
 </div></blockquote>
 <div class="section" id="simulating-the-model">
 <h2>Simulating the model<a class="headerlink" href="#simulating-the-model" title="Permalink to this heading"></a></h2>
 <blockquote>
-<div><p>Assume that <span class="math notranslate nohighlight">\(\gamma=1/7\)</span> and <span class="math notranslate nohighlight">\(\beta=1/5\)</span>. Write code to draw a
+<div><p>Assume that <span class="math notranslate nohighlight">\(\gamma=1/7\)</span> and <span class="math notranslate nohighlight">\(eta=1/5\)</span>. Write code to draw a
 graph of <span class="math notranslate nohighlight">\(I(t)\)</span> as a function of time (<span class="math notranslate nohighlight">\(t\)</span>) for the cases in which
 (on average) a person is exposed for 1, 5 and respectively 9 days before they are infected.
 Assume that <span class="math notranslate nohighlight">\(S(0)=999/1000\)</span>, <span class="math notranslate nohighlight">\(E(0)=0\)</span>
@@ -255,7 +257,7 @@ Make plots of <span class="math notranslate nohighlight">\(R(t)\)</span> for dif
 <div class="section" id="conclusions">
 <h2>Conclusions<a class="headerlink" href="#conclusions" title="Permalink to this heading"></a></h2>
 <p>Add a text box below and describe (in words) how <span class="math notranslate nohighlight">\(\delta\)</span> affects the outcome.</p>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.494 seconds)</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  0.383 seconds)</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-gallery-lesson2-plot-seir-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../../_downloads/6169f809528871020105e20a4f4cdbb9/plot_SEIR.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_SEIR.py</span></code></a></p>

@@ -22,29 +22,32 @@
 
 The SEIR model
 =============
-  
+
+**Now you should study a model yourself!** Download the page as a 
+Python notebook and fill in the missing code according to the instructions.
+
 In the SEIR model, there is an additional class for people exposed (but not yet infective). The equations 
 are now,
 
   .. math::
 
-    \begin{aligned}
-        \frac{dS}{dt} & = & - \beta S I \
-        \frac{dE}{dt} & = & \beta S I - \delta E\
-        \frac{dI}{dt} & = & \delta E -  \gamma I \
-        \frac{dR}{dt} & = & \gamma I 
-    \end{aligned}
+     egin{aligned}
+     rac{dS}{dt} & = - eta S I \
+     rac{dE}{dt} & = eta S I - \delta E\
+     rac{dI}{dt} & = \delta E -  \gamma I \
+     rac{dR}{dt} & =  \gamma I 
+     \end{aligned}
 
 Simulating the model
 --------------------
 
-  Assume that :math:`\gamma=1/7` and :math:`\beta=1/5`. Write code to draw a
+  Assume that :math:`\gamma=1/7` and :math:`eta=1/5`. Write code to draw a
   graph of :math:`I(t)` as a function of time (:math:`t`) for the cases in which
   (on average) a person is exposed for 1, 5 and respectively 9 days before they are infected.
   Assume that :math:`S(0)=999/1000`, :math:`E(0)=0`
   and :math:`I(0)=1/1000`. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 28-79
+.. GENERATED FROM PYTHON SOURCE LINES 31-82
 
 .. code-block:: default
 
@@ -111,12 +114,12 @@ Simulating the model
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 80-82
+.. GENERATED FROM PYTHON SOURCE LINES 83-85
 
 Does :math:`\delta` have a large effect on the final number of people infected? 
 Add a text box and explain your answer below.
 
-.. GENERATED FROM PYTHON SOURCE LINES 88-98
+.. GENERATED FROM PYTHON SOURCE LINES 91-101
 
 Introducing restrictions
 ------------------------
@@ -129,7 +132,7 @@ simulate the spread,with :math:`\beta=1/5` until :math:`I(t)=I_T` and then with 
 Make plots of :math:`R(t)` for different :math:`T` values
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 98-125
+.. GENERATED FROM PYTHON SOURCE LINES 101-128
 
 .. code-block:: default
 
@@ -172,14 +175,14 @@ Make plots of :math:`R(t)` for different :math:`T` values
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 126-130
+.. GENERATED FROM PYTHON SOURCE LINES 129-133
 
 Code help
 ---------
 
 The following command will help you find then :math:`I(t) \geq 0.01`
 
-.. GENERATED FROM PYTHON SOURCE LINES 130-136
+.. GENERATED FROM PYTHON SOURCE LINES 133-139
 
 .. code-block:: default
 
@@ -202,11 +205,11 @@ The following command will help you find then :math:`I(t) \geq 0.01`
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 137-138
+.. GENERATED FROM PYTHON SOURCE LINES 140-141
 
 The following code concatenates two arrays
 
-.. GENERATED FROM PYTHON SOURCE LINES 139-149
+.. GENERATED FROM PYTHON SOURCE LINES 142-152
 
 .. code-block:: default
 
@@ -240,7 +243,7 @@ The following code concatenates two arrays
 
 
 
-.. GENERATED FROM PYTHON SOURCE LINES 150-155
+.. GENERATED FROM PYTHON SOURCE LINES 153-158
 
 Conclusions
 -----------
@@ -251,7 +254,7 @@ Add a text box below and describe (in words) how :math:`\delta` affects the outc
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.494 seconds)
+   **Total running time of the script:** ( 0 minutes  0.383 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson2_plot_SEIR.py:

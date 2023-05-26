@@ -168,7 +168,7 @@ jerky movement.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.407 seconds)
+   **Total running time of the script:** ( 0 minutes  0.719 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson4_plot_White.py:

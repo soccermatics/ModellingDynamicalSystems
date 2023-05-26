@@ -71,7 +71,7 @@ for axsr in axs:
 # Autogressive model 
 # ------------------
 # 
-# Here we plot the AR(1) model with :math:`a_1=-0.9`. 
+# Here we plot the AR(1) model with :math;´a_1=-0.9´. 
 
 
 def AR(w0,steps,a_vals,sigma=1):
@@ -115,7 +115,7 @@ for axsr in axs:
 # Now there is a longer memory. The process increases and decreases
 # more slowly in comparison to the fluctuations caused by noise.
 #
-# When we reduce  :math:`a_1` then the process moves more randomly, like 
+# When we reduce  :math;´a_1´ then the process moves more randomly, like 
 # the random walk.
 
 fig,axs=plt.subplots(3,3)
@@ -129,7 +129,7 @@ for axsr in axs:
             ax.set_ylabel('Position: w')
 
 ##############################################################################
-# If :math:`a_1` is positive then the process oscilates backwards and forwards.
+# If :math;´a_1´ is positive then the process oscilates backwards and forwards.
 
 fig,axs=plt.subplots(3,3)
 steps=30
@@ -185,11 +185,11 @@ plt.show()
 # Empirical covariance 
 # --------------------
 #
-# Correct the code below to
+# Fill in the code below to
 # write a function yourself to calculate the empirical covariance. 
 #
 # Then use it to calculate the standard deviation over 1000 time steps of an
-# AR(1) model with :math:`a_1=-0.9`.
+# AR(1) model with :math:´a_1=-0.9´.
 #
 
 
@@ -201,9 +201,9 @@ def R_empirical(w,maxtau):
         Rk = np.zeros(steps)
         for k,wk in enumerate(w):
             if k<steps-tau:
-                Rk[k] =  0
+                Rk[k] =  w[k+tau]*w[k]
            
-        R[tau] = 0
+        R[tau] = np.sum(Rk)/(steps-tau)
         
             
     return R
@@ -226,11 +226,7 @@ plt.show()
 # ------------
 #
 # Now let's use your function to calulate a covariance function for H&M share 
-# prices. First lets load in and plot the data. 
-#
-# You can download the data file here:
-#
-# `HandM.csv <https://github.com/soccermatics/ModellingDynamicalSystems/blob/main/course/lessons/data/HandM.csv>`_
+# prices. First lets load in and plot the data.
 
 import pandas as pd
 
@@ -241,7 +237,7 @@ fig,ax=plt.subplots(1)
 
 w=w-np.mean(w)
 plotOverTime(ax, w)
-ax.set_ylabel('Price (relative to June 2019): w')
+ax.set_ylabel('Share price (relative to price June 2019): w')
 ax.set_ylim(-75,75) 
 plt.show()
 
@@ -251,10 +247,14 @@ plt.show()
 # Share prices
 # ------------
 #
-# Now plot the covariance using your empirical function
+# Now plot the correlation as a function
 
 fig,ax=plt.subplots(1)
-
+R=R_empirical(w,maxtau=200)
+plotOverTime(ax, R)
+ax.set_yticks(np.arange(-600,1600,step=100))
+ax.set_ylim(-500,1500) 
+ax.set_ylabel('Covariance: R')
 
 
 

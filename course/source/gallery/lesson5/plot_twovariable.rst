@@ -195,7 +195,7 @@ We will simulate this model as one of the exercises on the next page.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  8.832 seconds)
+   **Total running time of the script:** ( 0 minutes  0.207 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson5_plot_twovariable.py:

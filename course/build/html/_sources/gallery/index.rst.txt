@@ -49,7 +49,7 @@ First part of the book.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="** Now you should study a model yourself! ** Download the page as a  Python notebook and fill i...">
 
 .. only:: html
 
@@ -57,6 +57,23 @@ First part of the book.
     :alt: The stag hunt
 
   :ref:`sphx_glr_gallery_lesson1_plot_staghuntsim.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The stag hunt</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+
+.. only:: html
+
+  .. image:: /gallery/lesson1/images/thumb/sphx_glr_plot_staghuntsim_exercise_thumb.png
+    :alt: The stag hunt
+
+  :ref:`sphx_glr_gallery_lesson1_plot_staghuntsim_exercise.py`
 
 .. raw:: html
 
@@ -101,6 +118,23 @@ From the book
 .. raw:: html
 
     <div class="sphx-glr-thumbcontainer" tooltip="  .. math::">
+
+.. only:: html
+
+  .. image:: /gallery/lesson2/images/thumb/sphx_glr_plot_SEIR_exercise_thumb.png
+    :alt: The SEIR model
+
+  :ref:`sphx_glr_gallery_lesson2_plot_SEIR_exercise.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The SEIR model</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
 
 .. only:: html
 
@@ -185,6 +219,23 @@ From the book
 
 .. raw:: html
 
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+
+.. only:: html
+
+  .. image:: /gallery/lesson3/images/thumb/sphx_glr_plot_Ricker_exercise_thumb.png
+    :alt: Ricker map
+
+  :ref:`sphx_glr_gallery_lesson3_plot_Ricker_exercise.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Ricker map</div>
+    </div>
+
+
+.. raw:: html
+
     </div>
 
 --------
@@ -198,6 +249,23 @@ From the book
 .. raw:: html
 
     <div class="sphx-glr-thumbnails">
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip=" The moving average ------------------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson4/images/thumb/sphx_glr_plot_ARMA_exercise_thumb.png
+    :alt: ARMA model
+
+  :ref:`sphx_glr_gallery_lesson4_plot_ARMA_exercise.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">ARMA model</div>
+    </div>
 
 
 .. raw:: html
@@ -261,6 +329,23 @@ From the book
     :alt: Do it yourself
 
   :ref:`sphx_glr_gallery_lesson5_plot_doityourself.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">Do it yourself</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="Fitting a single variable model to GDP --------------------------------------">
+
+.. only:: html
+
+  .. image:: /gallery/lesson5/images/thumb/sphx_glr_plot_doityourself_exercise_thumb.png
+    :alt: Do it yourself
+
+  :ref:`sphx_glr_gallery_lesson5_plot_doityourself_exercise.py`
 
 .. raw:: html
 

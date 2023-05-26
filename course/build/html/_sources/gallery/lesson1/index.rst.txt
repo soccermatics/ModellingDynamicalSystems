@@ -34,7 +34,7 @@ First part of the book.
 
 .. raw:: html
 
-    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+    <div class="sphx-glr-thumbcontainer" tooltip="** Now you should study a model yourself! ** Download the page as a  Python notebook and fill i...">
 
 .. only:: html
 
@@ -42,6 +42,23 @@ First part of the book.
     :alt: The stag hunt
 
   :ref:`sphx_glr_gallery_lesson1_plot_staghuntsim.py`
+
+.. raw:: html
+
+      <div class="sphx-glr-thumbnail-title">The stag hunt</div>
+    </div>
+
+
+.. raw:: html
+
+    <div class="sphx-glr-thumbcontainer" tooltip="**Now you should study a model yourself!** Download the page as a  Python notebook and fill in ...">
+
+.. only:: html
+
+  .. image:: /gallery/lesson1/images/thumb/sphx_glr_plot_staghuntsim_exercise_thumb.png
+    :alt: The stag hunt
+
+  :ref:`sphx_glr_gallery_lesson1_plot_staghuntsim_exercise.py`
 
 .. raw:: html
 
@@ -59,4 +76,5 @@ First part of the book.
 
    /gallery/lesson1/plot_hawkdovesim
    /gallery/lesson1/plot_staghuntsim
+   /gallery/lesson1/plot_staghuntsim_exercise
 

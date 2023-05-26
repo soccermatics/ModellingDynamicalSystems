@@ -26,6 +26,7 @@ Ricker map
 **Now you should study a model yourself!** Download the page as a 
 Python notebook and fill in the missing code according to the instructions.
 
+
 The model
 ---------
 
@@ -44,7 +45,7 @@ of this model. Find and plot values of :math:`r` where the population is stable,
 it oscilLates with period 2, where it oscilLates with period 4 and where it oscilLates 
 with period 3. 
 
-.. GENERATED FROM PYTHON SOURCE LINES 29-60
+.. GENERATED FROM PYTHON SOURCE LINES 30-59
 
 .. code-block:: default
 
@@ -61,8 +62,7 @@ with period 3.
         xs=np.zeros(n+1)
         xs[0]=x0
         for k in range(n):
-            # Need to fill in correct equation here
-            xs[k+1]= xs[k]
+            xs[k+1]= r*xs[k]*np.exp(-xs[k])
         return(xs)
 
     def formatFigure(ax,n):
@@ -85,37 +85,26 @@ with period 3.
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 60-64
 
-.. GENERATED FROM PYTHON SOURCE LINES 61-65
+Answer
+------
 
-Cobweb diagrams
---------------
+Stable is given by r=3
 
-Make cobweb diagrams for the values you found.
-
-.. GENERATED FROM PYTHON SOURCE LINES 69-76
-
-Sensitivity to initial conditions
----------------------------------
-
-Find a value of :math:`r` where the Ricker map exhibits sensitivity to initial values. 
-Show that even for an intitial difference of 0.0001 the resul of 20 iterations of the map
-gives a large difference.
-
-
-.. GENERATED FROM PYTHON SOURCE LINES 76-85
+.. GENERATED FROM PYTHON SOURCE LINES 64-73
 
 .. code-block:: default
 
 
-    n=30
-    r=0
+    n=50
 
     fig,ax=plt.subplots(num=1)
-    ax.plot(logisticmap(0.1000,r,n), color='black')
-    ax.plot(logisticmap(0.1001,r,n), color='red')
+    ax.plot(logisticmap(x0,3,n), color='black')
     formatFigure(ax,n)
     plt.show()
+
+
 
 
 
@@ -128,10 +117,186 @@ gives a large difference.
 
 
 
+.. GENERATED FROM PYTHON SOURCE LINES 74-75
+
+Periodic by r = 10
+
+.. GENERATED FROM PYTHON SOURCE LINES 75-82
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,10,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_Ricker_002.png
+   :alt: plot Ricker
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_Ricker_002.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 83-84
+
+Period 4 by r =13
+
+.. GENERATED FROM PYTHON SOURCE LINES 84-91
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,13,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_Ricker_003.png
+   :alt: plot Ricker
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_Ricker_003.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 92-93
+
+And period 3 by r=23
+
+.. GENERATED FROM PYTHON SOURCE LINES 93-100
+
+.. code-block:: default
+
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(x0,23,n), color='black')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_Ricker_004.png
+   :alt: plot Ricker
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_Ricker_004.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 101-105
+
+Cobweb diagrams
+--------------
+
+Make cobweb diagrams for the values you found.
+
+.. GENERATED FROM PYTHON SOURCE LINES 105-142
+
+.. code-block:: default
+
+
+    n = 50 
+
+    r_vals=[3, 10, 13, 23]
+
+
+    rcParams['figure.figsize'] = 12/2.54, 12/2.54
+    fig,ax=plt.subplots(2,2)
+
+
+    for i,r in enumerate(r_vals):
+        xs = logisticmap(0.1,r,50)
+        xp = xs[0]
+        ax[int(i/2)][np.mod(i,2)].plot([xp, xp],[0, xp],color='k',linewidth=0.5)
+        for x in xs:
+            ax[int(i/2)][np.mod(i,2)].plot([xp, xp],[xp, x],color='k',linewidth=0.5)
+            ax[int(i/2)][np.mod(i,2)].plot([xp, x],[x, x],color='k',linewidth=0.5)
+            xp = x
+    
+        xr=np.arange(0,20,0.001)
+        fxr=r*xr*np.exp(-xr)
+        ax[int(i/2)][np.mod(i,2)].plot([-0.5, 105.5],[-0.5, 105.5],linestyle=':',color='k',linewidth=1)
+        ax[int(i/2)][np.mod(i,2)].plot(xr,fxr,color='r',linewidth=1)
+        ax[int(i/2)][np.mod(i,2)].set_xlabel('Previous number: $x(k)$')
+        ax[int(i/2)][np.mod(i,2)].set_ylabel('Next number: $x(k+1)$')
+        ax[int(i/2)][np.mod(i,2)].spines['top'].set_visible(False)
+        ax[int(i/2)][np.mod(i,2)].spines['right'].set_visible(False)
+        ax[int(i/2)][np.mod(i,2)].set_xticks(np.arange(0,10.01,step=1))
+        ax[int(i/2)][np.mod(i,2)].set_yticks(np.arange(0,10.01,step=1))
+        ax[int(i/2)][np.mod(i,2)].set_xlim(0,10.01)
+        ax[int(i/2)][np.mod(i,2)].set_ylim(0,10.01) 
+        ax[int(i/2)][np.mod(i,2)].text(1.0,9.0,'r=%.1f'%r)
+    
+    plt.show()
+
+
+
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_Ricker_005.png
+   :alt: plot Ricker
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_Ricker_005.png
+   :class: sphx-glr-single-img
+
+
+
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 143-150
+
+Sensitivity to initial conditions
+---------------------------------
+
+Find a value of :math:`r` where the Ricker map exhibits sensitivity to initial values. 
+Show that even for an intitial difference of 0.0001 the resul of 20 iterations of the map
+gives a large difference.
+
+
+.. GENERATED FROM PYTHON SOURCE LINES 150-159
+
+.. code-block:: default
+
+
+    n=30
+    r=26
+
+    fig,ax=plt.subplots(num=1)
+    ax.plot(logisticmap(0.1000,r,n), color='black')
+    ax.plot(logisticmap(0.1001,r,n), color='red')
+    formatFigure(ax,n)
+    plt.show()
+
+
+
+.. image-sg:: /gallery/lesson3/images/sphx_glr_plot_Ricker_006.png
+   :alt: plot Ricker
+   :srcset: /gallery/lesson3/images/sphx_glr_plot_Ricker_006.png
+   :class: sphx-glr-single-img
+
+
+
+
+
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  0.187 seconds)
+   **Total running time of the script:** ( 0 minutes  0.843 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson3_plot_Ricker.py:

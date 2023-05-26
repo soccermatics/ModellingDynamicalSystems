@@ -97,12 +97,12 @@ The data is downloaded from here `here <https://databank.worldbank.org/home>`_.
              1963     NaN
              1964     NaN
                      ... 
-    ZWE      2017    56.2
-             2018    53.7
+    ZWE      2018    53.7
              2019    52.7
              2020    51.8
              2021    49.5
-    Name: SH.DYN.MORT, Length: 16492, dtype: float64
+             2022     NaN
+    Name: SH.DYN.MORT, Length: 16758, dtype: float64
 
 
 
@@ -250,7 +250,7 @@ data.
 
 .. rst-class:: sphx-glr-timing
 
-   **Total running time of the script:** ( 0 minutes  11.497 seconds)
+   **Total running time of the script:** ( 0 minutes  16.906 seconds)
 
 
 .. _sphx_glr_download_gallery_lesson5_plot_downloading.py:
